@@ -24,7 +24,7 @@
 
         <div class="container">
             <div class="row">
-                <!-- ##### Post Content Area ##### -->
+                <!-- ##### posts Content Area ##### -->
                 <div class="col-12 col-lg-9">
                     <!-- Single Blog Area  -->
                     <div class="single-blog-area blog-style-2 mb-50">
@@ -199,13 +199,13 @@
 
                             <div class="widget-content">
 
-                                <!-- Single Blog Post -->
+                                <!-- Single Blog posts -->
                                 <div class="single-blog-post d-flex align-items-center widget-post">
-                                    <!-- Post Thumbnail -->
+                                    <!-- posts Thumbnail -->
                                     <div class="post-thumbnail">
                                         <img src="img/blog-img/lp1.jpg" alt="">
                                     </div>
-                                    <!-- Post Content -->
+                                    <!-- posts Content -->
                                     <div class="post-content">
                                         <a href="#" class="post-tag">Lifestyle</a>
                                         <h4><a href="#" class="post-headline">Party people in the house</a></h4>
@@ -215,13 +215,13 @@
                                     </div>
                                 </div>
 
-                                <!-- Single Blog Post -->
+                                <!-- Single Blog posts -->
                                 <div class="single-blog-post d-flex align-items-center widget-post">
-                                    <!-- Post Thumbnail -->
+                                    <!-- posts Thumbnail -->
                                     <div class="post-thumbnail">
                                         <img src="img/blog-img/lp2.jpg" alt="">
                                     </div>
-                                    <!-- Post Content -->
+                                    <!-- posts Content -->
                                     <div class="post-content">
                                         <a href="#" class="post-tag">Lifestyle</a>
                                         <h4><a href="#" class="post-headline">A sunday in the park</a></h4>
@@ -231,13 +231,13 @@
                                     </div>
                                 </div>
 
-                                <!-- Single Blog Post -->
+                                <!-- Single Blog posts -->
                                 <div class="single-blog-post d-flex align-items-center widget-post">
-                                    <!-- Post Thumbnail -->
+                                    <!-- posts Thumbnail -->
                                     <div class="post-thumbnail">
                                         <img src="img/blog-img/lp3.jpg" alt="">
                                     </div>
-                                    <!-- Post Content -->
+                                    <!-- posts Content -->
                                     <div class="post-content">
                                         <a href="#" class="post-tag">Lifestyle</a>
                                         <h4><a href="#" class="post-headline">Party people in the house</a></h4>
@@ -247,13 +247,13 @@
                                     </div>
                                 </div>
 
-                                <!-- Single Blog Post -->
+                                <!-- Single Blog posts -->
                                 <div class="single-blog-post d-flex align-items-center widget-post">
-                                    <!-- Post Thumbnail -->
+                                    <!-- posts Thumbnail -->
                                     <div class="post-thumbnail">
                                         <img src="img/blog-img/lp4.jpg" alt="">
                                     </div>
-                                    <!-- Post Content -->
+                                    <!-- posts Content -->
                                     <div class="post-content">
                                         <a href="#" class="post-tag">Lifestyle</a>
                                         <h4><a href="#" class="post-headline">A sunday in the park</a></h4>

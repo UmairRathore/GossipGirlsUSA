@@ -17,7 +17,7 @@
                                 <div class="post-tag">
                                     <a href="#" data-animation="fadeInUp">lifestyle</a>
                                 </div>
-                                <h2 data-animation="fadeInUp" data-delay="250ms"><a href="{{route('single-post')}}">Take a look at last night’s party!</a></h2>
+                                <h2 data-animation="fadeInUp" data-delay="250ms"><a href="{{route('single-posts')}}">Take a look at last night’s party!</a></h2>
                             </div>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                                 <div class="post-tag">
                                     <a href="#" data-animation="fadeInUp">lifestyle</a>
                                 </div>
-                                <h2 data-animation="fadeInUp" data-delay="250ms"><a href="{{route('single-post')}}">Take a look at last night’s party!</a></h2>
+                                <h2 data-animation="fadeInUp" data-delay="250ms"><a href="{{route('single-posts')}}">Take a look at last night’s party!</a></h2>
                             </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                                 <div class="post-tag">
                                     <a href="#" data-animation="fadeInUp">lifestyle</a>
                                 </div>
-                                <h2 data-animation="fadeInUp" data-delay="250ms"><a href="{{route('single-post')}}">Take a look at last night’s party!</a></h2>
+                                <h2 data-animation="fadeInUp" data-delay="250ms"><a href="{{route('single-posts')}}">Take a look at last night’s party!</a></h2>
                             </div>
                         </div>
                     </div>
@@ -277,13 +277,13 @@
 
                             <div class="widget-content">
 
-                                <!-- Single Blog Post -->
+                                <!-- Single Blog posts -->
                                 <div class="single-blog-post d-flex align-items-center widget-post">
-                                    <!-- Post Thumbnail -->
+                                    <!-- posts Thumbnail -->
                                     <div class="post-thumbnail">
                                         <img src="{{asset('assets/img/blog-img/lp1.jpg')}}" alt="">
                                     </div>
-                                    <!-- Post Content -->
+                                    <!-- posts Content -->
                                     <div class="post-content">
                                         <a href="#" class="post-tag">Lifestyle</a>
                                         <h4><a href="#" class="post-headline">Party people in the house</a></h4>
@@ -293,13 +293,13 @@
                                     </div>
                                 </div>
 
-                                <!-- Single Blog Post -->
+                                <!-- Single Blog posts -->
                                 <div class="single-blog-post d-flex align-items-center widget-post">
-                                    <!-- Post Thumbnail -->
+                                    <!-- posts Thumbnail -->
                                     <div class="post-thumbnail">
                                         <img src="{{asset('assets/img/blog-img/lp2.jpg')}}" alt="">
                                     </div>
-                                    <!-- Post Content -->
+                                    <!-- posts Content -->
                                     <div class="post-content">
                                         <a href="#" class="post-tag">Lifestyle</a>
                                         <h4><a href="#" class="post-headline">A sunday in the park</a></h4>
@@ -309,13 +309,13 @@
                                     </div>
                                 </div>
 
-                                <!-- Single Blog Post -->
+                                <!-- Single Blog posts -->
                                 <div class="single-blog-post d-flex align-items-center widget-post">
-                                    <!-- Post Thumbnail -->
+                                    <!-- posts Thumbnail -->
                                     <div class="post-thumbnail">
                                         <img src="{{asset('assets/img/blog-img/lp3.jpg')}}" alt="">
                                     </div>
-                                    <!-- Post Content -->
+                                    <!-- posts Content -->
                                     <div class="post-content">
                                         <a href="#" class="post-tag">Lifestyle</a>
                                         <h4><a href="#" class="post-headline">Party people in the house</a></h4>
@@ -325,13 +325,13 @@
                                     </div>
                                 </div>
 
-                                <!-- Single Blog Post -->
+                                <!-- Single Blog posts -->
                                 <div class="single-blog-post d-flex align-items-center widget-post">
-                                    <!-- Post Thumbnail -->
+                                    <!-- posts Thumbnail -->
                                     <div class="post-thumbnail">
                                         <img src="{{asset('assets/img/blog-img/lp4.jpg')}}" alt="">
                                     </div>
-                                    <!-- Post Content -->
+                                    <!-- posts Content -->
                                     <div class="post-content">
                                         <a href="#" class="post-tag">Lifestyle</a>
                                         <h4><a href="#" class="post-headline">A sunday in the park</a></h4>

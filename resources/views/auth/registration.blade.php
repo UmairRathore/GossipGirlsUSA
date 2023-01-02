@@ -1,7 +1,7 @@
 @extends('auth.auth')
-@section('title', 'GossipGirl - User Sign Up')
+@section('title', 'User Sign Up')
 @section('content')
-    <div class="bg">
+{{--    <div class="bg">--}}
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -93,7 +93,7 @@
             </div>
         </div>
     </div>
-    </div>
+{{--    </div>--}}
     <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script>
         $(document).ready(function() {

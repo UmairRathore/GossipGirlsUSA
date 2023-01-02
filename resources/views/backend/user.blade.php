@@ -7,6 +7,12 @@
                 <div class="card-header">
                     <h5 class="title">Edit Profile</h5>
                 </div>
+                @if(Session::has('message'))
+                    <div class="alert @if(Session::has('message')) {!! session('message') !!} @endif alert-primary">
+                        <button id="cross" type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        {!! session('msg') !!}
+                    </div>
+                @endif
                 <div class="card-body">
                     <form method="POST" action="{{ route('profile-update',[$user->id]) }}">
 {{--                        {{dd($user->id)}}--}}
@@ -169,19 +175,5 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $("#cross").click(function(){
-                $(".alert-hide").hide();
-            });
-            setTimeout(function(){
 
-                $(".alert-hide").fadeOut("slow")
-
-            }, 6000);
-        });
-
-
-    </script>
 @endsection

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\Blogger\PostController;
 use App\Http\Controllers\Admin\User\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -48,9 +49,9 @@ Route::get('/contact', function () {
     return view('front.pages.contact');
 })->name('contact-us');
 
-Route::get('/single-post', function () {
-    return view('front.pages.single-post');
-})->name('single-post');
+Route::get('/single-posts', function () {
+    return view('front.pages.single-posts');
+})->name('single-posts');
 
 
 
@@ -65,8 +66,8 @@ Route::post('/login', [LoginController::class, 'postLogin'])->name('postlogin');
 
 
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-//Route::post('/{', [LoginController::class, 'logout'])->name('user-logout');
-//Route::post('/logout', [LoginController::class, 'logout'])->name('blogger-logout');
+//Route::posts('/{', [LoginController::class, 'logout'])->name('user-logout');
+//Route::posts('/logout', [LoginController::class, 'logout'])->name('blogger-logout');
 
 
 
@@ -84,4 +85,9 @@ Route::post('/status-user/{id}', [AdminController::class, 'changeStatus'])->name
 
 
 Route::get('/profile/{id}', [UserController::class, 'edit'])->name('profile-edit')->middleware('auth');
-Route::post('/profile/{id}', [UserController::class, 'update'])->name('profile-update');
+Route::put('/profile/{id}', [UserController::class, 'update'])->name('profile-update');
+
+
+
+Route::get('/posts/create',[PostController::class,'create']);
+Route::post('/posts/store',[PostController::class,'store'])->name('posts.store');

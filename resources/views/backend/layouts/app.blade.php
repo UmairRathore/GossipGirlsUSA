@@ -30,10 +30,21 @@
 
     <script src="{{ asset('admin/assets/js/umair-rathore.min.js')}}?v=1.0.0"></script>
     <script src="{{ asset('admin/assets/js/theme.js')}}"></script>
-    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
 
-    @stack('js')
+
+    <!--toastr-->
+    <script src="{{asset('admin/assets/toastr/js/toastr.min.js')}}"></script>
+
+    <!--ckeditor-->
+    <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+
+
+
+
+
+
 
     <script>
 

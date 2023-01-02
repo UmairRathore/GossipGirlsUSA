@@ -58,21 +58,5 @@
     </div>
 {{--    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>--}}
 
-    <script>
-        $(document).ready( function () {
-            $('#datatable').DataTable();
-        } );
-        $(document).ready(function () {
-            $("#cross").click(function () {
-                $(".alert-hide").hide();
-            });
-            setTimeout(function () {
 
-                $(".alert-hide").fadeOut("slow")
-
-            }, 6000);
-        });
-
-
-    </script>
 @endsection

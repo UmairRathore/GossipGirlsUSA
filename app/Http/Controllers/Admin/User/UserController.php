@@ -45,18 +45,18 @@ class UserController extends Controller
         $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed|min:6',
-            'phone_number' => 'required',
-            'address' => 'required',
-            'city' => 'required',
-            'zipcode' => 'required|min:5|integer',
-            'state' => 'required',
-            'time_in_community' => 'required',
-            'description' => 'required',
+            'email' => 'required|email',
+            'password' => '',
+            'phone_number' => '',
+            'address' => '',
+            'city' => '',
+            'zipcode' => '',
+            'state' => '',
+            'time_in_community' => '',
+            'description' => '',
         ]);
         $user = $this->_model::find($id);
-        dd($user->id);
+//        dd($user->id);
         $user->first_name = $request->input('first_name');
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
@@ -71,8 +71,6 @@ class UserController extends Controller
 //        $user->password = hash::make($request->password);
 //        dd($user);
         $check = $user->update();
-
-
         if ($check) {
             $msg =" Profile Updated successfully";
             Session::flash('msg', $msg);

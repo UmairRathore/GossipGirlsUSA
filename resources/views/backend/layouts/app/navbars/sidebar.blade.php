@@ -52,12 +52,12 @@
                 <div class="collapse show" id="laravel-examples">
                     <ul class="nav pl-4">
                         <li @if ($pageSlug == 'profile') class="active " @endif>
-                            <a href="{{ route('profile-edit',[auth()->user()->id])  }}">
+{{--                            <a href="{{ route('profile-edit',[auth()->user()->id])  }}">--}}
                                 <i class="tim-icons icon-single-02"></i>
                                 <p>{{ __('User Profile') }}</p>
                             </a>
                         </li>
-                        <li @if ($pageSlug == 'users') class="active " @endif>
+                        <li @if ($pageSlug == 'posts') class="active " @endif>
                             <a href="{{ route('index')  }}">
                                 <i class="tim-icons icon-bullet-list-67"></i>
                                 <p>{{ __('User Management') }}</p>

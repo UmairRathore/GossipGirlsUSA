@@ -21,7 +21,10 @@
     <link href="{{ asset('admin/assets/css/nucleo-icons.css')}}" rel="stylesheet" />
     <!-- CSS -->
     <link href="{{ asset('admin/assets/css/umair-rathore.css')}}?v=1.0.0" rel="stylesheet" />
-{{--    <link href="{{ asset('admin/assets/css/theme.css')}}" rel="stylesheet" />--}}
+    <link href="{{ asset('admin/assets/css/theme.css')}}" rel="stylesheet" />
+
+
+    <link href="{{asset('admin/assets/toastr/css/toastr.min.css')}}" rel="stylesheet">
 </head>
 <style>
     body, html {
@@ -40,4 +43,4 @@
         background-size: cover;
     }
 </style>
-
+<body class="bg">

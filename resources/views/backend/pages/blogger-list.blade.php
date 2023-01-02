@@ -1,7 +1,8 @@
 @extends('backend.layouts.app',['pageSlug' => 'datatable'])
 @section('title', 'datatable')
 @section('content')
-    <link href="{{asset('admin/assets/toastr/css/toastr.min.css')}}" rel="stylesheet">
+
+
     <style>
         .switch {
             position: relative;
@@ -74,7 +75,7 @@
 
                         <div class="col-md-3">
                             <label for="">Active</label>
-                            <select class="form-control" name="status" id="inputStateRes">
+                            <select class="form-control" name="status" id="inputStateRes" style="background-color: #1a1e34">
                                 <option value="All">All</option>
                                 <option value="Active">Active</option>
                                 <option value="InActive">In Active</option>
@@ -143,12 +144,11 @@
         </div>
     </div>
 
-    <script src="{{asset('admin/assets/toastr/js/toastr.min.js')}}"></script>
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
         <script>
 
-        $(document).on("click", "#checkbox_list", function () {
+        $(document).on("click", "#status", function () {
             var is_checked_obj = $(this);
             var is_checked = $(this).val(); // this gives me null
             let token = $('meta[name="csrf-token"]').attr('content');
@@ -194,11 +194,11 @@
         });
         $('#inputStateRes').on('change', function () {
             if (this.value == 'Active') {
-                $(".dataTable").DataTable().column(10).search('Active').draw();
+                $(".dataTable").DataTable().column(9).search('Active').draw();
             } else if (this.value == 'InActive') {
-                $(".dataTable").DataTable().column(10).search('false').draw();
+                $(".dataTable").DataTable().column(9).search('false').draw();
             } else if (this.value == 'All') {
-                $(".dataTable").DataTable().column(10).search('').draw();
+                $(".dataTable").DataTable().column(9).search('').draw();
             } else {
                 $(".datatable").DataTable().search(this.value).draw();
             }

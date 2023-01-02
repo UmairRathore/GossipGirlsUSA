@@ -1,7 +1,7 @@
 @extends('auth.auth')
-@section('title', 'GossipGirl - Login')
+@section('title', 'Login')
 @section('content')
-<div class="bg">
+{{--<div class="bg">--}}
 <div class="row justify-content-center">
     <div class="col-md-8">
         <div class="card" style="margin-top: 10%;opacity: 0.8;">
@@ -51,5 +51,21 @@
         </div>
     </div>
 </div>
-</div>
+{{--</div>--}}
+
+    <script>
+        // <!--alert Hide and Time Duration -->
+        $(document).ready(function () {
+            $("#cross").click(function () {
+                $(".alert-hide").hide();
+            });
+            setTimeout(function () {
+
+                $(".alert-hide").fadeOut("slow")
+
+            }, 6000);
+        });
+        // <!--alert Hide and Time Duration -->
+    </script>
+
 @endsection

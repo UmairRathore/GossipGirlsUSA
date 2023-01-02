@@ -1,5 +1,5 @@
 @extends('auth.auth')
-@section('title', 'GossipGirl - Blogger Sign Up')
+@section('title', 'Blogger Sign Up')
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
