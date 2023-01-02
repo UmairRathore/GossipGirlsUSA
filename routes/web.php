@@ -89,5 +89,5 @@ Route::put('/profile/{id}', [UserController::class, 'update'])->name('profile-up
 
 
 
-Route::get('/posts/create',[PostController::class,'create']);
+Route::get('/posts/create',[PostController::class,'create'])->name('posts.create');
 Route::post('/posts/store',[PostController::class,'store'])->name('posts.store');

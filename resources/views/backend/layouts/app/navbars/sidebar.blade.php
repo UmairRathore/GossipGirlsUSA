@@ -13,17 +13,17 @@
             </li>
 
             <li>
-            <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
-                <i class="fab fa-laravel"></i>
-                <span class="nav-link-text">{{ __('Roles') }}</span>
-                <b class="caret mt-1"></b>
-            </a>
+                <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
+                    <i class="fab fa-laravel"></i>
+                    <span class="nav-link-text">{{ __('Roles') }}</span>
+                    <b class="caret mt-1"></b>
+                </a>
                 <div class="collapse show" id="laravel-examples">
                     <ul class="nav pl-4">
-                        <li @if ($pageSlug == 'admin-list') class="active " @endif >
-                            <a href="{{ route('admin-list') }}">
+                        <li @if ($pageSlug == 'profile') class="active " @endif>
+                            <a href="{{ route('profile-edit',[auth()->user()->id])  }}">
                                 <i class="tim-icons icon-single-02"></i>
-                                <p>{{ __('Admin') }}</p>
+                                <p>{{ __('Profile') }}</p>
                             </a>
                         </li>
                         <li @if ($pageSlug == 'users-list') class="active " @endif>
@@ -45,22 +45,22 @@
             <li>
                 <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
                     <i class="fab fa-laravel"></i>
-                    <span class="nav-link-text">{{ __('Laravel Examples') }}</span>
+                    <span class="nav-link-text">{{ __('Posts') }}</span>
                     <b class="caret mt-1"></b>
                 </a>
 
                 <div class="collapse show" id="laravel-examples">
                     <ul class="nav pl-4">
-                        <li @if ($pageSlug == 'profile') class="active " @endif>
-{{--                            <a href="{{ route('profile-edit',[auth()->user()->id])  }}">--}}
-                                <i class="tim-icons icon-single-02"></i>
-                                <p>{{ __('User Profile') }}</p>
-                            </a>
-                        </li>
+                        {{--                        <li @if ($pageSlug == 'profile') class="active " @endif>--}}
+                        {{--                            <a href="{{ route('profile-edit',[auth()->user()->id])  }}">--}}
+                        {{--                                <i class="tim-icons icon-single-02"></i>--}}
+                        {{--                                <p>{{ __('User Profile') }}</p>--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
                         <li @if ($pageSlug == 'posts') class="active " @endif>
-                            <a href="{{ route('index')  }}">
+                            <a href="{{ route('posts.create')  }}">
                                 <i class="tim-icons icon-bullet-list-67"></i>
-                                <p>{{ __('User Management') }}</p>
+                                <p>{{ __('Create Post') }}</p>
                             </a>
                         </li>
                     </ul>

@@ -194,11 +194,11 @@
         });
         $('#inputStateRes').on('change', function () {
             if (this.value == 'Active') {
-                $(".dataTable").DataTable().column(9).search('Active').draw();
+                $(".dataTable").DataTable().column(10).search('Active').draw();
             } else if (this.value == 'InActive') {
-                $(".dataTable").DataTable().column(9).search('false').draw();
+                $(".dataTable").DataTable().column(10).search('false').draw();
             } else if (this.value == 'All') {
-                $(".dataTable").DataTable().column(9).search('').draw();
+                $(".dataTable").DataTable().column(10).search('').draw();
             } else {
                 $(".datatable").DataTable().search(this.value).draw();
             }

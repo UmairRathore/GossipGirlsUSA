@@ -55,8 +55,8 @@ class PostController extends Controller
                 ->withInput();
         }
 
-        $this->data['posts'] = new Post;
-        $this->data['posts']->blogger_id= 20;
+        $this->data['posts'] = $this->_model;
+        $this->data['posts']->blogger_id= auth()->user()->id;
         $this->data['posts']->title = $request->input('title');
         $this->data['posts']->description = $request->input('description');
         if ($request->hasfile('post_image')) {

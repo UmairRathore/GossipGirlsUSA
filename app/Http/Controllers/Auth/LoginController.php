@@ -31,7 +31,7 @@ class LoginController extends Controller
         } elseif (Auth::guard('user')->check() && auth('user')->user()->role_id == 2) {
             return redirect('/');
 //            echo 'user';
-        } elseif (Auth::guard('user')->check() && auth('user')->user()->role_id == 3) {
+        } elseif (Auth::guard('user')->check() && auth('user')->user()->email == 3) {
             return Redirect::to('dashboard');
 //            echo 'blogger';
         }
@@ -41,14 +41,18 @@ class LoginController extends Controller
 
     function postLogin(Request $request)
     {
+
+
         $email = $request->email;
         $password = $request->password;
 
-        if (Auth::guard('user')->attempt(['email' => $email, 'password' => $password], true) && auth('user')->user()->role_id == 1) {
+        if (Auth::guard('user')->attempt(['email' => $email, 'password' => $password], true) && auth('user')->user()->role_id == 1)
+        {
 //            echo 'admin';
             return redirect('dashboard');
 
-        } elseif (Auth::guard('user')->attempt(['email' => $email, 'password' => $password], true) && auth('user')->user()->role_id == 2) {
+        } elseif (Auth::guard('user')->attempt(['email' => $email, 'password' => $password], true) && auth('user')->user()->role_id == 2)
+        {
 
             return Redirect::to(URL::previous());
 

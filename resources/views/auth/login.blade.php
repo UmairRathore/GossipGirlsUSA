@@ -52,6 +52,7 @@
     </div>
 </div>
 {{--</div>--}}
+<script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
 
     <script>
         // <!--alert Hide and Time Duration -->
