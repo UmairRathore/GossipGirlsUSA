@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ApprovedStatusMail;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
@@ -36,13 +38,13 @@ class AdminController extends Controller
 
     public function showuser()
     {
-        $this->data['user'] = $this->_model::select('users.first_name','users.first_name','users.email')->where('role_id', '2')->get();
+        $this->data['user'] = $this->_model::select('users.first_name', 'users.first_name', 'users.email')->where('role_id', '2')->get();
         return view($this->_viewPath . 'user-list', $this->data);
     }
 
     public function showblogger()
     {
-        $this->data['user'] = $this->_model::where('role_id','3')->get();
+        $this->data['user'] = $this->_model::where('role_id', '3')->get();
         return view($this->_viewPath . 'blogger-list', $this->data);
     }
 
@@ -50,14 +52,29 @@ class AdminController extends Controller
     {
         $this->data['user'] = $this->_model::find($id);
         $this->data['user']->status = $request->status;
-        $check = $this->data['user']->save();
-        if ($check) {
-            $msg = "Status updated successfully";
+        $this->data['user']->save();
+        if ($this->data['user']->status == 1) {
+            $msg = "Blogger Approved successfully";
 //            Session::flash('msg', $msg);
 //            Session::flash('message', 'alert-success');
+//            Notification::send($this->data['user']->id, new ApprovedEmailNotification);
+//            dd('done');
+
+            Mail::send('backend.email.approved',[
+                'name' => $this->data['user']->name,
+                'email' => $this->data['user']->email,
+            ],
+                function ($displaymessage)
+                {
+                    $displaymessage->to('smalljutt420@gmail.com', 'GossipGirls')
+                        ->subject('Account Approved');
+                });
 
             return response()->json(array('statusCode' => 200, 'message' => $msg));
+        } elseif ($this->data['user']->status == 0) {
+            $msg = "Blogger Disapproved successfully";
 
+            return response()->json(array('statusCode' => 200, 'message' => $msg));
         } else {
             $msg = trans('lang_data.error');
 //            Session::flash('msg', $msg);

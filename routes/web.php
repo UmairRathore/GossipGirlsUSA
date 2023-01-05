@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\Blogger\PostController;
+use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Admin\User\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -29,9 +30,9 @@ Route::get('/welcome', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/', function () {
-    return view('front.pages.index');
-})->name('index');
+//Route::get('/', function () {
+//    return view('front.pages.index');
+//})->name('index');
 
 Route::get('termsandpolicy', function () {
     return view('front.pages.termsandpolicy');
@@ -41,18 +42,18 @@ Route::get('/about-us', function () {
     return view('front.pages.about-us');
 })->name('about-us');
 
-Route::get('/coming-soon', function () {
-    return view('front.pages.coming-soon');
-})->name('coming-soon');
+Route::get('/comingsoon', function () {
+    return view('front.pages.comingsoon');
+})->name('comingsoon');
 
 Route::get('/contact', function () {
     return view('front.pages.contact');
 })->name('contact-us');
 
-Route::get('/single-posts', function () {
-    return view('front.pages.single-posts');
-})->name('single-posts');
-
+//Route::get('/single-posts', function () {
+//    return view('front.pages.single-post');
+//})->name('single-posts');
+//
 
 
 
@@ -89,5 +90,16 @@ Route::put('/profile/{id}', [UserController::class, 'update'])->name('profile-up
 
 
 
+Route::get('/',[HomeController::class,'show'])->name('index');
+Route::get('/single-posts/{id}',[HomeController::class,'singlePost'])->name('single.posts');
+
+
+
+
+
+Route::get('/posts/list',[PostController::class,'show'])->name('posts.show');
 Route::get('/posts/create',[PostController::class,'create'])->name('posts.create');
 Route::post('/posts/store',[PostController::class,'store'])->name('posts.store');
+Route::get('/posts/edit/{id}',[PostController::class,'edit'])->name('posts.edit');
+Route::put('/posts/update/{id}',[PostController::class,'update'])->name('posts.update');
+Route::get('/posts/delete/{id}',[PostController::class,'destroy'])->name('posts.destroy');

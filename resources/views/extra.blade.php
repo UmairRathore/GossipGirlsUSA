@@ -1,169 +1,107 @@
-<style>
-    .photo {
-        display: inline-block;
-        height: 30px;
-        width: 30px;
-        border-radius: 50%;
-        vertical-align: middle;
-        overflow: hidden;
-    }
-</style>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Alissa - Responsive Coming Soon Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- CSS -->
+    <!--        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster">-->
+    <!--        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:400,700'>-->
+    <link rel="stylesheet" href="{{asset('assets/comingsoon/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/comingsoon/css/style.css')}}">
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <![endif]-->
+
+    <!-- Favicon and touch icons -->
+    <!--        <link rel="shortcut icon" href="assets/ico/favicon.ico">-->
+    <!--        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">-->
+    <!--        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">-->
+    <!--        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">-->
+    <!--        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">-->
+
+</head>
 
 <body>
-{{--<!-- Preloader -->--}}
-{{--<div id="preloader">--}}
-{{--    <div class="preload-content">--}}
-{{--        <div id="original-load"></div>--}}
-{{--    </div>--}}
-{{--</div>--}}
 
-    <!-- Nav Area -->
-    <div class="original-nav-area" id="stickyNav">
-        <div class="classy-nav-container breakpoint-off">
-            <div class="container">
-                <!-- Classy Menu -->
-                <nav class="classy-navbar justify-content-between">
+<!--        &lt;!&ndash; Header &ndash;&gt;-->
+<!--        <div class="container">-->
+<!--            <div class="header row">-->
+<!--                <div class="logo span4">-->
+<!--                    <h1><a href="">Alissa</a> <span>.</span></h1>-->
+<!--                </div>-->
+<!--                <div class="call-us span8">-->
+<!--                    <p>Tel: <span>0039 123 45 789</span> | Skype: <span>info@domain.it</span></p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
 
-                    <!-- Subscribe btn -->
-                    <div class="subscribe-btn">
-                        <a href="#" class="btn subscribe-btn" data-toggle="modal" data-target="#subsModal">Subscribe</a>
-                    </div>
-
-                    <!-- Navbar Toggler -->
-                    <div class="classy-navbar-toggler">
-                        <span class="navbarToggler"><span></span><span></span><span></span></span>
-                    </div>
-
-                    <!-- Menu -->
-                    <div class="classy-menu" id="originalNav">
-                        <!-- close btn -->
-                        <div class="classycloseIcon">
-                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+<!-- Coming Soon -->
+<div class="coming-soon">
+    <div class="inner-bg">
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <h2>We're Coming Soon</h2>
+                    <p>We are working very hard on the new version of our site. It will bring a lot of new features. Stay tuned!</p>
+                    <div class="timer">
+                        <div class="days-wrapper">
+                            <span class="days"></span> <br>days
                         </div>
-
-                        <!-- Nav Start -->
-                        <div class="classynav">
-                            <ul>
-                                <li><a href="{{route('index')}}">Home</a></li>
-
-                                {{--                                <li><a href="#">SignUp</a>--}}
-                                {{--                                    <ul class="dropdown">--}}
-                                {{--                                        <li><a href="#">Catagory 1</a>--}}
-                                {{--                                            <ul class="dropdown">--}}
-                                {{--                                                <li><a href="#">Catagory 2</a></li>--}}
-                                {{--                                                <li><a href="#">Catagory 2</a></li>--}}
-                                {{--                                                <li><a href="#">Catagory 2</a>--}}
-                                {{--                                                    <ul class="dropdown">--}}
-                                {{--                                                        <li><a href="#">Catagory 3</a></li>--}}
-                                {{--                                                        <li><a href="#">Catagory 3</a></li>--}}
-                                {{--                                                        <li><a href="#">Catagory 3</a></li>--}}
-                                {{--                                                        <li><a href="#">Catagory 3</a></li>--}}
-                                {{--                                                        <li><a href="#">Catagory 3</a></li>--}}
-                                {{--                                                    </ul>--}}
-                                {{--                                                </li>--}}
-                                {{--                                                <li><a href="#">Catagory 2</a></li>--}}
-                                {{--                                                <li><a href="#">Catagory 2</a></li>--}}
-                                {{--                                            </ul>--}}
-                                {{--                                        </li>--}}
-                                {{--                                        <li><a href="#">Catagory 1</a></li>--}}
-                                {{--                                        <li><a href="#">Catagory 1</a></li>--}}
-                                {{--                                    </ul>--}}
-                                {{--                                </li>--}}
-                                <li><a href="{{route('about-us')}}">About Us</a></li>
-                                {{--                                <li><a href="#">Megamenu</a>--}}
-                                {{--                                    <div class="megamenu">--}}
-                                {{--                                        <ul class="single-mega cn-col-4">--}}
-                                {{--                                            <li class="title">Headline 1</li>--}}
-                                {{--                                            <li><a href="#">Mega Menu Item 1</a></li>--}}
-                                {{--                                            <li><a href="#">Mega Menu Item 2</a></li>--}}
-                                {{--                                            <li><a href="#">Mega Menu Item 3</a></li>--}}
-                                {{--                                            <li><a href="#">Mega Menu Item 4</a></li>--}}
-                                {{--                                            <li><a href="#">Mega Menu Item 5</a></li>--}}
-                                {{--                                        </ul>--}}
-                                {{--                                        <ul class="single-mega cn-col-4">--}}
-                                {{--                                            <li class="title">Headline 2</li>--}}
-                                {{--                                            <li><a href="#">Mega Menu Item 1</a></li>--}}
-                                {{--                                            <li><a href="#">Mega Menu Item 2</a></li>--}}
-                                {{--                                            <li><a href="#">Mega Menu Item 3</a></li>--}}
-                                {{--                                            <li><a href="#">Mega Menu Item 4</a></li>--}}
-                                {{--                                            <li><a href="#">Mega Menu Item 5</a></li>--}}
-                                {{--                                        </ul>--}}
-                                {{--                                        <ul class="single-mega cn-col-4">--}}
-                                {{--                                            <li class="title">Headline 3</li>--}}
-                                {{--                                            <li><a href="#">Mega Menu Item 1</a></li>--}}
-                                {{--                                            <li><a href="#">Mega Menu Item 2</a></li>--}}
-                                {{--                                            <li><a href="#">Mega Menu Item 3</a></li>--}}
-                                {{--                                            <li><a href="#">Mega Menu Item 4</a></li>--}}
-                                {{--                                            <li><a href="#">Mega Menu Item 5</a></li>--}}
-                                {{--                                        </ul>--}}
-                                {{--                                        <ul class="single-mega cn-col-4">--}}
-                                {{--                                            <li class="title">Headline 4</li>--}}
-                                {{--                                            <li><a href="#">Mega Menu Item 1</a></li>--}}
-                                {{--                                            <li><a href="#">Mega Menu Item 2</a></li>--}}
-                                {{--                                            <li><a href="#">Mega Menu Item 3</a></li>--}}
-                                {{--                                            <li><a href="#">Mega Menu Item 4</a></li>--}}
-                                {{--                                            <li><a href="#">Mega Menu Item 5</a></li>--}}
-                                {{--                                        </ul>--}}
-                                {{--                                    </div>--}}
-                                {{--                                </li>--}}
-                                <li><a href="{{route('contact-us')}}">Contact</a></li>
-                                <li><a href="{{route('termsandpolicy')}}">terms</a></li>
-                                @if(Auth::guard('user')->check())
-                                    {{--                                @auth--}}
-
-                                    <li>
-                                        <a href="#">
-                                            <div class="photo">
-                                                <img src="{{asset('admin/assets/img/anime3.png')}}" alt="Profile Photo">
-                                            </div>{{ Auth::user()->first_name }}</a>
-
-                                        <ul class="dropdown">
-
-                                            <li><a class="text-black font-20 tooltip-wrapper nav-item dropdown-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Logout" href="{{ route('logout') }}"
-                                                   onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();"> <i
-                                                        class="zmdi zmdi-power"></i>
-                                                    Logout
-                                                </a>
-
-                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                    @csrf
-                                                    {{--                                <button type="submit" class="btn btn-primary" >--}}
-                                                    {{--                                    logout--}}
-                                                    {{--                                </button>--}}
-                                                </form></li>
-
-                                        </ul>
-                                    </li>
-                                @else
-                                    {{--                                    @guest--}}
-                                    <li><a href="#">SignUp</a>
-
-                                        <ul class="dropdown">
-                                            <div class="megamenu">
-                                                <li><a href="{{route('user-register')}}">SignUp as User </a></li>
-                                                <li><a href="{{route('blogger-register')}}">SignUp as Blogger</a></li>
-                                            </div>
-                                        </ul>
-                                    </li>
-                                    {{--                                @endguest--}}
-                                @endif
-                            </ul>
-
-                            <!-- Search Form  -->
-                            <div id="search-wrapper">
-                                <form action="#">
-                                    <input type="text" id="search" placeholder="Search something...">
-                                    <div id="close-icon"></div>
-                                    <input class="d-none" type="submit" value="">
-                                </form>
-                            </div>
+                        <div class="hours-wrapper">
+                            <span class="hours"></span> <br>hours
                         </div>
-                        <!-- Nav End -->
+                        <div class="minutes-wrapper">
+                            <span class="minutes"></span> <br>minutes
+                        </div>
+                        <div class="seconds-wrapper">
+                            <span class="seconds"></span> <br>seconds
+                        </div>
                     </div>
-                </nav>
+                </div>
             </div>
         </div>
     </div>
-</header>
-<!-- ##### Header Area End ##### -->
+</div>
+
+<!--        &lt;!&ndash; Content &ndash;&gt;-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                <div class="span12 subscribe">-->
+<!--                    <h3>Subscribe to our newsletter</h3>-->
+<!--                    <p>Sign up now to our newsletter and you'll be one of the first to know when the site is ready:</p>-->
+<!--                    <form class="form-inline" action="assets/sendmail.php" method="post">-->
+<!--                        <input type="text" name="email" placeholder="Enter your email...">-->
+<!--                        <button type="submit" class="btn">Subscribe</button>-->
+<!--                    </form>-->
+<!--                    <div class="success-message"></div>-->
+<!--                    <div class="error-message"></div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="row">-->
+<!--                <div class="span12 social">-->
+<!--                    <a href="" class="facebook" rel="tooltip" data-placement="top" data-original-title="Facebook"></a>-->
+<!--                    <a href="" class="twitter" rel="tooltip" data-placement="top" data-original-title="Twitter"></a>-->
+<!--                    <a href="" class="dribbble" rel="tooltip" data-placement="top" data-original-title="Dribbble"></a>-->
+<!--                    <a href="" class="googleplus" rel="tooltip" data-placement="top" data-original-title="Google Plus"></a>-->
+<!--                    <a href="" class="pinterest" rel="tooltip" data-placement="top" data-original-title="Pinterest"></a>-->
+<!--                    <a href="" class="flickr" rel="tooltip" data-placement="top" data-original-title="Flickr"></a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!-- Javascript -->
+<script src="{{asset('assets/comingsoon/js/jquery-1.8.2.min.js')}}"></script>
+<script src="{{asset('assets/comingsoon/bootstrap/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('assets/comingsoon/js/jquery.backstretch.min.js')}}"></script>
+<script src="{{asset('assets/comingsoon/js/jquery.countdown.js')}}"></script>
+<script src="{{asset('assets/comingsoon/js/scripts.js')}}"></script>
+

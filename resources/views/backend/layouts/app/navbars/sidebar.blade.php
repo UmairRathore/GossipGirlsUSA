@@ -57,8 +57,15 @@
                         {{--                                <p>{{ __('User Profile') }}</p>--}}
                         {{--                            </a>--}}
                         {{--                        </li>--}}
-                        <li @if ($pageSlug == 'posts') class="active " @endif>
-                            <a href="{{ route('posts.create')  }}">
+{{--                        <li @if ($pageSlug == 'posts') class="active " @endif>--}}
+{{--                            <a href="{{ route('posts.create')  }}">--}}
+{{--                                <i class="tim-icons icon-bullet-list-67"></i>--}}
+{{--                                <p>{{ __('Create Post') }}</p>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    </ul> --}}
+<li @if ($pageSlug == 'posts-list') class="active " @endif>
+                            <a href="{{ route('posts.show')  }}">
                                 <i class="tim-icons icon-bullet-list-67"></i>
                                 <p>{{ __('Create Post') }}</p>
                             </a>

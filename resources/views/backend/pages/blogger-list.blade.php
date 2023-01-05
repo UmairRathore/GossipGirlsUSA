@@ -94,7 +94,7 @@
                                 <tr>
                                    <!-- 1--> <th>Name</th>
                                    <!-- 2--> <th>email</th>
-                                   <!-- 3--> <th>phone_number</th>
+                                   <!-- 3--> <th>Ph. No</th>
                                    <!-- 4--> <th>address</th>
                                    <!-- 5--> <th>city</th>
                                    <!-- 6--> <th>zipcode</th>
@@ -169,11 +169,13 @@
                         '_token': token
                     },
                     success: function (response) {
-                        if (response.statusCode == 200) {
+                        if (response.statusCode === 200) {
                             is_checked = 1 - Math.abs(is_checked);
                             is_checked_obj.val(is_checked); // this gives me null
                             toastr.success(response.message);
-                        } else {
+                            // $(document.getElementById())
+                        }
+                        else {
                             if(is_checked){
                                 is_checked_obj.removeAttribute('checked');
                             }
@@ -183,7 +185,7 @@
                             // toastr.error("Oops something went wrong");
                         }
                     }, error: function () {
-                        toastr.success("Status updated Successfully");
+                        toastr.success("Blogger approved Successfully");
                         // toastr.error("Oops something went wrong");
 
                     },

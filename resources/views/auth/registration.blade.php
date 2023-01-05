@@ -57,6 +57,17 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="row mb-3">
+                                <label for="zipcode" class="col-md-4 col-form-label text-md-end" style="color: white">Zipcode</label>
+                                <div class="col-md-6">
+                                    <input id="zipcode" type="text" class="form-control @error('zipcode') is-invalid @enderror" name="zipcode" value="{{ old('zipcode') }}" required autocomplete="zipcode">
+                                    @error('zipcode')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
 
                             <div class="row mb-3">
                                 <label for="password" class="col-md-4 col-form-label text-md-end" style="color: white">Password</label>

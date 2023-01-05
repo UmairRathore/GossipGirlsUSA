@@ -46,14 +46,16 @@
 
 
 
+
+
     <script>
 
-<!--Datatable-->
-        $(document).ready( function () {
-            $('#datatable').DataTable();
-        } );
-
-<!--Datatable-->
+//<!--Datatable-->
+//        $(document).ready( function () {
+//            $('#datatable').DataTable();
+//        } );
+//
+//<!--Datatable-->
 
 <!--alert Hide and Time Duration -->
         $(document).ready(function () {

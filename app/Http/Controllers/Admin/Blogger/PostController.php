@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin\Blogger;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
-use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
@@ -29,8 +29,10 @@ class PostController extends Controller
 
     public function show()
     {
-//        $this->data['posts'] = $this->_model::where('id',auth()->user()->id)->get;
-        return view($this->_viewPath . 'posts-lists', $this->data);
+//        $this->data['posts'] = $this->_model::where('id', auth()->user()->id)->get();
+        $this->data['posts'] = $this->_model::all();
+//        dd($this->data);
+        return view($this->_viewPath . 'posts-list', $this->data);
     }
 
     public function create()
@@ -42,10 +44,12 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
+
         $validator = Validator::make($request->all(),
             [
                 'title' => 'required',
                 'description' => 'required',
+                'zipcode' => 'required',
                 'post_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
         //         'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -56,7 +60,8 @@ class PostController extends Controller
         }
 
         $this->data['posts'] = $this->_model;
-        $this->data['posts']->blogger_id= auth()->user()->id;
+        $this->data['posts']->user_id = auth()->user()->id;
+        $this->data['posts']->zipcode = auth()->user()->zipcode;
         $this->data['posts']->title = $request->input('title');
         $this->data['posts']->description = $request->input('description');
         if ($request->hasfile('post_image')) {
@@ -67,14 +72,12 @@ class PostController extends Controller
             $filename = $path . time() . '-' . $file->getClientOriginalName();
             $file->move($path, $filename);
             $this->data['posts']->post_image = $filename;
-        }
-        else
-        {
+        } else {
 
             $this->data['posts']->post_image = 'default-image.png';
         }
 
-       $check = $this->data['posts']->save();
+        $check = $this->data['posts']->save();
         if ($check) {
             $msg = 'Post created successfully';
             Session::flash('msg', $msg);
@@ -93,4 +96,69 @@ class PostController extends Controller
         return view($this->_viewPath . 'update-posts', $this->data);
     }
 
+
+    public function update(Request $request, $id)
+    {
+
+        $validator = Validator::make($request->all(),
+            [
+                'title' => 'required',
+                'description' => 'required',
+                'post_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+        //         'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        if ($validator->fails()) {
+            return back()->with('required_fields_empty', 'FIll all the required fields!')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $this->data['posts'] = $this->_model::find($id);
+        $this->data['posts']->user_id = auth()->user()->id;
+        $this->data['posts']->title = $request->input('title');
+        $this->data['posts']->description = $request->input('description');
+        if ($request->hasfile('post_image')) {
+            //code for remove old file
+            $destination = $this->data['posts']->post_image;
+//            dd($destination);
+            if (File::exists($destination)) {
+                File::delete($destination);
+            }
+            //upload new file
+            $file = $request->file('post_image');
+            $path = 'images/';
+//                $extension=$file->getClientOriginalExtension();
+            $filename = $path . time() . '-' . $file->getClientOriginalName();
+            $file->move($path, $filename);
+            $this->data['posts']->post_image = $filename;
+        }
+
+        $check = $this->data['posts']->update();
+        if ($check) {
+            $msg = 'Post updated successfully';
+            Session::flash('msg', $msg);
+            Session::flash('message', 'alert-success');
+        } else {
+            $msg = 'posts not updated successfully';
+            Session::flash('msg', $msg);
+            Session::flash('message', 'alert-danger');
+        }
+        return back();
+    }
+
+    //DELETE_specializations
+    public function destroy($id)
+    {
+        $this->data['posts'] = $this->_model::find($id);
+        $destination = $this->data['posts']->p_image;
+        //code for remove old file
+//        dd($destination);
+        if (File::exists($destination)) {
+            File::delete($destination);
+        }
+
+        $this->data['posts']->delete();
+
+        return back()->with('info_deleted', 'post has been deleted');
+    }
 }

@@ -55,7 +55,7 @@
                                             <label for="post_image" style="color: white">Add Image</label>
                                         </div>
                                         <div>
-                                            <img id="previewImg" src="images/transparent.png" alt="No File Choosen" width="100" height="100">
+                                            <img id="previewImg" src="{{asset('images/default.png')}}" alt="No File Choosen" width="100" height="100">
                                         </div>
                                         <div>
                                             <button>

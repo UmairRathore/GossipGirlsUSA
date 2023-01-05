@@ -44,12 +44,14 @@ class RegistrationController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email|unique:users',
+            'zipcode' => 'required',
             'password' => 'required|confirmed|min:6',
         ]);
         $user = $this->_model;
         $user->first_name = $request->input('first_name');
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
+        $user->zipcode = $request->input('zipcode');
 //        $user->password = hash::make($request->password);
         $user->password = bcrypt($request->password);
         $user->role_id = '2';

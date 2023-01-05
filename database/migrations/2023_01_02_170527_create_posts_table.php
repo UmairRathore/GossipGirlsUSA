@@ -17,13 +17,14 @@ class CreatePostsTable extends Migration
             $table->id();
 
             $table->string('title');
+            $table->string('zipcode');
             $table->string('description');
             $table->string('post_image');
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
 
-            $table->unsignedBigInteger('blogger_id');
-//            $table->foreign('blogger_id')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id');
+//            $table->foreign('user_id')->references('id')->on('users');
         });
     }
     /**

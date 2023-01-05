@@ -1,0 +1,95 @@
+@extends('backend.layouts.app',['pageSlug' => 'posts-list'])
+@section('title', 'Posts List')
+
+@section('content')
+    <div class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card ">
+                    <div class="card-header">
+                        <h4 class="card-title"> Users Table</h4>
+                        <div class="col-mb-11 d-flex align-items-center">
+                            <a href="{{route('posts.create')}}" class="btn btn-primary ms-text-primary">Add Post </a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="datatable" class="table tablesorter">
+                                @if(Session('info_deleted'))
+                                    <div class="alert alert-danger" role="alert">
+                                        {{Session('info_deleted')}}
+                                    </div>
+
+                                @endif
+                                <thead class=" text-primary">
+                                <tr>
+                                    <th>Post Image</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {{--                                {{dd($user)}}--}}
+                                @foreach($posts as $data)
+                                    <tr>
+                                        <td>
+                                            @if($data->post_image)
+                                                <img src="{{ asset($data->post_image) }}" width="70px" height="70px"
+                                                     class="img-thumbnail img-fluid blog-img" alt="Image">
+                                            @else
+                                                <img src="{{asset('images/default.png')}}" width="70px" height="70px"
+                                                     class="img-thumbnail img-fluid blog-img" alt="no image">
+                                            @endif
+                                        </td>
+                                        <td>{{$data->title}}</td>
+                                        <td  class="myrow">{{$data->description}}</td>
+                                        <td>
+                                                <a href="{{route('posts.destroy',$data->id)}}" onclick="return confirm('Are you sure?')" data-toggle="tooltip" data-placement="top" title="delete" class="far fa-trash-alt ms-text-danger"></a>
+
+                                                <a href="{{route('posts.edit',$data->id)}}" data-toggle="tooltip" data-placement="top" title="edit" class="fas fa-pencil-alt ms-text-primary"></a>
+
+                                        </td>
+
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready( function () {
+            $('#datatable').DataTable();
+        } );
+        $(document).ready(function () {
+            $("#cross").click(function () {
+                $(".alert-hide").hide();
+            });
+            setTimeout(function () {
+
+                $(".alert-hide").fadeOut("slow")
+
+            }, 6000);
+        });
+
+
+
+
+        $(function() {
+            $("td.myrow").mouseenter(function() {
+                $(this).attr("title", $(this).html());
+            });
+
+        });
+
+
+    </script>
+@endsection
+
