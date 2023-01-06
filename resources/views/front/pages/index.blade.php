@@ -18,7 +18,7 @@
                                 <div class="post-tag">
                                     <a href="#" data-animation="fadeInUp">lifestyle</a>
                                 </div>
-                                <h2 data-animation="fadeInUp" data-delay="250ms"><a href="{{route('single.posts',[$posts->id])}}">Take a look at last night’s party!</a></h2>
+                                <h2 data-animation="fadeInUp" data-delay="250ms"><a href="{{route('single.posts',[$posts->id])}}">{{$posts->title}}</a></h2>
                             </div>
                         </div>
                     </div>
