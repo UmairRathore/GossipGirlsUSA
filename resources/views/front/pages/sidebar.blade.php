@@ -2,6 +2,7 @@
 @php
    $latestposts = DB::table('posts')->orderby('id', 'desc')->take(4)->get();
 
+
 @endphp
 <!-- ##### Sidebar Area ##### -->
 <div class="col-12 col-md-4 col-lg-3">
@@ -50,7 +51,9 @@
                             <a href="#" class="post-tag">Lifestyle</a>
                             <h4><a href="#" class="post-headline">{{$posts->title}}</a></h4>
                             <div class="post-meta">
-                                <p><a href="#">{{$posts->created_at}}</a></p>
+                                <p><a href="#">
+                                        {{ date('d M', strtotime($posts->created_at))}}
+                                    </a></p>
                             </div>
                         </div>
                     </div>

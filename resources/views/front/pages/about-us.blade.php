@@ -118,7 +118,8 @@
                         <div class="single-blog-thumbnail">
                             <img src="{{asset($posts->post_image)}}" alt="">
                             <div class="post-date">
-                                <a href="#">10 <span>march</span></a>
+                                <a href="#">{{ date('d ', strtotime($posts->created_at))}}<span>
+                                    {{ date(' M', strtotime($posts->created_at))}}</span></a>
                             </div>
                         </div>
                         <!-- Blog Content -->

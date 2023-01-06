@@ -10,7 +10,7 @@
         <div class="hero-slides owl-carousel">
             @foreach($randomsinglepost as $posts)
             <!-- Single Slide -->
-            <div class="single-hero-slide bg-img" style="background-image: url(/assets/img/bg-img/b2.jpg);">
+            <div class="single-hero-slide bg-img" style="background-image: url('{{ asset( $posts->post_image) }}');">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12">
@@ -85,7 +85,7 @@
                                 <a href="#" class="post-tag">Lifestyle</a>
                                 <h4><a href="#" class="post-headline">{{$posts->title}}</a></h4>
                                 <p>{{$posts->description}}</p>
-                                <a href="#" class="btn original-btn">Read More</a>
+                                <a href="{{route('single.posts',[$posts->id])}}" class="btn original-btn">Read More</a>
                             </div>
                         </div>
                     </div>
@@ -128,7 +128,7 @@
                                     <div class="single-blog-thumbnail">
                                         <img src="{{$posts->post_image}}" alt="">
                                         <div class="post-date">
-                                            <a href="#">12 <span>march</span></a>
+                                            <a href="#">{{ $posts->created_at->format('d') }}<span>{{ $posts->created_at->format('M') }}</span></a>
                                         </div>
                                     </div>
                                 </div>
