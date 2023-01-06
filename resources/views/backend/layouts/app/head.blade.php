@@ -17,7 +17,7 @@
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <!-- Icons -->
     <!--Datatable-->
-    <link href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet">
+{{--    <link href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet">--}}
     <link href="{{ asset('admin/assets/css/nucleo-icons.css')}}" rel="stylesheet" />
     <!-- CSS -->
     <link href="{{ asset('admin/assets/css/umair-rathore.css')}}?v=1.0.0" rel="stylesheet" />
@@ -43,4 +43,6 @@
         background-size: cover;
     }
 </style>
+
+
 <body class="bg">

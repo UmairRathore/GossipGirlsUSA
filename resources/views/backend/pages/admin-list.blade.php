@@ -13,7 +13,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table" id="datatable">
+                                <table class="table" id="admintable">
                                     <thead class=" text-primary">
                                     <tr>
                                         <!-- 1--> <th>Name</th>
@@ -56,7 +56,13 @@
             </div>
         </div>
     </div>
-{{--    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>--}}
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script>
+    <!--Datatable-->
+           $(document).ready( function () {
+               $('#admintable').DataTable();
+           } );
 
-
+    <!--Datatable-->
+</script>
 @endsection

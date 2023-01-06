@@ -38,9 +38,9 @@ Route::get('termsandpolicy', function () {
     return view('front.pages.termsandpolicy');
 })->name('termsandpolicy');
 
-Route::get('/about-us', function () {
-    return view('front.pages.about-us');
-})->name('about-us');
+//Route::get('/about-us', function () {
+//    return view('front.pages.about-us');
+//})->name('about-us');
 
 Route::get('/comingsoon', function () {
     return view('front.pages.comingsoon');
@@ -48,7 +48,7 @@ Route::get('/comingsoon', function () {
 
 Route::get('/contact', function () {
     return view('front.pages.contact');
-})->name('contact-us');
+})->name('contact.us');
 
 //Route::get('/single-posts', function () {
 //    return view('front.pages.single-post');
@@ -79,11 +79,6 @@ Route::get('/bloggersignup', [RegistrationController::class, 'blogger'])->name('
 Route::post('/bloggersignup', [RegistrationController::class, 'bloggerregistration'])->name('bloggerregistration');
 
 
-Route::get('/admin-list', [AdminController::class, 'show'])->name('admin-list')->middleware('auth');
-Route::get('/users-list', [AdminController::class, 'showuser'])->name('users-list')->middleware('auth');
-Route::get('/bloggers-list', [AdminController::class, 'showblogger'])->name('bloggers-list')->middleware('auth');
-Route::post('/status-user/{id}', [AdminController::class, 'changeStatus'])->name('status-user');
-
 
 Route::get('/profile/{id}', [UserController::class, 'edit'])->name('profile-edit')->middleware('auth');
 Route::put('/profile/{id}', [UserController::class, 'update'])->name('profile-update');
@@ -91,15 +86,22 @@ Route::put('/profile/{id}', [UserController::class, 'update'])->name('profile-up
 
 
 Route::get('/',[HomeController::class,'show'])->name('index');
+Route::get('/about-us',[HomeController::class,'aboutus'])->name('about.us');
 Route::get('/single-posts/{id}',[HomeController::class,'singlePost'])->name('single.posts');
 
 
 
+    Route::get('/admin-list', [AdminController::class, 'show'])->name('admin-list')->middleware('auth');
+    Route::get('/users-list', [AdminController::class, 'showuser'])->name('users-list')->middleware('auth');
+    Route::get('/bloggers-list', [AdminController::class, 'showblogger'])->name('bloggers-list')->middleware('auth');
+    Route::post('/status-user/{id}', [AdminController::class, 'changeStatus'])->name('status-user');
 
 
-Route::get('/posts/list',[PostController::class,'show'])->name('posts.show');
-Route::get('/posts/create',[PostController::class,'create'])->name('posts.create');
-Route::post('/posts/store',[PostController::class,'store'])->name('posts.store');
-Route::get('/posts/edit/{id}',[PostController::class,'edit'])->name('posts.edit');
-Route::put('/posts/update/{id}',[PostController::class,'update'])->name('posts.update');
-Route::get('/posts/delete/{id}',[PostController::class,'destroy'])->name('posts.destroy');
+    Route::get('/posts/list',[PostController::class,'show'])->name('posts.show');
+    Route::get('/posts/create',[PostController::class,'create'])->name('posts.create');
+    Route::post('/posts/store',[PostController::class,'store'])->name('posts.store');
+    Route::get('/posts/edit/{id}',[PostController::class,'edit'])->name('posts.edit');
+    Route::put('/posts/update/{id}',[PostController::class,'update'])->name('posts.update');
+    Route::get('/posts/delete/{id}',[PostController::class,'destroy'])->name('posts.destroy');
+
+

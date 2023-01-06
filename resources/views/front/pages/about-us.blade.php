@@ -107,14 +107,16 @@
     <!-- ##### Cool Facts Area End ##### -->
 
     <!-- ##### Blog Wrapper Start ##### -->
+
     <div class="blog-wrapper section-padding-100-0 clearfix">
         <div class="container">
             <div class="row">
+                @foreach($randomPosts as $posts)
                 <!-- Single Blog Area  -->
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-blog-area blog-style-2 mb-100">
                         <div class="single-blog-thumbnail">
-                            <img src="{{asset('assets/img/blog-img/4.jpg')}}" alt="">
+                            <img src="{{asset($posts->post_image)}}" alt="">
                             <div class="post-date">
                                 <a href="#">10 <span>march</span></a>
                             </div>
@@ -123,59 +125,60 @@
                         <div class="single-blog-content mt-50">
                             <div class="line"></div>
                             <a href="#" class="post-tag">Lifestyle</a>
-                            <h4><a href="#" class="post-headline">We love colors in 2018</a></h4>
-                            <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt.</p>
+                            <h4><a href="#" class="post-headline">{{$posts->title}}</a></h4>
+                            <p>{{$posts->description}}</p>
                             <div class="post-meta">
-                                <p>By <a href="#">james smith</a></p>
+                                <p>By <a href="#">{{$posts->fname.''.$posts->lname}}</a></p>
                                 <p>3 comments</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Single Blog Area  -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single-blog-area blog-style-2 mb-100">
-                        <div class="single-blog-thumbnail">
-                            <img src="{{asset('assets/img/blog-img/5.jpg')}}" alt="">
-                            <div class="post-date">
-                                <a href="#">10 <span>march</span></a>
-                            </div>
-                        </div>
-                        <!-- Blog Content -->
-                        <div class="single-blog-content mt-50">
-                            <div class="line"></div>
-                            <a href="#" class="post-tag">Lifestyle</a>
-                            <h4><a href="#" class="post-headline">Party people in the house</a></h4>
-                            <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt.</p>
-                            <div class="post-meta">
-                                <p>By <a href="#">james smith</a></p>
-                                <p>3 comments</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Blog Area  -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single-blog-area blog-style-2 mb-100">
-                        <div class="single-blog-thumbnail">
-                            <img src="{{asset('assets/img/blog-img/6.jpg')}}" alt="">
-                            <div class="post-date">
-                                <a href="#">10 <span>march</span></a>
-                            </div>
-                        </div>
-                        <!-- Blog Content -->
-                        <div class="single-blog-content mt-50">
-                            <div class="line"></div>
-                            <a href="#" class="post-tag">Lifestyle</a>
-                            <h4><a href="#" class="post-headline">We love colors in 2018</a></h4>
-                            <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt.</p>
-                            <div class="post-meta">
-                                <p>By <a href="#">james smith</a></p>
-                                <p>3 comments</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+{{--                <!-- Single Blog Area  -->--}}
+{{--                <div class="col-12 col-md-6 col-lg-4">--}}
+{{--                    <div class="single-blog-area blog-style-2 mb-100">--}}
+{{--                        <div class="single-blog-thumbnail">--}}
+{{--                            <img src="{{asset('assets/img/blog-img/5.jpg')}}" alt="">--}}
+{{--                            <div class="post-date">--}}
+{{--                                <a href="#">10 <span>march</span></a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <!-- Blog Content -->--}}
+{{--                        <div class="single-blog-content mt-50">--}}
+{{--                            <div class="line"></div>--}}
+{{--                            <a href="#" class="post-tag">Lifestyle</a>--}}
+{{--                            <h4><a href="#" class="post-headline">Party people in the house</a></h4>--}}
+{{--                            <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt.</p>--}}
+{{--                            <div class="post-meta">--}}
+{{--                                <p>By <a href="#">james smith</a></p>--}}
+{{--                                <p>3 comments</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--                <!-- Single Blog Area  -->--}}
+{{--                <div class="col-12 col-md-6 col-lg-4">--}}
+{{--                    <div class="single-blog-area blog-style-2 mb-100">--}}
+{{--                        <div class="single-blog-thumbnail">--}}
+{{--                            <img src="{{asset('assets/img/blog-img/6.jpg')}}" alt="">--}}
+{{--                            <div class="post-date">--}}
+{{--                                <a href="#">10 <span>march</span></a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <!-- Blog Content -->--}}
+{{--                        <div class="single-blog-content mt-50">--}}
+{{--                            <div class="line"></div>--}}
+{{--                            <a href="#" class="post-tag">Lifestyle</a>--}}
+{{--                            <h4><a href="#" class="post-headline">We love colors in 2018</a></h4>--}}
+{{--                            <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt.</p>--}}
+{{--                            <div class="post-meta">--}}
+{{--                                <p>By <a href="#">james smith</a></p>--}}
+{{--                                <p>3 comments</p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+                @endforeach
             </div>
         </div>
     </div>

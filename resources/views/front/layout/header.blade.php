@@ -67,8 +67,8 @@
                         <div class="classynav">
                             <ul>
                                 <li><a href="{{route('index')}}">Home</a></li>
-                                <li><a href="{{route('about-us')}}">About Us</a></li>
-                                <li><a href="{{route('contact-us')}}">Contact</a></li>
+                                <li><a href="{{route('about.us')}}">About Us</a></li>
+                                <li><a href="{{route('contact.us')}}">Contact</a></li>
                                 <li><a href="{{route('termsandpolicy')}}">terms</a></li>
                                 @if(Auth::guard('user')->check())
                                     {{--                                @auth--}}

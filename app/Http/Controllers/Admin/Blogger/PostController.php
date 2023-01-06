@@ -45,11 +45,11 @@ class PostController extends Controller
     {
 
 
+
         $validator = Validator::make($request->all(),
             [
                 'title' => 'required',
                 'description' => 'required',
-                'zipcode' => 'required',
                 'post_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
         //         'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -74,8 +74,9 @@ class PostController extends Controller
             $this->data['posts']->post_image = $filename;
         } else {
 
-            $this->data['posts']->post_image = 'default-image.png';
+            $this->data['posts']->post_image = 'images/default.png';
         }
+
 
         $check = $this->data['posts']->save();
         if ($check) {

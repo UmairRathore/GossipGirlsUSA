@@ -73,14 +73,14 @@
 
                     </div>
 
-                        <div class="col-md-3">
-                            <label for="">Active</label>
-                            <select class="form-control" name="status" id="inputStateRes" style="background-color: #1a1e34">
-                                <option value="All">All</option>
-                                <option value="Active">Active</option>
-                                <option value="InActive">In Active</option>
-                            </select>
-                        </div>
+                    <div class="col-md-3">
+                        <label for="">Active</label>
+                        <select class="form-control" name="status" id="inputStateRes" style="background-color: #1a1e34">
+                            <option value="All">All</option>
+                            <option value="Active">Active</option>
+                            <option value="InActive">In Active</option>
+                        </select>
+                    </div>
                     @if(Session::has('message'))
                         <div class="alert @if(Session::has('message')) {!! session('message') !!} @endif alert-dismissible">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -92,16 +92,26 @@
                             <table id="datatable" class="table tablesorter ">
                                 <thead class=" text-primary">
                                 <tr>
-                                   <!-- 1--> <th>Name</th>
-                                   <!-- 2--> <th>email</th>
-                                   <!-- 3--> <th>Ph. No</th>
-                                   <!-- 4--> <th>address</th>
-                                   <!-- 5--> <th>city</th>
-                                   <!-- 6--> <th>zipcode</th>
-                                   <!-- 7--> <th>state</th>
-                                   <!-- 8--> <th>time_in_community</th>
-                                   <!-- 9--> <th>description</th>
-                                   <!-- 10--> <th>status</th>
+                                    <!-- 1-->
+                                    <th>Name</th>
+                                    <!-- 2-->
+                                    <th>email</th>
+                                    <!-- 3-->
+                                    <th>Ph. No</th>
+                                    <!-- 4-->
+                                    <th>address</th>
+                                    <!-- 5-->
+                                    <th>city</th>
+                                    <!-- 6-->
+                                    <th>zipcode</th>
+                                    <!-- 7-->
+                                    <th>state</th>
+                                    <!-- 8-->
+                                    <th>time_in_community</th>
+                                    <!-- 9-->
+                                    <th>description</th>
+                                    <!-- 10-->
+                                    <th>status</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -128,10 +138,10 @@
                                             <span style="display: none">{{ ($data->status == 1) ? 'Active' : 'false' }}</span>
 
 
-{{--                                            <label class="switch">--}}
-{{--                                                <input type="checkbox">--}}
-{{--                                                <span class="slider round"></span>--}}
-{{--                                            </label>--}}
+                                        {{--                                            <label class="switch">--}}
+                                        {{--                                                <input type="checkbox">--}}
+                                        {{--                                                <span class="slider round"></span>--}}
+                                        {{--                                            </label>--}}
 
                                     </tr>
                                 @endforeach
