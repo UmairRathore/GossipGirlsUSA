@@ -58,7 +58,7 @@ class LoginController extends Controller
 
             //Login With Zipcode
 //            $ip = $request->ip();
-            $ip = '182.178.222.128';
+            $ip = '206.217.224.86';
 //            dd($ip);
             if ($ip !== null) {
                 $location = Location::get($ip);
@@ -75,7 +75,7 @@ class LoginController extends Controller
                 return Redirect::to(URL::previous());
 //                }
 
-//            $me = '182.178.222.128';
+//            $me = '206.217.224.86';
 
 
 //                dd($ip->zipCode);

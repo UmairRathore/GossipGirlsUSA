@@ -1,12 +1,19 @@
 
 @php
 
-    $me = '182.178.222.128';  //get IP
+if(auth()->check())
+    {
+    $me = '206.217.224.86';  //get IP
             $ip = Stevebauman\Location\Facades\Location::get($me); //get zipcode from location
             $zipcode = $ip->zipCode;  //save zipcode
        $latestposts = DB::table('posts')->where('posts.zipcode','=',$zipcode)
                 ->orderby('id', 'desc')->take(4)->get();
+    }
+else{
 
+  $latestposts = DB::table('posts')  ->orderby('id', 'desc')->take(4)->get();
+
+}
 
 
 
