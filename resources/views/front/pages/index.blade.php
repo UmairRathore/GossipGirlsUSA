@@ -121,7 +121,7 @@
 
                     <!-- Single Blog Area  -->
                     <!-- Single Blog Area  -->
-                    @foreach($randromposts as $posts)
+                    @foreach($randomposts as $posts)
                         <div class="single-blog-area blog-style-2 mb-50 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1000ms">
                             <div class="row align-items-center">
                                 <div class="col-12 col-md-6">

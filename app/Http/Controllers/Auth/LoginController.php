@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\URL;
+use Stevebauman\Location\Facades\Location;
 
 class LoginController extends Controller
 {
@@ -46,15 +48,41 @@ class LoginController extends Controller
         $email = $request->email;
         $password = $request->password;
 
-        if (Auth::guard('user')->attempt(['email' => $email, 'password' => $password], true) && auth('user')->user()->role_id == 1)
-        {
+        if (Auth::guard('user')->attempt(['email' => $email, 'password' => $password], true) && auth('user')->user()->role_id == 1) {
 //            echo 'admin';
+
             return redirect('dashboard');
 
-        } elseif (Auth::guard('user')->attempt(['email' => $email, 'password' => $password], true) && auth('user')->user()->role_id == 2)
-        {
 
-            return Redirect::to(URL::previous());
+        } elseif (Auth::guard('user')->attempt(['email' => $email, 'password' => $password], true) && auth('user')->user()->role_id == 2) {
+
+            //Login With Zipcode
+//            $ip = $request->ip();
+            $ip = '182.178.222.128';
+//            dd($ip);
+            if ($ip !== null) {
+                $location = Location::get($ip);
+//                dd($location->zipCode);
+                $userId = \auth()->user()->id;
+//                dd($userId);
+                $updateUserZipCode = User::find($userId);
+                $updateUserZipCode->zipcode = $location->zipCode;
+                $updateUserZipCode->save();
+//                dd($updateUserZipCode->zipcde);
+//                $check = $updateUserZipCode->save();
+//                if ($check)
+//                {
+                return Redirect::to(URL::previous());
+//                }
+
+//            $me = '182.178.222.128';
+
+
+//                dd($ip->zipCode);
+            }
+
+            //SimpleLogin
+//            return Redirect::to(URL::previous());
 
         } elseif (Auth::guard('user')->attempt(['email' => $email, 'password' => $password], true) && auth('user')->user()->role_id == 3) {
 //            return 0;

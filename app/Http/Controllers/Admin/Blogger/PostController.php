@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Stevebauman\Location\Facades\Location;
 
 class PostController extends Controller
 {
@@ -58,6 +59,7 @@ class PostController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
+
 
         $this->data['posts'] = $this->_model;
         $this->data['posts']->user_id = auth()->user()->id;

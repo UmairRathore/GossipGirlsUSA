@@ -1,6 +1,14 @@
 
 @php
-   $latestposts = DB::table('posts')->orderby('id', 'desc')->take(4)->get();
+
+    $me = '182.178.222.128';  //get IP
+            $ip = Stevebauman\Location\Facades\Location::get($me); //get zipcode from location
+            $zipcode = $ip->zipCode;  //save zipcode
+       $latestposts = DB::table('posts')->where('posts.zipcode','=',$zipcode)
+                ->orderby('id', 'desc')->take(4)->get();
+
+
+
 
 
 @endphp
