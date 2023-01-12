@@ -84,7 +84,7 @@
                                 <div class="line"></div>
                                 <a href="#" class="post-tag">Lifestyle</a>
                                 <h4><a href="#" class="post-headline">{{$posts->title}}</a></h4>
-                                <p>{{$posts->description}}</p>
+                                <p><?= $posts->description ?></p>
                                 <a href="{{route('single.posts',[$posts->id])}}" class="btn original-btn">Read More</a>
                             </div>
                         </div>
@@ -138,7 +138,7 @@
                                         <div class="line"></div>
                                         <a href="#" class="post-tag">Lifestyle</a>
                                         <h4><a href="#" class="post-headline">{{$posts->title}}</a></h4>
-                                        <p>{{$posts->description}}</p>
+                                        <p><?= $posts->description ?></p>
                                         <div class="post-meta">
                                             <p>By <a href="#">{{$posts->fname.''.$posts->lname}}</a></p>
                                             <p>3 comments</p>

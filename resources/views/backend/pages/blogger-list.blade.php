@@ -3,7 +3,7 @@
 @section('content')
 
 
-    <style>
+    <style type="text/css">
         .switch {
             position: relative;
             display: inline-block;
@@ -63,6 +63,17 @@
         .slider.round:before {
             border-radius: 50%;
         }
+
+
+                              td.myrow {
+                                  max-width: 100px;
+                                  white-space: nowrap;
+                                  overflow: hidden;
+                                  text-overflow: ellipsis;
+                              }
+
+
+
     </style>
     <div class="content">
         <div class="row">
@@ -126,7 +137,7 @@
                                         <td>{{$data->zipcode}}</td>
                                         <td>{{$data->state}}</td>
                                         <td>{{$data->time_in_community}}</td>
-                                        <td>{{$data->description}}</td>
+                                        <td class="myrow">{{$data->description}}</td>
                                         <td>
                                             <label class="switch">
                                                 <input type="checkbox" id="status" class="checkbox checkbox_list"
@@ -156,7 +167,18 @@
 
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
         <script>
+
+                $(function() {
+                $("td.myrow").mouseenter(function() {
+                    $(this).attr("title", $(this).html());
+                });
+
+            });
+
+
 
         $(document).on("click", "#status", function () {
             var is_checked_obj = $(this);

@@ -127,7 +127,9 @@
                             <div class="line"></div>
                             <a href="#" class="post-tag">Lifestyle</a>
                             <h4><a href="#" class="post-headline">{{$posts->title}}</a></h4>
-                            <p>{{$posts->description}}</p>
+                            <p>
+{{--                                {{htmlspecialchars_decode($posts->description)}}--}}
+                                <?= $posts->description ?></p>
                             <div class="post-meta">
                                 <p>By <a href="#">{{$posts->fname.''.$posts->lname}}</a></p>
                                 <p>3 comments</p>

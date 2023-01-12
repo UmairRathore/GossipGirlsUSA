@@ -8,10 +8,13 @@ if(auth()->check())
             $zipcode = $ip->zipCode;  //save zipcode
        $latestposts = DB::table('posts')->where('posts.zipcode','=',$zipcode)
                 ->orderby('id', 'desc')->take(4)->get();
+       $randomPostAd = DB::table('posts')->where('posts.zipcode','=',$zipcode)
+                ->inRandomOrder()->take(3)->get();
     }
 else{
 
-  $latestposts = DB::table('posts')  ->orderby('id', 'desc')->take(4)->get();
+  $latestposts = DB::table('posts') ->orderby('id', 'desc')->take(4)->get();
+  $randomPostAd = DB::table('posts')->inRandomOrder()->take(3)->get();
 
 }
 
@@ -40,12 +43,6 @@ else{
                     <button type="submit" class="btn original-btn">Subscribe</button>
                 </form>
             </div>
-        </div>
-
-        <!-- Widget Area -->
-        <div class="sidebar-widget-area">
-            <h5 class="title">Advertisement</h5>
-            <a href="#"><img src="{{asset('assets/img/bg-img/add.gif')}}" alt=""></a>
         </div>
 
         <!-- Widget Area -->

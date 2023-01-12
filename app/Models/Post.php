@@ -18,4 +18,9 @@ class Post extends Model
         'post_image',
         'status',
     ] ;
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->whereNull('parent_id');
+    }
 }

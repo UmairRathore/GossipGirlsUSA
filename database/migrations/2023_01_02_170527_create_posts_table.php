@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
 
             $table->string('title');
             $table->string('zipcode');
-            $table->string('description');
+            $table->longText('description');
             $table->string('post_image');
             $table->tinyInteger('status')->default(0);
             $table->timestamps();

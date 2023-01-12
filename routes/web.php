@@ -105,3 +105,6 @@ Route::get('/single-posts/{id}',[HomeController::class,'singlePost'])->name('sin
     Route::get('/posts/delete/{id}',[PostController::class,'destroy'])->name('posts.destroy');
 
 
+    Route::post('/comment/store',[\App\Http\Controllers\Admin\CommentController::class,'store'])->name('comments.store');
+
+
