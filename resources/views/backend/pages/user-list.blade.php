@@ -11,7 +11,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="usertable" class="table">
+                            <table id="datatable" class="table">
                                 <thead class=" text-primary">
                                 <tr>
                                     <th>Name</th>
@@ -34,12 +34,10 @@
             </div>
         </div>
     </div>
-{{--    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>--}}
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
 
     <script>
-        $(document).ready( function () {
-            $('#usertable').DataTable();
-        } );
+
         $(document).ready(function () {
             $("#cross").click(function () {
                 $(".alert-hide").hide();

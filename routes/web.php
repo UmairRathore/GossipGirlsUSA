@@ -26,6 +26,9 @@ Route::get('/users', function () {
 })->name('back.user');
 
 
+
+
+
 Route::get('/welcome', function () {
     return view('welcome');
 })->name('welcome');
@@ -85,10 +88,14 @@ Route::put('/profile/{id}', [UserController::class, 'update'])->name('profile-up
 
 
 
+
+
 Route::get('/',[HomeController::class,'show'])->name('index');
 Route::get('/about-us',[HomeController::class,'aboutus'])->name('about.us');
 Route::get('/single-posts/{id}',[HomeController::class,'singlePost'])->name('single.posts');
 
+Route::get('/user-profile/{id}', [HomeController::class, 'edit'])->name('user.profile.edit')->middleware('auth');
+Route::put('/user-profile/{id}', [HomeController::class, 'update'])->name('user.profile.update');
 
 
     Route::get('/admin-list', [AdminController::class, 'show'])->name('admin-list')->middleware('auth');

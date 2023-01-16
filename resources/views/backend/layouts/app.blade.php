@@ -43,6 +43,7 @@
 
 
     <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 
 
 
@@ -51,12 +52,12 @@
 
     <script>
 
-//<!--Datatable-->
-//        $(document).ready( function () {
-//            $('#datatable').DataTable();
-//        } );
-//
-//<!--Datatable-->
+<!--Datatable-->
+       $(document).ready( function () {
+           $('#datatable').DataTable();
+       } );
+
+<!--Datatable-->
 
 <!--alert Hide and Time Duration -->
         $(document).ready(function () {

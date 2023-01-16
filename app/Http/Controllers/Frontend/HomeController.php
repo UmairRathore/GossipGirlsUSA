@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Stevebauman\Location\Facades\Location;
 
 class HomeController extends Controller
@@ -16,6 +18,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->_model = new Post();
+        $this->_usermodel = new User();
         $this->setDefaultData();
     }
 
@@ -78,7 +81,7 @@ class HomeController extends Controller
             $this->data['randomposts'] = $this->_model::
             Select('posts.*', 'u.first_name as fname', 'u.last_name as lname')
                 ->join('users as u', 'u.id', '=', 'posts.user_id')
-                ->where('u.role_id', '=', '3')
+//                ->where('u.role_id', '=', '3')
                 //to check logged in Users Zipcode
                 ->where('posts.zipcode', '=', $zipcode)
                 //
@@ -86,13 +89,14 @@ class HomeController extends Controller
                 ->limit(5)
                 ->get();
 
+
 //            $check =$this->data['randomposts']->first();
 //            dd($check);
 
             $this->data['checkthispost'] = $this->_model::
             Select('posts.*', 'u.first_name as fname', 'u.last_name as lname')
                 ->join('users as u', 'u.id', '=', 'posts.user_id')
-                ->where('u.role_id', '=', '3')
+//                ->where('u.role_id', '=', '3')
                 //to check logged in Users Zipcode
                 ->where('posts.zipcode', '=', $zipcode)
                 //
@@ -175,6 +179,47 @@ class HomeController extends Controller
 
         return view($this->_viewPath . 'single-post', $this->data);
     }
+
+
+
+    public function edit($id)
+    {
+        $this->data['user'] = $this->_usermodel::find($id);
+        return view($this->_viewPath . 'user-profile', $this->data);
+    }
+
+
+    public function update(Request $request, $id)
+    {
+//        dd($id);
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+            'password' => '',
+        ]);
+        $user = $this->_usermodel::find($id);
+//        dd($user->id);
+        $user->first_name = $request->input('first_name');
+        $user->last_name = $request->input('last_name');
+        $user->email = $request->input('email');
+        $user->password = bcrypt($request->password);
+
+//        $user->password = hash::make($request->password);
+//        dd($user);
+        $check = $user->update();
+        if ($check) {
+            $msg =" Profile Updated successfully";
+            Session::flash('msg', $msg);
+            Session::flash('message', 'alert-success');
+        } else {
+            $msg = trans('lang_data.error');
+            Session::flash('msg', $msg);
+            Session::flash('message', 'alert-danger');
+        }
+        return redirect()->back();
+    }
+
 
 
 }

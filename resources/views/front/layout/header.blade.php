@@ -79,7 +79,11 @@
                                             </div>{{ Auth::user()->first_name }}</a>
 
                                         <ul class="dropdown">
-
+                                             @if( Auth::user()->role_id===2)
+                                         <li>
+                                                 <a href="{{route('user.profile.edit',[Auth::user()->id])}}">Profile</a>
+                                         </li>
+                                             @endif
                                             <li><a class="text-black font-20 tooltip-wrapper nav-item dropdown-item"
                                                    data-toggle="tooltip" data-placement="top" title="" data-original-title="Logout"
                                                    href="{{ route('logout') }}"

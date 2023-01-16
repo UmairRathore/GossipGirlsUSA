@@ -117,7 +117,7 @@ class PostController extends Controller
         }
 
         $this->data['posts'] = $this->_model::find($id);
-        $this->data['posts']->user_id = auth()->user()->id;
+//        $this->data['posts']->user_id = auth()->user()->id;
         $this->data['posts']->title = $request->input('title');
         $this->data['posts']->description = $request->input('description');
         if ($request->hasfile('post_image')) {

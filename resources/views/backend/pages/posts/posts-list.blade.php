@@ -43,7 +43,8 @@
                                             @endif
                                         </td>
                                         <td>{{$data->title}}</td>
-                                        <td  class="myrow">{{$data->description}}</td>
+                                        <td  class="myrow">
+                                            <?= $data->description ?></td>
                                         <td>
                                                 <a href="{{route('posts.destroy',$data->id)}}" onclick="return confirm('Are you sure?')" data-toggle="tooltip" data-placement="top" title="delete" class="far fa-trash-alt ms-text-danger"></a>
 
@@ -65,9 +66,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 
     <script>
-        $(document).ready( function () {
-            $('#datatable').DataTable();
-        } );
+
         $(document).ready(function () {
             $("#cross").click(function () {
                 $(".alert-hide").hide();
@@ -78,9 +77,6 @@
 
             }, 6000);
         });
-
-
-
 
         $(function() {
             $("td.myrow").mouseenter(function() {
