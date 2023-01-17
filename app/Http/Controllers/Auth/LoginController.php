@@ -48,6 +48,7 @@ class LoginController extends Controller
         $email = $request->email;
         $password = $request->password;
 
+
         if (Auth::guard('user')->attempt(['email' => $email, 'password' => $password], true) && auth('user')->user()->role_id == 1) {
 //            echo 'admin';
 
@@ -105,7 +106,18 @@ class LoginController extends Controller
                 return redirect('dashboard');
             }
         } else {
-            return redirect()->back()->with('alert', 'Incorrect Details');
+
+
+            if (!\auth()->user()) {
+                $msg = "Your credentials do not match our record, Please try again.";
+                Session::flash('msg', $msg);
+                Session::flash('message', 'alert-success');
+            } else {
+                $msg = trans('lang_data.error');
+                Session::flash('msg', $msg);
+                Session::flash('message', 'alert-danger');
+            }
+            return redirect()->back();
 
         }
 

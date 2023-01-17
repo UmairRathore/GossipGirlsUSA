@@ -28,7 +28,7 @@ class UserController extends Controller
 
     public function show()
     {
-        $this->data['user'] = $this->_model::where('role_id','=','2');
+        $this->data['user'] = $this->_model::where('role_id', '=', '2');
         return view($this->_viewPath . 'user', $this->data);
     }
 
@@ -46,21 +46,24 @@ class UserController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email',
-            'password' => '',
-            'phone_number' => '',
-            'address' => '',
-            'city' => '',
-            'zipcode' => '',
-            'state' => '',
-            'time_in_community' => '',
-            'description' => '',
+//            'password' => '',
+//            'phone_number' => '',
+//            'address' => '',
+//            'city' => '',
+//            'zipcode' => '',
+//            'state' => '',
+//            'time_in_community' => '',
+//            'description' => '',
         ]);
         $user = $this->_model::find($id);
 //        dd($user->id);
         $user->first_name = $request->input('first_name');
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
-        $user->password = bcrypt($request->password);
+        if ($request->password)
+        {
+            $user->password = bcrypt($request->password);
+        }
         $user->phone_number = $request->input('phone_number');
         $user->address = $request->input('address');
         $user->city = $request->input('city');
@@ -72,7 +75,7 @@ class UserController extends Controller
 //        dd($user);
         $check = $user->update();
         if ($check) {
-            $msg =" Profile Updated successfully";
+            $msg = " Profile Updated successfully";
             Session::flash('msg', $msg);
             Session::flash('message', 'alert-success');
         } else {

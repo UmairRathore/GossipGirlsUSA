@@ -54,28 +54,30 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-4 pr-md-1">
-                                <div class="form-group">
-                                    <label for="phone_number" style="color: white">Time in Community</label>
-                                    <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ $user->phone_number ,old('phone_number') }}"  autocomplete="phone_number" autofocus>
-                                    @error('phone_number')
-                                    <span class="invalid-feedback" role="alert">
+                            @if(auth()->user()->role_id===3)
+
+                                <div class="col-md-4 pr-md-1">
+                                    <div class="form-group">
+                                        <label for="phone_number" style="color: white">Time in Community</label>
+                                        <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ $user->phone_number ,old('phone_number') }}"  autocomplete="phone_number" autofocus>
+                                        @error('phone_number')
+                                        <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                    @enderror
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-4 pr-md-1">
-                                <div class="form-group">
-                                    <label for="time_in_community" style="color: white">Time in Community</label>
-                                    <input id="time_in_community" type="text" class="form-control @error('time_in_community') is-invalid @enderror" name="time_in_community" value="{{ $user->time_in_community ,old('time_in_community') }}"  autocomplete="time_in_community" autofocus>
-                                    @error('time_in_community')
-                                    <span class="invalid-feedback" role="alert">
+                                <div class="col-md-4 pr-md-1">
+                                    <div class="form-group">
+                                        <label for="time_in_community" style="color: white">Time in Community</label>
+                                        <input id="time_in_community" type="text" class="form-control @error('time_in_community') is-invalid @enderror" name="time_in_community" value="{{ $user->time_in_community ,old('time_in_community') }}"  autocomplete="time_in_community" autofocus>
+                                        @error('time_in_community')
+                                        <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
-                                    @enderror
+                                        @enderror
+                                    </div>
                                 </div>
-                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 pr-md-1">
@@ -125,8 +127,9 @@
                                 </div>
                             </div>
                         </div>
+                            @endif
                         <div class="row">
-                            <div class="col-md-6 pr-md-1">
+                            <div class="col-md-12 pr-md-1">
                                 <div class="form-group">
                                     <label for="password" style="color: white">Password</label>
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="password">
@@ -135,18 +138,7 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 pr-md-1">
-                                <div class="form-group">
-                                    <label for="password-confirm" style="color: white">Confirm Password</label>
-                                    <input id="password-confirm" type="password" class="form-control @error('password-confirm') is-invalid @enderror" name="password_confirmation"  autocomplete="new-password">
-                                    {{--                                        @error('password')--}}
-                                    {{--                                        <span class="invalid-feedback" role="alert">--}}
-                                    {{--                                            <strong>{{ $message }}</strong>--}}
-                                    {{--                                        </span>--}}
-                                    {{--                                        @enderror--}}
+                                    <small>Your password will remain same, if left empty.</small><br><br>
                                 </div>
                             </div>
                         </div>

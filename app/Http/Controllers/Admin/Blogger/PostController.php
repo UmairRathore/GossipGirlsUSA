@@ -30,8 +30,10 @@ class PostController extends Controller
 
     public function show()
     {
-//        $this->data['posts'] = $this->_model::where('id', auth()->user()->id)->get();
-        $this->data['posts'] = $this->_model::all();
+//        dd(auth()->user()->id);
+        $this->data['posts'] = $this->_model::where('user_id', '=',auth()->user()->id)->get();
+//        $this->data['posts'] = $this->_model::all();
+//        dd($this->data['posts']);
 //        dd($this->data);
         return view($this->_viewPath . 'posts-list', $this->data);
     }

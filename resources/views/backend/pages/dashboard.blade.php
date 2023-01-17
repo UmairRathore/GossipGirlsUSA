@@ -24,6 +24,8 @@
 
                         You are logged in!
 
+                    {{auth()->user()->first_name}}
+
                 </div>
             </div>
         </div>

@@ -28,7 +28,7 @@
 </head>
 <style>
     body, html {
-        height: 100%;
+        height: 1000px;
     }
     .bg {
         /* The image used */

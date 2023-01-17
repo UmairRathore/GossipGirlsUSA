@@ -203,7 +203,10 @@ class HomeController extends Controller
         $user->first_name = $request->input('first_name');
         $user->last_name = $request->input('last_name');
         $user->email = $request->input('email');
-        $user->password = bcrypt($request->password);
+        if ($request->password)
+        {
+            $user->password = bcrypt($request->password);
+        }
 
 //        $user->password = hash::make($request->password);
 //        dd($user);

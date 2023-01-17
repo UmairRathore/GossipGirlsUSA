@@ -156,6 +156,51 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row mb-4">
+                                <div class="col-md-12">
+                                    <div class="col-md-12" style="color: white">
+                                    1)
+                                        <input type="checkbox" required name="terms-condition" value="check" id="agree" />
+                                        <a id="myHref" href="#" style="color: white"> Gossip Girl USA is an anonymous blog site. I agree not to use people's identities, names, addresses, phone #s or detailed physical descriptions when blogging or commenting.
+                                             </a>
+                                    </div>
+{{--                                </div>--}}
+                                {{--                                <label for="terms-condition" class="col-md-4 col-form-label text-md-end" style="color: white">Agree to terms and conditions</label>--}}
+                            </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-md-12">
+                                    <div class="col-md-12" style="color: white">
+                                        2)
+                                        <input type="checkbox" required name="terms-condition" value="check" id="agree" />
+                                        <a href="#" style="color: white"> I agree to keep my own identity anonymous and not use my real name, address, phone number or detailed physical description when blogging or commenting
+                                        </a>
+                                    </div>
+                                </div>
+                                {{--                                <label for="terms-condition" class="col-md-4 col-form-label text-md-end" style="color: white">Agree to terms and conditions</label>--}}
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-md-12">
+                                    <div class="col-md-12" style="color: white">
+                                        3)
+                                        <input type="checkbox" required name="terms-condition" value="check" id="agree" />
+                                        <a href="#" style="color: white">I understand that violating any community guidelines listed here or in the Gossip Girl USA disclaimer will be terms for account deletion.
+                                        </a>
+                                    </div>
+                                </div>
+                                {{--                                <label for="terms-condition" class="col-md-4 col-form-label text-md-end" style="color: white">Agree to terms and conditions</label>--}}
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-md-12">
+                                    <div class="col-md-12" style="color: white">
+                                        4)
+                                        <input type="checkbox" required name="terms-condition" value="check" id="agree" />
+                                        <a href="#" style="color: white">I agree to all Gossip Girl USA terms & conditions
+                                        </a>
+                                    </div>
+                                </div>
+                                {{--                                <label for="terms-condition" class="col-md-4 col-form-label text-md-end" style="color: white">Agree to terms and conditions</label>--}}
+                            </div>
                             <div class="row mb-0">
                                 <div class="col-md-5 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
@@ -182,6 +227,36 @@
             }, 6000);
         });
 
+        $("#myHref").click(function(){
+            if(confirm("Redirecting to terms and policy")){
+                $("#myHref").attr("href");
+            }
+            else{
+                return false;
+            }
+        });
+        // $(function(){ //ready function
+        //     $('#myHref').click(function(){ //click event
+        //         alert($(this).attr('href'));
+        //     });
+        // })
+        // function n($) {
+        //     alert('Redirecting to terms and policy');
+        // }
+
+        // n()
+        // $(document).find("#myHref").each(function () {
+        //     $(this).on("click", function () {
+        //         if(confirm("You want to read terms and policy?")){
+        //             var $this = $(this);
+        //             alert ($this.attr('href'));
+        //         }
+        //         else{
+        //             return false;
+        //         }
+        //
+        //     });
+        // });
 
     </script>
 @endsection

@@ -62,7 +62,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-6 pr-md-1">
+                            <div class="col-md-12 pr-md-1">
                                 <div class="form-group">
                                     <label for="password" style="color: black">Password</label>
                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="password">
@@ -71,14 +71,15 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                    <small>Your password will remain same, if left empty.</small><br><br>
                                 </div>
                             </div>
-                            <div class="col-md-6 pr-md-1">
-                                <div class="form-group">
-                                    <label for="password-confirm" style="color: black">Confirm Password</label>
-                                    <input id="password-confirm" type="password" class="form-control @error('password-confirm') is-invalid @enderror" name="password_confirmation"  autocomplete="new-password">
-                                </div>
-                            </div>
+{{--                            <div class="col-md-6 pr-md-1">--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <label for="password-confirm" style="color: black">Confirm Password</label>--}}
+{{--                                    <input id="password-confirm" type="password" class="form-control @error('password-confirm') is-invalid @enderror" name="password_confirmation"  autocomplete="new-password">--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                         </div>
 
                         <div class="row mb-">
