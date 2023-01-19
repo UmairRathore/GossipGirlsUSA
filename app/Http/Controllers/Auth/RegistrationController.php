@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -24,7 +25,7 @@ class RegistrationController extends Controller
     private function setDefaultData()
     {
         $this->_viewPath = 'auth.';
-//        $this->data['moduleName'] = 'User';
+        $this->data['moduleName'] = 'User';
     }
 
     public function user()
@@ -121,7 +122,16 @@ class RegistrationController extends Controller
 
     {
 //        if (Auth::check()) {
-            return view('backend.pages.dashboard');
+//            return view('backend.pages.dashboard');
+        $this->data['user'] = User::where('role_id','=','2')->count();
+//        dd($usercount);
+        $this->data['blogger']= User::where('role_id','=','3')->count();
+        $this->data['post'] = Post::count();
+
+        $this->data['bloggerpost'] = Post::where('user_id','=',\auth()->user()->id)->count();
+
+
+        return view('backend.pages.dashboard',$this->data);
 //        }
 //        return redirect("registration")->withSuccess('Opps! You do not have access');
     }

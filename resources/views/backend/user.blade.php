@@ -55,7 +55,6 @@
                                 </div>
                             </div>
                             @if(auth()->user()->role_id===3)
-
                                 <div class="col-md-4 pr-md-1">
                                     <div class="form-group">
                                         <label for="phone_number" style="color: white">Time in Community</label>
@@ -126,8 +125,11 @@
                                     @enderror
                                 </div>
                             </div>
-                        </div>
                             @endif
+                        </div>
+{{--                        @if(auth()->user()->role_id===1)--}}
+
+{{--                        @endif--}}
                         <div class="row">
                             <div class="col-md-12 pr-md-1">
                                 <div class="form-group">
@@ -141,7 +143,8 @@
                                     <small>Your password will remain same, if left empty.</small><br><br>
                                 </div>
                             </div>
-                        </div>
+                        </div> @if(auth()->user()->role_id===3)
+
                         <div class="row">
                             <div class="col-md-12 pr-md-1">
                                 <div class="form-group">
@@ -155,6 +158,7 @@
                                 </div>
                             </div>
                         </div>
+                                                @endif
                         <div class="row mb-">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
