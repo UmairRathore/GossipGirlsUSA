@@ -7,7 +7,7 @@
         <!-- Single Blog Area  -->
         <div class="single-blog-area blog-style-2 mb-50">
             <div class="single-blog-thumbnail">
-                <img src="img/bg-img/b5.jpg" alt="">
+{{--                <img src="img/bg-img/b5.jpg" alt="">--}}
                 <div class="post-tag-content">
                     <div class="container">
                         <div class="row">
@@ -60,7 +60,7 @@
                     <!-- About Author -->
                     <div class="blog-post-author mt-100 d-flex">
                         <div class="author-thumbnail">
-                            <img src="img/bg-img/b6.jpg" alt="">
+{{--                            <img src="img/bg-img/b6.jpg" alt="">--}}
                         </div>
                         <div class="author-info">
                             <div class="line"></div>
@@ -182,38 +182,38 @@
         });
 
 
-        $("#ajaxreplyform").submit(function(e){
-            e.preventDefault();
-        });
+        {{--$("#ajaxreplyform").submit(function(e){--}}
+        {{--    e.preventDefault();--}}
+        {{--});--}}
 
-        // $('#save_reply').on('click', function (e) {
-        $("#save_reply").click(function(e){
-            e.preventDefault();
-            var id = $('#this').data('id');
-            var body = $('#body').val();
-            var post_id = $('#post_id').val();
-            var parent_id = $('#parent_id').val();
-            $.ajax({
-                type: 'POST',
-                url: `{{ url('single-posts/') }}`,
-                // url:  "single-posts/",
-                //     url: "single-posts/" + id,
-                data: {
-                    "_token": "{{ csrf_token() }}",
-                    id: id,
-                    body : body,
-                    post_id : post_id,
-                    parent_id : parent_id
-                },
-                success: function(data) {
-                    // alert(data)
-                    // jQuery('#city').html(data);
-                },
-                error: function (data) {
-                    console.log('Error:', data);
-                }
-            });
-        });
+        {{--// $('#save_reply').on('click', function (e) {--}}
+        {{--$("#save_reply").click(function(e){--}}
+        {{--    e.preventDefault();--}}
+        {{--    var id = $('#this').data('id');--}}
+        {{--    var body = $('#body').val();--}}
+        {{--    var post_id = $('#post_id').val();--}}
+        {{--    var parent_id = $('#parent_id').val();--}}
+        {{--    $.ajax({--}}
+        {{--        type: 'POST',--}}
+        {{--        url: `{{ url('single-posts/') }}`,--}}
+        {{--        // url:  "single-posts/",--}}
+        {{--        //     url: "single-posts/" + id,--}}
+        {{--        data: {--}}
+        {{--            "_token": "{{ csrf_token() }}",--}}
+        {{--            id: id,--}}
+        {{--            body : body,--}}
+        {{--            post_id : post_id,--}}
+        {{--            parent_id : parent_id--}}
+        {{--        },--}}
+        {{--        success: function(data) {--}}
+        {{--            // alert(data)--}}
+        {{--            // jQuery('#city').html(data);--}}
+        {{--        },--}}
+        {{--        error: function (data) {--}}
+        {{--            console.log('Error:', data);--}}
+        {{--        }--}}
+        {{--    });--}}
+        {{--});--}}
 
 
     </script>
