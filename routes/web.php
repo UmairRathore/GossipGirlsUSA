@@ -98,7 +98,7 @@ Route::get('/',[HomeController::class,'show'])->name('index');
 Route::get('/about-us',[HomeController::class,'aboutus'])->name('about.us');
 
 //Comment
-    Route::post('/single/posts/{id}',[CommentController::class,'store'])->name('comments_store');
+    Route::post('/single-posts',[CommentController::class,'store'])->name('comments_store');
 Route::get('/single-posts/{id}',[HomeController::class,'singlePost'])->name('single.posts');
 
 //User Profile Update

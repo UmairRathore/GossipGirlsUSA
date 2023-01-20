@@ -41,8 +41,8 @@ class CommentController extends Controller
             $comment = Comment::create($input);
             if ($comment) {
 //                return response()->json(['status' => true, 'message' => "Comment Successfully"]);
-                return response()->json(['status' => true, 'message' => 'Successful', 'comment' => $comment]);
-//                return back();
+//                return response()->json(['status' => true, 'message' => 'Successful', 'comment' => $comment]);
+                echo $comment;
             }
 
         } catch (Exception $e) {
