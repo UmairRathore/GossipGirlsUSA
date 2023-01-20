@@ -27,6 +27,15 @@ class AdminController extends Controller
         $this->data['moduleName'] = 'User';
     }
 
+
+//    public function count(){
+//        $usercount = User::where('role_id','=','2')->get();
+//        $bloggercount = User::where('role_id','=','3')->get();
+//        $postcount = User::all();
+//
+//        return view($this->_viewPath .'dashboard',compact( $postcount,$bloggercount,$usercount));
+//    }
+
     public function show()
     {
 
