@@ -6,7 +6,7 @@
         <strong>{{ $comment->user->name }}</strong>
         <p>{{ date('d M H:i:s', strtotime($posts->created_at))}}</p>
 {{--        {{dd($comment->User->first_name.''.$comment->User->last_name)}}--}}
-        <p>{{$comment->User->first_name.''.$comment->User->last_name}}</p>
+        <p>{{$comment->User->username}}</p>
         <p style="color: black">
             {{ $comment->body }}
         </p>
@@ -62,48 +62,48 @@
 
 
 
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+        {{--$.ajaxSetup({--}}
+        {{--    headers: {--}}
+        {{--        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')--}}
+        {{--    }--}}
+        {{--});--}}
 
-        $(document).ready(function () {
-            $('#save-comment').on('submit', function (e) {
-                e.preventDefault();
-                var id = $('#this').data('id');
-                var body = $('#body').val();
-                var post_id = $('#post_id').val();
-                var parent_id = $('#parent_id').val();
+        {{--$(document).ready(function () {--}}
+        {{--    $('#save-comment').on('submit', function (e) {--}}
+        {{--        e.preventDefault();--}}
+        {{--        var id = $('#this').data('id');--}}
+        {{--        var body = $('#body').val();--}}
+        {{--        var post_id = $('#post_id').val();--}}
+        {{--        var parent_id = $('#parent_id').val();--}}
 
-                e.preventDefault();
-                $.ajax({
-                    type: "POST",
-                    url: "single/posts/" + id,
-                    {{--data: {--}}
-                    {{--    "_token": "{{ csrf_token() }}",--}}
-                    {{--    body: body,--}}
-                    {{--    post_id: post_id,--}}
-                    {{--    parent_id: parent_id,--}}
-                    {{--},--}}
-                    data: $(this).serialize(),
-                    dataType    : 'json',
+        {{--        e.preventDefault();--}}
+        {{--        $.ajax({--}}
+        {{--            type: "POST",--}}
+        {{--            url: "single/posts/" + id,--}}
+        {{--            --}}{{--data: {--}}
+        {{--            --}}{{--    "_token": "{{ csrf_token() }}",--}}
+        {{--            --}}{{--    body: body,--}}
+        {{--            --}}{{--    post_id: post_id,--}}
+        {{--            --}}{{--    parent_id: parent_id,--}}
+        {{--            --}}{{--},--}}
+        {{--            data: $(this).serialize(),--}}
+        {{--            dataType    : 'json',--}}
 
-                    success: function (result) {
-                        if (result.status === true) {
+        {{--            success: function (result) {--}}
+        {{--                if (result.status === true) {--}}
 
-                        } else {
+        {{--                } else {--}}
 
-                        }
-                        // document.getElementById("msg").innerHTML = result;
-                    },
-                    error: function (result) {
-                        alert('error');
-                    }
+        {{--                }--}}
+        {{--                // document.getElementById("msg").innerHTML = result;--}}
+        {{--            },--}}
+        {{--            error: function (result) {--}}
+        {{--                alert('error');--}}
+        {{--            }--}}
 
-                });
-            });
-        });
+        {{--        });--}}
+        {{--    });--}}
+        {{--});--}}
 
 
 

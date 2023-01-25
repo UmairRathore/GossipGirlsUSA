@@ -83,23 +83,23 @@
                             <div class="single-blog-content">
                                 <div class="line"></div>
                                 <a href="#" class="post-tag">Lifestyle</a>
-                                <h4><a href="#" class="post-headline">{{$posts->title}}</a></h4>
+                                <h4><a href="{{route('single.posts',[$posts->id])}}" class="post-headline">{{$posts->title}}</a></h4>
                                 <p><?= $posts->description ?></p>
                                 <a href="{{route('single.posts',[$posts->id])}}" class="btn original-btn">Read More</a>
                             </div>
                         </div>
                     </div>
-                @endforeach
                 <!-- Single Blog Area -->
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-catagory-area clearfix mb-100">
-                        <img src="{{asset('assets/img/blog-img/1.jpg')}}" alt="">
+                        <img src="{{$posts->post_image}}" alt="">
                         <!-- Catagory Title -->
                         <div class="catagory-title">
-                            <a href="#">Lifestyle posts</a>
+                            <a href="{{route('single.posts',[$latest->id])}}">Lifestyle posts</a>
                         </div>
                     </div>
                 </div>
+                @endforeach
 
 
                 <!-- Single Blog Area -->
@@ -137,10 +137,10 @@
                                     <div class="single-blog-content">
                                         <div class="line"></div>
                                         <a href="#" class="post-tag">Lifestyle</a>
-                                        <h4><a href="#" class="post-headline">{{$posts->title}}</a></h4>
+                                        <h4><a href="{{route('single.posts',[$latest->id])}}" class="post-headline">{{$posts->title}}</a></h4>
                                         <p><?= $posts->description ?></p>
                                         <div class="post-meta">
-                                            <p>By <a href="#">{{$posts->fname.''.$posts->lname}}</a></p>
+                                            <p>By <a href="#">{{$posts->username}}</a></p>
                                             <p>3 comments</p>
                                         </div>
                                     </div>

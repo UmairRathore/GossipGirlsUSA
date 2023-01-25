@@ -2,9 +2,9 @@
 @section('title', 'GossipGirl - Contact US')
 @section('content')
     <!-- ##### Google Map ##### -->
-    <div class="map-area">
-        <div id="googleMap" class="googleMap"></div>
-    </div>
+{{--    <div class="map-area">--}}
+{{--        <div id="googleMap" class="googleMap"></div>--}}
+{{--    </div>--}}
 
     <!-- ##### Contact Area Start ##### -->
     <section class="contact-area section-padding-100">
@@ -57,42 +57,14 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-md-10 col-lg-3">
-                    <div class="post-sidebar-area">
+{{--                <div class="col-12 col-md-10 col-lg-3">--}}
+{{--                    <div class="post-sidebar-area">--}}
 
-                        <!-- Widget Area -->
-                        <div class="sidebar-widget-area">
-                            <form action="#" class="search-form">
-                                <input type="search" name="search" id="searchForm" placeholder="Search">
-                                <input type="submit" value="submit">
-                            </form>
-                        </div>
+{{--                        <!-- Widget Area -->--}}
 
-                        <!-- Widget Area -->
-                        <div class="sidebar-widget-area">
-                            <h5 class="title subscribe-title">Subscribe to my newsletter</h5>
-                            <div class="widget-content">
-                                <form action="#" class="newsletterForm">
-                                    <input type="email" name="email" id="subscribesForm" placeholder="Your e-mail here">
-                                    <button type="submit" class="btn original-btn">Subscribe</button>
-                                </form>
-                            </div>
-                        </div>
 
-                        <!-- Widget Area -->
-                        <div class="sidebar-widget-area">
-                            <div class="widget-content social-widget d-flex justify-content-between">
-                                <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
     </section>

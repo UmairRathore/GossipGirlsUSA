@@ -19,22 +19,7 @@
 
 
 <!-- Subscribe Modal -->
-<div class="subscribe-newsletter-area">
-    <div class="modal fade" id="subsModal" tabindex="-1" role="dialog" aria-labelledby="subsModal" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <div class="modal-body">
-                    <h5 class="title">Subscribe to my newsletter</h5>
-                    <form action="#" class="newsletterForm" method="post">
-                        <input type="email" name="email" id="subscribesForm2" placeholder="Your e-mail here">
-                        <button type="submit" class="btn original-btn">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <!-- ##### Header Area Start ##### -->
 <header class="header-area">
@@ -46,9 +31,9 @@
                 <!-- Classy Menu -->
                 <nav class="classy-navbar justify-content-between">
 
-                    <!-- Subscribe btn -->
+{{--                    <!-- Subscribe btn -->--}}
                     <div class="subscribe-btn">
-                        <a href="#" class="btn subscribe-btn" data-toggle="modal" data-target="#subsModal">Subscribe</a>
+{{--                        <a href="#" class="btn subscribe-btn" data-toggle="modal" data-target="#subsModal">Subscribe</a>--}}
                     </div>
 
                     <!-- Navbar Toggler -->
@@ -76,7 +61,7 @@
                                     <li><a href="#">
                                             <div class="photo">
                                                 <img src="{{asset('admin/assets/img/anime3.png')}}" alt="Profile Photo">
-                                            </div>{{ Auth::user()->first_name }}</a>
+                                            </div>{{ Auth::user()->username }}</a>
 
                                         <ul class="dropdown">
                                              @if( Auth::user()->role_id===2)
@@ -165,7 +150,7 @@
 {{--                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a>--}}
 {{--                        @if(Auth::guard('user')->check())--}}
 {{--                        <a href="#" data-toggle="tooltip" data-placement="bottom"><img class="photo " src="{{asset('admin/assets/img/anime3.png')}}" alt="Profile Photo">--}}
-{{--                            {{ Auth::user()->first_name }}--}}
+{{--                            {{ Auth::user()->username }}--}}
 
 {{--                            <ul class="dropdown">--}}
 

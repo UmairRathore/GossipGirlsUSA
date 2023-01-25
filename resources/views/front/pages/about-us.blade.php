@@ -126,12 +126,12 @@
                         <div class="single-blog-content mt-50">
                             <div class="line"></div>
                             <a href="#" class="post-tag">Lifestyle</a>
-                            <h4><a href="#" class="post-headline">{{$posts->title}}</a></h4>
+                            <h4><a href="{{route('single.posts',[$posts->id])}}" class="post-headline">{{$posts->title}}</a></h4>
                             <p>
 {{--                                {{htmlspecialchars_decode($posts->description)}}--}}
                                 <?= $posts->description ?></p>
                             <div class="post-meta">
-                                <p>By <a href="#">{{$posts->fname.''.$posts->lname}}</a></p>
+                                <p>By <a href="#">{{$posts->username}}</a></p>
                                 <p>3 comments</p>
                             </div>
                         </div>

@@ -27,23 +27,14 @@ else{
     <div class="post-sidebar-area">
 
         <!-- Widget Area -->
-        <div class="sidebar-widget-area">
-            <form action="#" class="search-form">
-                <input type="search" name="search" id="searchForm" placeholder="Search">
-                <input type="submit" value="submit">
-            </form>
-        </div>
+{{--        <div class="sidebar-widget-area">--}}
+{{--            <form action="#" class="search-form">--}}
+{{--                <input type="search" name="search" id="searchForm" placeholder="Search">--}}
+{{--                <input type="submit" value="submit">--}}
+{{--            </form>--}}
+{{--        </div>--}}
 
-        <!-- Widget Area -->
-        <div class="sidebar-widget-area">
-            <h5 class="title subscribe-title">Subscribe to my newsletter</h5>
-            <div class="widget-content">
-                <form action="#" class="newsletterForm">
-                    <input type="email" name="email" id="subscribesForm" placeholder="Your e-mail here">
-                    <button type="submit" class="btn original-btn">Subscribe</button>
-                </form>
-            </div>
-        </div>
+
 
         <!-- Widget Area -->
         <div class="sidebar-widget-area">
@@ -61,7 +52,7 @@ else{
                         <!-- posts Content -->
                         <div class="post-content">
                             <a href="#" class="post-tag">Lifestyle</a>
-                            <h4><a href="#" class="post-headline">{{$posts->title}}</a></h4>
+                            <h4><a href="{{route('single.posts',[$posts->id])}}" class="post-headline">{{$posts->title}}</a></h4>
                             <div class="post-meta">
                                 <p><a href="#">
                                         {{ date('d M', strtotime($posts->created_at))}}

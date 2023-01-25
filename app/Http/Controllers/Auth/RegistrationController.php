@@ -42,25 +42,24 @@ class RegistrationController extends Controller
     public function userregistration(Request $request)
     {
         $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
+            'username' => 'required',
             'email' => 'required|email|unique:users',
             'zipcode' => 'required',
             'password' => 'required|confirmed|min:6',
         ]);
         $user = $this->_model;
-        $user->first_name = $request->input('first_name');
-        $user->last_name = $request->input('last_name');
+        $user->username = $request->input('username');
         $user->email = $request->input('email');
         $user->zipcode = $request->input('zipcode');
 //        $user->password = hash::make($request->password);
         $user->password = bcrypt($request->password);
+        $user->user_image = 'images/default.png';
         $user->role_id = '2';
 //        dd($user);
         $user->save();
         $check = $user->save();
 
-        $name = $user->first_name.' '.$user->last_name;
+        $name = $user->username;
         if ($check) {
             $msg = $name.' Registered successfully, You can Comment and Reply';
             Session::flash('msg', $msg);
@@ -78,8 +77,7 @@ class RegistrationController extends Controller
     public function bloggerregistration(Request $request)
     {
         $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
+            'username' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|min:6',
             'address' => 'required',
@@ -90,8 +88,7 @@ class RegistrationController extends Controller
             'description' => 'required',
         ]);
         $user = $this->_model;
-        $user->first_name = $request->input('first_name');
-        $user->last_name = $request->input('last_name');
+        $user->username = $request->input('username');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->password);
         $user->address = $request->input('address');
@@ -100,12 +97,13 @@ class RegistrationController extends Controller
         $user->state = $request->input('state');
         $user->time_in_community = $request->input('time_in_community');
         $user->description = $request->input('description');
+        $user->user_image = 'images/default.png';
         $user->role_id = '3';
         //        dd($user);
         $user->save();
         $check = $user->save();
 
-        $name = $user->first_name.' '.$user->last_name;
+        $name = $user->username;
         if ($check) {
             $msg = $name." Registered successfully, Please wait 24 hours for verification mail";
             Session::flash('msg', $msg);

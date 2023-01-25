@@ -1,4 +1,4 @@
-@include('backend.layouts.app.head')
+@include('auth.layout')
 {{--@include('layouts.backend.header')--}}
 {{--@include('layouts.backend.sidebar')--}}
 

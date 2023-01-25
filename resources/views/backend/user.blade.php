@@ -1,5 +1,5 @@
 @extends('backend.layouts.app',['pageSlug'=>'profile'])
-@section('title', $user->first_name)
+@section('title', $user->username)
 @section('content')
     <div class="content">
         <div class="row">
@@ -14,16 +14,16 @@
                     </div>
                 @endif
                 <div class="card-body">
-                    <form method="POST" action="{{ route('profile-update',[$user->id]) }}">
+                    <form method="POST" action="{{ route('profile-update',[$user->id]) }}" enctype="multipart/form-data">
 {{--                        {{dd($user->id)}}--}}
                         @csrf
                         @method('put')
                         <div class="row">
                             <div class="col-md-6 pr-md-1">
                                 <div class="form-group">
-                                    <label for="first_name" style="color: white">First Name</label>
-                                    <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{  $user->first_name ,old('first_name') }}" required autocomplete="first_name" autofocus>
-                                    @error('first_name')
+                                    <label for="username" style="color: white">First Name</label>
+                                    <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{  $user->username ,old('username') }}" required autocomplete="username" autofocus>
+                                    @error('username')
                                     <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -31,19 +31,6 @@
                                 </div>
                             </div>
                             <div class="col-md-6 pr-md-1">
-                                <div class="form-group">
-                                    <label for="last_name" style="color: white">Last Name</label>
-                                    <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ $user->last_name ,old('last_name') }}" required autocomplete="last_name" autofocus>
-                                    @error('last_name')
-                                    <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4 pr-md-1">
                                 <div class="form-group">
                                     <label for="email" style="color: white"> Email</label>
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $user->email ,old('email') }}" required autocomplete="email">
@@ -54,11 +41,13 @@
                                     @enderror
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             @if(auth()->user()->role_id===3)
-                                <div class="col-md-4 pr-md-1">
+                                <div class="col-md-6 pr-md-1">
                                     <div class="form-group">
-                                        <label for="phone_number" style="color: white">Time in Community</label>
-                                        <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ $user->phone_number ,old('phone_number') }}"  autocomplete="phone_number" autofocus>
+                                        <label for="phone_number" style="color: white">Phone No</label>
+                                        <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ $user->phone_number ,old('phone_number') }}"  autocomplete="phone_number" autofocus placeholder="Add Phone no.">
                                         @error('phone_number')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -66,7 +55,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-4 pr-md-1">
+                                <div class="col-md-6 pr-md-1">
                                     <div class="form-group">
                                         <label for="time_in_community" style="color: white">Time in Community</label>
                                         <input id="time_in_community" type="text" class="form-control @error('time_in_community') is-invalid @enderror" name="time_in_community" value="{{ $user->time_in_community ,old('time_in_community') }}"  autocomplete="time_in_community" autofocus>
@@ -158,10 +147,44 @@
                                 </div>
                             </div>
                         </div>
+                            <div class="row">
+                                <div class="col-md-6 pr-md-1">
+                                    <div class="form-group">
+
+                                        <div>
+                                            <label for="user_image" style="color: white">Add Image</label>
+                                        </div>
+                                        <div>
+
+                                            @if($user->user_image)
+                                                <img id="previewImg" src="{{ asset($user->user_image) }}" width="70px" height="70px"
+                                                     class="img-thumbnail img-fluid blog-img" alt="Image">
+                                            @else
+                                                <img id="previewImg" src="{{asset('images/default.png')}}" alt="No File Choosen" width="100" height="100">
+                                            @endif
+                                            {{--                                                <img id="previewImg" src="{{asset('images/default.png')}}" alt="No File Choosen" width="100" height="100">--}}
+
+                                        </div>
+                                        <div>
+                                            <button>
+                                                <input type="file" name="user_image" onchange="previewFile(this);" class="img-thumbnail form-control @error('user_image') is-invalid @enderror">
+                                                @error('user_image')
+                                                <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                                @enderror
+                                                Choose File
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                                                 @endif
                         <div class="row mb-">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
+{{--                        {{dd($user)}}}--}}
                                     <strong style="color: white">Update</strong>
                                 </button>
                             </div>
@@ -172,4 +195,24 @@
         </div>
     </div>
 
+<script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+
+<script type="text/javascript">
+
+
+    function previewFile(input) {
+        var file = $("input[type=file]").get(0).files[0];
+
+        if (file) {
+            var reader = new FileReader();
+
+            reader.onload = function () {
+                $("#previewImg").attr("src", reader.result);
+            }
+
+            reader.readAsDataURL(file);
+        }
+    }
+
+</script>
 @endsection
