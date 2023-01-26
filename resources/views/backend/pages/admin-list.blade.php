@@ -32,7 +32,7 @@
                                     {{--                                {{dd($user)}}--}}
                                     @foreach($user as $data)
                                         <tr>
-                                            <td>{{$data->first_name.' '.$data->last_name}}</td>
+                                            <td>{{$data->username}</td>
                                             <td>{{$data->email}}</td>
                                             <td>{{$data->phone_number}}</td>
                                             <td>{{$data->address}}</td>

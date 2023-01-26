@@ -47,7 +47,7 @@ else{
                     <div class="single-blog-post d-flex align-items-center widget-post">
                         <!-- posts Thumbnail -->
                         <div class="post-thumbnail">
-                            <img src="{{asset($posts->post_image)}}" alt="">
+                            <a href="{{route('single.posts',[$posts->id])}}" ><img src="{{$posts->post_image}}" alt=""></a>
                         </div>
                         <!-- posts Content -->
                         <div class="post-content">

@@ -30,11 +30,8 @@ class PostController extends Controller
 
     public function show()
     {
-//        dd(auth()->user()->id);
+
         $this->data['posts'] = $this->_model::where('user_id', '=',auth()->user()->id)->get();
-//        $this->data['posts'] = $this->_model::all();
-//        dd($this->data['posts']);
-//        dd($this->data);
         return view($this->_viewPath . 'posts-list', $this->data);
     }
 
@@ -151,7 +148,7 @@ class PostController extends Controller
         return back();
     }
 
-    //DELETE_specializations
+    //
     public function destroy($id)
     {
         $this->data['posts'] = $this->_model::find($id);
@@ -162,8 +159,18 @@ class PostController extends Controller
             File::delete($destination);
         }
 
-        $this->data['posts']->delete();
 
-        return back()->with('info_deleted', 'post has been deleted');
+        $check = $this->data['posts']->delete();
+        if ($check) {
+            $msg = 'Post deleted successfully';
+            Session::flash('msg', $msg);
+            Session::flash('message', 'alert-success');
+        } else {
+            $msg = 'Post not deleted successfully';
+            Session::flash('msg', $msg);
+            Session::flash('message', 'alert-danger');
+        }
+        return back();
     }
+
 }

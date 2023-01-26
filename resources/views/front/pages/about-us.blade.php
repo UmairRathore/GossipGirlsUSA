@@ -116,7 +116,7 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-blog-area blog-style-2 mb-100">
                         <div class="single-blog-thumbnail">
-                            <img src="{{asset($posts->post_image)}}" alt="">
+                            <a href="{{route('single.posts',[$posts->id])}}" ><img src="{{$posts->post_image}}" alt=""></a>
                             <div class="post-date">
                                 <a href="#">{{ date('d ', strtotime($posts->created_at))}}<span>
                                     {{ date(' M', strtotime($posts->created_at))}}</span></a>

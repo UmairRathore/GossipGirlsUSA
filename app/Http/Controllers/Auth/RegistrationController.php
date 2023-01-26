@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -100,12 +101,21 @@ class RegistrationController extends Controller
         $user->user_image = 'images/default.png';
         $user->role_id = '3';
         //        dd($user);
-        $user->save();
+//        $user->save();
         $check = $user->save();
 
         $name = $user->username;
         if ($check) {
             $msg = $name." Registered successfully, Please wait 24 hours for verification mail";
+            Mail::send('backend.email.approve_email',[
+                'name' =>$user->name,
+                'email' =>$user->email,
+            ],
+                function ($displaymessage)
+                {
+                    $displaymessage->to('smalljutt420@gmail.com', 'GossipGirls')
+                        ->subject('Waiting for Approved');
+                });
             Session::flash('msg', $msg);
             Session::flash('message', 'alert-success');
         } else {

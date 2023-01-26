@@ -45,6 +45,12 @@
                                 <p>{{ __('Bloggers') }}</p>
                             </a>
                         </li>
+                        <li @if ($pageSlug == 'contact-list') class="active " @endif >
+                            <a href="{{ route('contact-list') }}">
+                                <i class="tim-icons icon-single-02"></i>
+                                <p>{{ __('ContactForm') }}</p>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>

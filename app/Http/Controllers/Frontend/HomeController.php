@@ -145,7 +145,7 @@ class HomeController extends Controller
                 ->join('users as u', 'u.id', '=', 'posts.user_id')
                 ->where('u.role_id', '=', '3')
                 ->inRandomOrder()
-                ->limit(2)
+                ->limit(1)
                 ->get();
 
             $this->data['randomsinglepost'] = $this->_model::
