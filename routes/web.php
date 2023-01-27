@@ -130,3 +130,8 @@ Route::put('/user-profile/{id}', [HomeController::class, 'update'])->name('user.
     Route::put('/posts/update/{id}',[PostController::class,'update'])->name('posts.update');
     Route::get('/posts/delete/{id}',[PostController::class,'destroy'])->name('posts.destroy');
 
+
+//Search Page
+//  Route::get('/posts/search',[PostController::class,'show'])->name('posts.show');
+//  Route::post('/posts/search',[HomeController::class,'search'])->name('search');
+  Route::get('/search',[HomeController::class,'search'])->name('search');

@@ -226,5 +226,32 @@ class HomeController extends Controller
     }
 
 
+    public function search(Request $request)
+    {
+
+        if (auth()->check()) {
+//                    $me = $request->ip();   //get IP
+            $me = '206.217.224.86';  //get IP
+            $ip = Location::get($me); //get zipcode from location
+            $zipcode = $ip->zipCode;  //save zipcode
+            $search = $request->query('search');
+            $this->data['search'] = Post::where('zipcode',$zipcode)->where('title', 'Like', "%{$search}%")
+                ->orderBy('id', 'DESC')
+                ->paginate(5);
+
+            $this->data['post'] = Post::all();
+        }
+        else
+        {
+            $search = $request->query('search');
+            $this->data['search'] = Post::where('title', 'Like', "%{$search}%")
+                ->orderBy('id', 'DESC')
+                ->paginate(5);
+
+            $this->data['post'] = Post::all();
+        }
+//        dd($this->data['search']);
+        return view($this->_viewPath . 'search', $this->data);
+    }
 
 }
