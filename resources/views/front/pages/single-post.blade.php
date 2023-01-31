@@ -65,7 +65,7 @@
                         <div class="author-info">
                             <div class="line"></div>
                             <span class="author-role">Author</span>
-                            <h4><a href="#" class="author-name">{{$posts->fname.''.$posts->lname}}</a></h4>
+                            <h4><a href="#" class="author-name">{{$posts->username}}</a></h4>
                             <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero.</p>
                         </div>
                     </div>
@@ -75,63 +75,25 @@
                         <h5 class="title">Comments</h5>
 
                         <hr />
+                        @if(auth()->check())
                         <h4>Add comment</h4>
-                        <form method="post" action="{{ route('comments_store',[$posts->id]) }}">
+                        <form id="commentform" method="post" action="{{ route('comments_store',[$posts->id]) }}">
                             @csrf
                             <div class="form-group">
                                 <textarea class="form-control" name="body"></textarea>
                                 <input type="hidden" name="post_id" value="{{ $posts->id }}" />
                             </div>
                             <div class="form-group">
-                                <input type="submit" class="btn btn-primary" value="Add Comment" />
+                                <input type="submit" id="submit" class="btn btn-primary" value="Add Comment" />
                             </div>
                         </form>
                         @include('front.pages.comments.comments', ['comments' => $posts->comments, 'post_id' => $posts->id])
+                        @else
+                            <h4>Please <a href="{{route('login')}}"> <h4>Login</h4></a> to comment</h4>
+                            @endif
+                        <div id="divdown"></div>
+                            @endforeach
 
-                        @endforeach
-{{--                        <ol>--}}
-{{--                            <!-- Single Comment Area -->--}}
-{{--                            <li class="single_comment_area">--}}
-{{--                                <!-- Comment Content -->--}}
-{{--                                <div class="comment-content d-flex">--}}
-{{--                                    <!-- Comment Author -->--}}
-{{--                                    <div class="comment-author">--}}
-{{--                                        <img src="{{asset('assets/img/default.png')}}" alt="author">--}}
-{{--                                    </div>--}}
-{{--                                    <!-- Comment Meta -->--}}
-{{--                                    <div class="comment-meta">--}}
-{{--                                        <a href="#" class="post-date">March 12</a>--}}
-{{--                                        <p><a href="#" class="post-author">William James</a></p>--}}
-
-
-{{--                                        @if($comments)--}}
-{{--                                        <p>--}}
-{{--                                            {{$comments->comment}}--}}
-{{--                                            Efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt.--}}
-{{--                                        </p>--}}
-{{--                                        <a href="#" class="comment-reply">Reply</a>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </li>--}}
-
-{{--                            <!-- Single Comment Area -->--}}
-{{--                            <li class="single_comment_area">--}}
-{{--                                <!-- Comment Content -->--}}
-{{--                                <div class="comment-content d-flex">--}}
-{{--                                    <!-- Comment Author -->--}}
-{{--                                    <div class="comment-author">--}}
-{{--                                        <img src="img/bg-img/b7.jpg" alt="author">--}}
-{{--                                    </div>--}}
-{{--                                    <!-- Comment Meta -->--}}
-{{--                                    <div class="comment-meta">--}}
-{{--                                        <a href="#" class="post-date">March 12</a>--}}
-{{--                                        <p><a href="#" class="post-author">William James</a></p>--}}
-{{--                                        <p>Efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt.</p>--}}
-{{--                                        <a href="#" class="comment-reply">Reply</a>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </li>--}}
-{{--                        </ol>--}}
                     </div>
                 </div>
 
@@ -139,6 +101,41 @@
             </div>
         </div>
     </div>
-    <!-- ##### Single Blog Area End ##### -->
+    @if(Session::get('success'))
 
+        <script>
+
+            $('html, body').animate({
+                scrollTop: $("#divdown").offset().top
+            }, 2000);
+
+            window.setTimeout(function(){
+                $('#commentform').hide().next('#success').show();
+            }, 1500);
+
+        </script>
+
+    @endif
+    <!-- ##### Single Blog Area End ##### -->
+{{--<script>--}}
+{{--    $(document).ready(function () {--}}
+{{--        $("#submit").click(function (e) {--}}
+{{--            // $("#repliesdiv").toggleClass("d-none");--}}
+{{--            $('html, body').animate({--}}
+{{--                scrollTop: ($('#divdown').offset().top )--}}
+{{--            }, 200);--}}
+
+{{--        });--}}
+{{--        --}}
+{{--    // $(document).ready(function() {--}}
+{{--    //     $('#button[type="submit"]').click()--}}
+{{--    //     {--}}
+{{--    //         var div = $('div#results')--}}
+{{--    //         var o = div.offset().top; //gets the top position of the div--}}
+{{--    //         var h = div.outerHeight(); // gets the height of the div--}}
+{{--    //--}}
+{{--    //         div.scrollTop( o + h ); //scrolls page to the bottom of the div--}}
+{{--    //--}}
+{{--    //     }});--}}
+{{--</script>--}}
 @endsection

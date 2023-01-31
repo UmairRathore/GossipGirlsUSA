@@ -3,10 +3,10 @@
     <hr/>
 
     <div class="display-comment" @if($comment->parent_id != null) style="margin-left:40px;" @endif>
-        <strong>{{ $comment->user->name }}</strong>
+{{--        <strong>{{ $comment->user->name }}</strong>--}}
         <p>{{ date('d M H:i:s', strtotime($posts->created_at))}}</p>
 {{--        {{dd($comment->User->first_name.''.$comment->User->last_name)}}--}}
-        <p>{{$comment->User->username}}</p>
+{{--        <p>{{$comment->User->username}}</p>--}}
         <p style="color: black">
             {{ $comment->body }}
         </p>
@@ -44,7 +44,11 @@
 
         $(document).ready(function () {
             $("#replybutton").click(function (e) {
-                $("#repliesdiv").toggleClass("d-none");
+                // $("#repliesdiv").toggleClass("d-none");
+                $('html, body').animate({
+                    scrollTop: ($('#what').offset().top )
+                }, 200);
+
             });
             /*    // if( $('#repliesdiv').hasClass('d-none') ) {
                 //     $("#replybutton").click(function(e){

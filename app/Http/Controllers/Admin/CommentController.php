@@ -24,7 +24,7 @@ class CommentController extends Controller
 
         Comment::create($input);
 
-        return back();
+        return back()->with('success');
     }
 
 //    public function store(Request $request)
