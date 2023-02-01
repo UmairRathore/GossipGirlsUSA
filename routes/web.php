@@ -35,28 +35,17 @@ Route::get('/welcome', function () {
     return view('welcome');
 })->name('welcome');
 
-//Route::get('/', function () {
-//    return view('front.pages.index');
-//})->name('index');
 
 Route::get('termsandpolicy', function () {
     return view('front.pages.termsandpolicy');
 })->name('termsandpolicy');
 
-//Route::get('/about-us', function () {
-//    return view('front.pages.about-us');
-//})->name('about-us');
+
 
 Route::get('/comingsoon', function () {
     return view('front.pages.comingsoon');
 })->name('comingsoon');
 
-
-
-//Route::get('/single-posts', function () {
-//    return view('front.pages.single-post');
-//})->name('single-posts');
-//
 
 
 
@@ -72,8 +61,7 @@ Route::post('/login', [LoginController::class, 'postLogin'])->name('postlogin');
 
 //Logout
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-//Route::posts('/{', [LoginController::class, 'logout'])->name('user-logout');
-//Route::posts('/logout', [LoginController::class, 'logout'])->name('blogger-logout');
+
 
 
 //Registration
@@ -132,6 +120,4 @@ Route::put('/user-profile/{id}', [HomeController::class, 'update'])->name('user.
 
 
 //Search Page
-//  Route::get('/posts/search',[PostController::class,'show'])->name('posts.show');
-//  Route::post('/posts/search',[HomeController::class,'search'])->name('search');
   Route::get('/search',[HomeController::class,'search'])->name('search');
