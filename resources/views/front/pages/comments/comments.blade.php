@@ -2,14 +2,18 @@
 
     <hr/>
 
-    <div class="display-comment" @if($comment->parent_id != null) style="margin-left:40px;" @endif>
-{{--        <strong>{{ $comment->user->name }}</strong>--}}
+    <div class="display-comment" @if($comment->parent_id != null)  style="margin-left:40px;" @endif>
+        <strong>{{ $comment->user->username}}</strong>
         <p>{{ date('d M H:i:s', strtotime($posts->created_at))}}</p>
 {{--        {{dd($comment->User->first_name.''.$comment->User->last_name)}}--}}
-{{--        <p>{{$comment->User->username}}</p>--}}
+{{--        <p>{{$comment->user->username}}</p>--}}
         <p style="color: black">
             {{ $comment->body }}
         </p>
+        <?php
+//        $random =rand(10,10000);
+//        dd($comment->id)
+        ?>
         <a href="" id="reply"></a>
 
         <form method="post" action="{{ route('comments_store',[$comment->post_id]) }}">
@@ -20,7 +24,7 @@
                 <input type="hidden" id="parent_id" name="parent_id" value="{{ $comment->id }}"/>
             </div>
             <div class="form-group">
-                <input id="save-comment" type="submit" class="btn btn-primary" value="Reply"/>
+                <input id="save-reply" type="submit" class="btn btn-primary" value="Reply"/>
             </div>
         </form>
 {{--        <button id="replybutton"> replies</button>--}}
@@ -28,12 +32,23 @@
 {{--        {{dd($comment->parent_id)}}--}}
 
 {{--        <div id="repliesdiv{{$comment->parent_id}}" class="d-none">--}}
+@if(Session::has('replymessage'))
+{{--        {{dd($replyid)}};--}}
+{{--    <div id="replymessage{{$comment->id}}">--}}
+{{--    </div>--}}
+    <script>
+        $('html, body').animate({
 
+            scrollTop: $("#commentreply").offset().top
+        }, 2000);
+
+    </script>
+
+@endif
             @include('front.pages.comments.comments', ['comments' => $comment->replies])
 {{--        </div>--}}
 
     </div>
-
 @endforeach
 {{--{{dd($comment->parent_id)}}--}}
 

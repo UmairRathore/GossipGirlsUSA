@@ -21,10 +21,27 @@ class CommentController extends Controller
 
         $input = $request->all();
         $input['user_id'] = auth()->user()->id;
-
-        Comment::create($input);
-
-        return back()->with('success');
+//        if ($input['parent_id']==null)
+//        {
+//            $check = Comment::create($input);
+//            if ($check) {
+//                $msg = 'User deleted successfully';
+//                Session::flash('msg', $msg);
+//                Session::flash('replymessage');
+//            }
+//            return back();
+//        }
+        $check = Comment::create($input);
+        $replyid = $check->id;
+//        dd($replyid);
+//        dd($check->parent_id);
+        if ($check->parent_id!=null) {
+            return back()->with('replymessage',$replyid);
+        }
+        elseif ($check->parent_id==null){
+            Session::flash('message');
+        return back();
+        }
     }
 
 //    public function store(Request $request)

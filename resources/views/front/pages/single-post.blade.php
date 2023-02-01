@@ -36,7 +36,7 @@
                             <a href="#" class="post-tag">Lifestyle</a>
                             <h4><a href="#" class="post-headline mb-0">{{$posts->title}}</a></h4>
                             <div class="post-meta mb-50">
-                                <p>By <a href="#">{{$posts->fname.''.$posts->lname}}</a></p>
+                                <p>By <a href="#">{{$posts->username}}</a></p>
                                 <p>3 comments</p>
                             </div>
                             <p><?= $posts->description ?></p>
@@ -88,12 +88,25 @@
                             </div>
                         </form>
                         @include('front.pages.comments.comments', ['comments' => $posts->comments, 'post_id' => $posts->id])
+
                         @else
                             <h4>Please <a href="{{route('login')}}"> <h4>Login</h4></a> to comment</h4>
                             @endif
-                        <div id="divdown"></div>
-                            @endforeach
 
+{{--                        <div id="divdown"></div>--}}
+                            @endforeach
+                        @if(Session::has('message'))
+                            <div id="divdown">
+                            </div>
+                            <script>
+
+                                $('html, body').animate({
+                                    scrollTop: $("#divdown").offset().top
+                                }, 2000);
+
+                            </script>
+
+                        @endif
                     </div>
                 </div>
 
@@ -101,21 +114,7 @@
             </div>
         </div>
     </div>
-    @if(Session::get('success'))
 
-        <script>
-
-            $('html, body').animate({
-                scrollTop: $("#divdown").offset().top
-            }, 2000);
-
-            window.setTimeout(function(){
-                $('#commentform').hide().next('#success').show();
-            }, 1500);
-
-        </script>
-
-    @endif
     <!-- ##### Single Blog Area End ##### -->
 {{--<script>--}}
 {{--    $(document).ready(function () {--}}
