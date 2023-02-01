@@ -39,7 +39,7 @@ class HomeController extends Controller
 
 
             $this->data['randomPosts'] = $this->_model::
-            Select('posts.*', 'u.first_name as fname', 'u.last_name as lname')
+            Select('posts.*', 'u.username')
                 ->join('users as u', 'u.id', '=', 'posts.user_id')
                 ->where('u.role_id', '=', '3')
                 //to check logged in Users Zipcode
@@ -48,15 +48,17 @@ class HomeController extends Controller
                 ->inRandomOrder()
                 ->limit(3)
                 ->get();
+//            dd( $this->data['randomPosts']);
             return view($this->_viewPath . 'about-us', $this->data);
         }else{
             $this->data['randomPosts'] = $this->_model::
-            Select('posts.*', 'u.first_name as fname', 'u.last_name as lname')
+            Select('posts.*', 'u.username')
                 ->join('users as u', 'u.id', '=', 'posts.user_id')
                 ->where('u.role_id', '=', '3')
                 ->inRandomOrder()
                 ->limit(3)
                 ->get();
+
             return view($this->_viewPath . 'about-us', $this->data);
         }
 
@@ -79,7 +81,7 @@ class HomeController extends Controller
 
 
             $this->data['randomposts'] = $this->_model::
-            Select('posts.*', 'u.first_name as fname', 'u.last_name as lname')
+            Select('posts.*', 'u.username')
                 ->join('users as u', 'u.id', '=', 'posts.user_id')
 //                ->where('u.role_id', '=', '3')
                 //to check logged in Users Zipcode
@@ -94,7 +96,7 @@ class HomeController extends Controller
 //            dd($check);
 
             $this->data['checkthispost'] = $this->_model::
-            Select('posts.*', 'u.first_name as fname', 'u.last_name as lname')
+            Select('posts.*', 'u.username')
                 ->join('users as u', 'u.id', '=', 'posts.user_id')
 //                ->where('u.role_id', '=', '3')
                 //to check logged in Users Zipcode
@@ -107,7 +109,7 @@ class HomeController extends Controller
 
 
             $this->data['randomsinglepost'] = $this->_model::
-            Select('posts.*', 'u.first_name as fname', 'u.last_name as lname')
+            Select('posts.*', 'u.username')
                 ->join('users as u', 'u.id', '=', 'posts.user_id')
                 ->inRandomOrder()
                 //to check logged in Users Zipcode
@@ -117,7 +119,7 @@ class HomeController extends Controller
                 ->get();
 
             $this->data['latest'] = $this->_model::
-            Select('posts.*', 'u.first_name as fname', 'u.last_name as lname')
+            Select('posts.*', 'u.username')
                 ->join('users as u', 'u.id', '=', 'posts.user_id')
                 ->where('posts.zipcode', '=', $zipcode)
                 ->latest()
@@ -130,7 +132,7 @@ class HomeController extends Controller
         else{
 
             $this->data['randomposts'] = $this->_model::
-            Select('posts.*', 'u.first_name as fname', 'u.last_name as lname')
+            Select('posts.*', 'u.username')
                 ->join('users as u', 'u.id', '=', 'posts.user_id')
                 ->where('u.role_id', '=', '3')
                 ->inRandomOrder()
@@ -139,7 +141,7 @@ class HomeController extends Controller
 
 
             $this->data['checkthispost'] = $this->_model::
-            Select('posts.*', 'u.first_name as fname', 'u.last_name as lname')
+            Select('posts.*', 'u.username')
                 ->join('users as u', 'u.id', '=', 'posts.user_id')
                 ->where('u.role_id', '=', '3')
                 ->inRandomOrder()
@@ -147,14 +149,14 @@ class HomeController extends Controller
                 ->get();
 
             $this->data['randomsinglepost'] = $this->_model::
-            Select('posts.*', 'u.first_name as fname', 'u.last_name as lname')
+            Select('posts.*', 'u.username')
                 ->join('users as u', 'u.id', '=', 'posts.user_id')
                 ->inRandomOrder()
                 ->limit(3)
                 ->get();
 
             $this->data['latest'] = $this->_model::
-            Select('posts.*', 'u.first_name as fname', 'u.last_name as lname')
+            Select('posts.*', 'u.username')
                 ->join('users as u', 'u.id', '=', 'posts.user_id')
                 ->latest()
                 ->first();
@@ -168,7 +170,7 @@ class HomeController extends Controller
     {
 
         $this->data['singlepost'] = $this->_model::
-        Select('posts.*', 'u.first_name as fname', 'u.last_name as lname')
+        Select('posts.*', 'u.username')
             ->join('users as u', 'u.id', '=', 'posts.user_id')
             ->where('posts.id', $id)
             ->get();
@@ -224,5 +226,32 @@ class HomeController extends Controller
     }
 
 
+    public function search(Request $request)
+    {
+
+        if (auth()->check()) {
+//                    $me = $request->ip();   //get IP
+            $me = '206.217.224.86';  //get IP
+            $ip = Location::get($me); //get zipcode from location
+            $zipcode = $ip->zipCode;  //save zipcode
+            $search = $request->query('search');
+            $this->data['search'] = Post::where('zipcode',$zipcode)->where('title', 'Like', "%{$search}%")
+                ->orderBy('id', 'DESC')
+                ->paginate(5);
+
+            $this->data['post'] = Post::all();
+        }
+        else
+        {
+            $search = $request->query('search');
+            $this->data['search'] = Post::where('title', 'Like', "%{$search}%")
+                ->orderBy('id', 'DESC')
+                ->paginate(5);
+
+            $this->data['post'] = Post::all();
+        }
+//        dd($this->data['search']);
+        return view($this->_viewPath . 'search', $this->data);
+    }
 
 }

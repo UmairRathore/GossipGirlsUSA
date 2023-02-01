@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\Blogger\PostController;
 use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Admin\User\UserController;
 use App\Http\Controllers\Auth\LoginController;
@@ -34,30 +35,17 @@ Route::get('/welcome', function () {
     return view('welcome');
 })->name('welcome');
 
-//Route::get('/', function () {
-//    return view('front.pages.index');
-//})->name('index');
 
 Route::get('termsandpolicy', function () {
     return view('front.pages.termsandpolicy');
 })->name('termsandpolicy');
 
-//Route::get('/about-us', function () {
-//    return view('front.pages.about-us');
-//})->name('about-us');
+
 
 Route::get('/comingsoon', function () {
     return view('front.pages.comingsoon');
 })->name('comingsoon');
 
-Route::get('/contact', function () {
-    return view('front.pages.contact');
-})->name('contact.us');
-
-//Route::get('/single-posts', function () {
-//    return view('front.pages.single-post');
-//})->name('single-posts');
-//
 
 
 
@@ -73,8 +61,7 @@ Route::post('/login', [LoginController::class, 'postLogin'])->name('postlogin');
 
 //Logout
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-//Route::posts('/{', [LoginController::class, 'logout'])->name('user-logout');
-//Route::posts('/logout', [LoginController::class, 'logout'])->name('blogger-logout');
+
 
 
 //Registration
@@ -98,12 +85,21 @@ Route::get('/',[HomeController::class,'show'])->name('index');
 Route::get('/about-us',[HomeController::class,'aboutus'])->name('about.us');
 
 //Comment
-    Route::post('/single-posts',[CommentController::class,'store'])->name('comments_store');
-Route::get('/single-posts/{id}',[HomeController::class,'singlePost'])->name('single.posts');
+    Route::post('/single/posts/{id}',[CommentController::class,'store'])->name('comments_store');
+    Route::get('/single-posts/{id}',[HomeController::class,'singlePost'])->name('single.posts');
 
 //User Profile Update
 Route::get('/user-profile/{id}', [HomeController::class, 'edit'])->name('user.profile.edit')->middleware('auth');
 Route::put('/user-profile/{id}', [HomeController::class, 'update'])->name('user.profile.update');
+
+//ContactForm
+    //save contact form
+    Route::get('/contact', [ContactFormController::class,'create'])->name('contact.us');
+    Route::post('/contact',[ContactFormController::class,'store'])->name('contact.store');
+    //show contact
+    Route::get('/contact-list', [AdminController::class, 'showcontact'])->name('contact-list')->middleware('auth');
+    //delete contact
+    Route::get('/contact-list/{id}', [ContactFormController::class, 'destroy'])->name('contact.delete')->middleware('auth');
 
 //Roles List Pages
     Route::get('/admin-list', [AdminController::class, 'show'])->name('admin-list')->middleware('auth');
@@ -111,6 +107,8 @@ Route::put('/user-profile/{id}', [HomeController::class, 'update'])->name('user.
     Route::get('/bloggers-list', [AdminController::class, 'showblogger'])->name('bloggers-list')->middleware('auth');
     //Update Blogger Status
     Route::post('/status-user/{id}', [AdminController::class, 'changeStatus'])->name('status-user');
+    //Delete User
+    Route::get('/users-list/{id}', [AdminController::class, 'destroy'])->name('users.delete')->middleware('auth');
 
 //BLogger Dashbaord Post CRUD
     Route::get('/posts/list',[PostController::class,'show'])->name('posts.show');
@@ -120,3 +118,6 @@ Route::put('/user-profile/{id}', [HomeController::class, 'update'])->name('user.
     Route::put('/posts/update/{id}',[PostController::class,'update'])->name('posts.update');
     Route::get('/posts/delete/{id}',[PostController::class,'destroy'])->name('posts.destroy');
 
+
+//Search Page
+  Route::get('/search',[HomeController::class,'search'])->name('search');

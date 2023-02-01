@@ -4,7 +4,7 @@
 
 <strong>Name: </strong>{{ $name }} <br>
 <strong>Email: </strong>{{ $email }} <br>
-<p>Your Account has been approved.</p>
+<p>Thank you for your wait, Your Account has been approved.</p>
 <a href="">
     <button class="btn-primary">
         Login

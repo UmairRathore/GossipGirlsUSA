@@ -1,5 +1,5 @@
-@extends('backend.layouts.app',['pageSlug'=>'admin-list'])
-@section('title', 'Admins List')
+@extends('backend.layouts.app',['pageSlug'=>'contact-list'])
+@section('title', 'Contacts List')
 
 @section('content')
     <div class="content">
@@ -13,38 +13,34 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table" id="admintable">
+                                <table class="table" id="contacttable">
+                                    @if(Session::has('message'))
+                                        <div class="alert @if(Session::has('message')) {!! session('message') !!} @endif alert-primary">
+                                            <button id="cross" type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                            {!! session('msg') !!}
+                                        </div>
+                                    @endif
                                     <thead class=" text-primary">
                                     <tr>
                                         <!-- 1--> <th>Name</th>
                                         <!-- 2--> <th>email</th>
-                                        <!-- 3--> <th>Ph.No</th>
-                                        <!-- 4--> <th>address</th>
-                                        <!-- 5--> <th>city</th>
-                                        <!-- 6--> <th>zipcode</th>
-                                        <!-- 7--> <th>state</th>
-                                        <!-- 8--> <th>time_in_community</th>
-                                        <!-- 9--> <th>description</th>
-                                        <!-- 10--> <th>status</th>
+                                        <!-- 3--> <th>Subject</th>
+                                        <!-- 4--> <th>message</th>
+                                        <!-- 4--> <th>action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     {{--                                {{dd($user)}}--}}
-                                    @foreach($user as $data)
+                                    @foreach($contact as $data)
                                         <tr>
-                                            <td>{{$data->username}</td>
+                                            <td>{{$data->name}}</td>
                                             <td>{{$data->email}}</td>
-                                            <td>{{$data->phone_number}}</td>
-                                            <td>{{$data->address}}</td>
-                                            <td>{{$data->city}}</td>
-                                            <td>{{$data->zipcode}}</td>
-                                            <td>{{$data->state}}</td>
-                                            <td>{{$data->time_in_community}}</td>
-                                            <td>{{$data->description}}</td>
+                                            <td>{{$data->subject}}</td>
+                                            <td>{{$data->message}}</td>
                                             <td>
-
-
+                                                <a href="{{route('contact.delete',$data->id)}}" onclick="return confirm('Are you sure?')" data-toggle="tooltip" data-placement="top" title="delete" class="far fa-trash-alt ms-text-danger"></a>
                                             </td>
+
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -57,12 +53,12 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
-<script>
-    <!--Datatable-->
-           $(document).ready( function () {
-               $('#admintable').DataTable();
-           } );
+    <script>
+        <!--Datatable-->
+        $(document).ready( function () {
+            $('#contacttable').DataTable();
+        } );
 
-    <!--Datatable-->
-</script>
+        <!--Datatable-->
+    </script>
 @endsection

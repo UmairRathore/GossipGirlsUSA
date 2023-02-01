@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Mail\ApprovedStatusMail;
+use App\Models\ContactForm;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -40,14 +43,20 @@ class AdminController extends Controller
     {
 
         $this->data['user'] = $this->_model::where('role_id', '1')->get();
-//        dd($this->data['user']);
         return view($this->_viewPath . 'admin-list', $this->data);
+    }
+
+    public function showcontact()
+    {
+
+        $this->data['contact'] = ContactForm::all();
+        return view($this->_viewPath . 'contact-list', $this->data);
     }
 
 
     public function showuser()
     {
-        $this->data['user'] = $this->_model::select('users.first_name', 'users.first_name', 'users.email')->where('role_id', '2')->get();
+        $this->data['user'] = $this->_model::where('role_id', '2')->get();
         return view($this->_viewPath . 'user-list', $this->data);
     }
 
@@ -64,17 +73,12 @@ class AdminController extends Controller
         $this->data['user']->save();
         if ($this->data['user']->status == 1) {
             $msg = "Blogger Approved successfully";
-//            Session::flash('msg', $msg);
-//            Session::flash('message', 'alert-success');
-//            Notification::send($this->data['user']->id, new ApprovedEmailNotification);
-//            dd('done');
 
-            Mail::send('backend.email.approved',[
+            Mail::send('backend.email.approved', [
                 'name' => $this->data['user']->name,
                 'email' => $this->data['user']->email,
             ],
-                function ($displaymessage)
-                {
+                function ($displaymessage) {
                     $displaymessage->to('smalljutt420@gmail.com', 'GossipGirls')
                         ->subject('Account Approved');
                 });
@@ -86,18 +90,48 @@ class AdminController extends Controller
             return response()->json(array('statusCode' => 200, 'message' => $msg));
         } else {
             $msg = trans('lang_data.error');
-//            Session::flash('msg', $msg);
-//            Session::flash('message', 'alert-danger');
             return response()->json(array('statusCode' => 302, 'message' => $msg));
         }
     }
 
-//    public function changeStatus(Request $request)
-//    {
-//        $this->data['user'] = $this->_model::find($request->id);
-//        $this->data['user']->status = $request->status;
-//        $this->data['user']->save();
-//
-//        return response()->json(['success'=>'Status change successfully.']);
-//    }
+    public function destroy($id)
+    {
+        $this->data['user'] = $this->_model::find($id);
+        if ($this->data['user']->role_id === 3) {
+            $destination = $this->data['user']->user_image;
+            if (File::exists($destination)) {
+                File::delete($destination);
+            }
+
+            $check = $this->data['user']->delete();
+            if ($check) {
+                    $msg = 'Blogger deleted successfully';
+                    Session::flash('msg', $msg);
+                    Session::flash('message', 'alert-success');
+                } else {
+                    $msg = 'Blogger not deleted successfully';
+                    Session::flash('msg', $msg);
+                    Session::flash('message', 'alert-danger');
+                }
+                return back();
+            }
+            if ($this->data['user']->role_id === 2) {
+                $destination = $this->data['user']->user_image;
+                if (File::exists($destination)) {
+                    File::delete($destination);
+                }
+                $check = $this->data['user']->delete();
+                if ($check) {
+                    $msg = 'User deleted successfully';
+                    Session::flash('msg', $msg);
+                    Session::flash('message', 'alert-success');
+                } else {
+                    $msg = 'User not deleted successfully';
+                    Session::flash('msg', $msg);
+                    Session::flash('message', 'alert-danger');
+                }
+                return back();
+            }
+        }
 }
+

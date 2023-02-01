@@ -93,6 +93,20 @@
             $('.ckeditor').ckeditor();
         });
 
+
+        // <!--alert Hide and Time Duration -->
+        $(document).ready(function () {
+            $("#cross").click(function () {
+                $(".alert-hide").hide();
+            });
+            setTimeout(function () {
+
+                $(".alert-hide").fadeOut("slow")
+
+            }, 6000);
+        });
+        // <!--alert Hide and Time Duration -->
+
         function previewFile(input) {
             var file = $("input[type=file]").get(0).files[0];
 

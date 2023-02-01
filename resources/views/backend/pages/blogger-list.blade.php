@@ -92,15 +92,15 @@
                             <option value="InActive">In Active</option>
                         </select>
                     </div>
-                    @if(Session::has('message'))
-                        <div class="alert @if(Session::has('message')) {!! session('message') !!} @endif alert-dismissible">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                            {!! session('msg') !!}
-                        </div>
-                    @endif
                     <div class="card-body">
                         <div class="table-responsive">
                             <table id="datatable" class="table tablesorter ">
+                                @if(Session::has('message'))
+                                    <div class="alert @if(Session::has('message')) {!! session('message') !!} @endif alert-primary">
+                                        <button id="cross" type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        {!! session('msg') !!}
+                                    </div>
+                                @endif
                                 <thead class=" text-primary">
                                 <tr>
                                     <!-- 1-->
@@ -123,13 +123,14 @@
                                     <th>description</th>
                                     <!-- 10-->
                                     <th>status</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {{--                                {{dd($user)}}--}}
                                 @foreach($user as $data)
                                     <tr>
-                                        <td>{{$data->first_name.' '.$data->last_name}}</td>
+                                        <td>{{$data->username}}</td>
                                         <td>{{$data->email}}</td>
                                         <td>{{$data->phone_number}}</td>
                                         <td>{{$data->address}}</td>
@@ -154,7 +155,12 @@
                                         {{--                                                <span class="slider round"></span>--}}
                                         {{--                                            </label>--}}
 
+                                        <td>
+                                            <a href="{{route('users.delete',$data->id)}}" onclick="return confirm('Are you sure?')" data-toggle="tooltip" data-placement="top" title="delete" class="far fa-trash-alt ms-text-danger"></a>
+
+                                        </td>
                                     </tr>
+
                                 @endforeach
                                 </tbody>
                             </table>
@@ -177,6 +183,20 @@
                 });
 
             });
+
+
+
+        $(document).ready(function () {
+            $("#cross").click(function () {
+                $(".alert-hide").hide();
+            });
+            setTimeout(function () {
+
+                $(".alert-hide").fadeOut("slow")
+
+            }, 6000);
+        });
+
 
 
 

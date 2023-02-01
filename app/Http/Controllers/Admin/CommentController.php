@@ -13,40 +13,24 @@ use function Faker\Provider\pt_BR\check_digit;
 class CommentController extends Controller
 {
 
-//    public function store(Request $request)
-//    {
-//        $request->validate([
-//            'body' => 'required',
-//        ]);
-//
-//        $input = $request->all();
-//        $input['user_id'] = auth()->user()->id;
-//
-//        Comment::create($input);
-//
-//        return back();
-//    }
-
     public function store(Request $request)
     {
+        $request->validate([
+            'body' => 'required',
+        ]);
 
-        try {
-            $request->validate
-            ([
-                'body' => 'required'
-            ]);
-            $input = $request->all();
-            $input['user_id'] = auth()->user()->id;
-//
-            $comment = Comment::create($input);
-            if ($comment) {
-//                return response()->json(['status' => true, 'message' => "Comment Successfully"]);
-//                return response()->json(['status' => true, 'message' => 'Successful', 'comment' => $comment]);
-                echo $comment;
-            }
+        $input = $request->all();
+        $input['user_id'] = auth()->user()->id;
+        $check = Comment::create($input);
+        $replyid = $check->id;
 
-        } catch (Exception $e) {
-            return response()->json(['status' => false, 'message' => $e->getMessage()]);
+        if ($check->parent_id!=null) {
+            return back()->with('replymessage',$replyid);
+        }
+        elseif ($check->parent_id==null){
+            Session::flash('message');
+        return back();
         }
     }
+
 }

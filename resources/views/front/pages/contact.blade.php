@@ -1,52 +1,83 @@
 @extends('front.layout.master')
-@section('title', 'GossipGirl - Contact US')
+@section('subject', 'GossipGirl - Contact US')
 @section('content')
     <!-- ##### Google Map ##### -->
-    <div class="map-area">
-        <div id="googleMap" class="googleMap"></div>
-    </div>
+{{--    <div class="map-area">--}}
+{{--        <div id="googleMap" class="googleMap"></div>--}}
+{{--    </div>--}}
 
     <!-- ##### Contact Area Start ##### -->
     <section class="contact-area section-padding-100">
         <div class="container">
             <div class="row justify-content-center">
                 <!-- Contact Form Area -->
+                <div class="alert-hide" style="margin-top: 10px">
+                    @if(Session::has('message'))
+                        <div class="alert @if(Session::has('message')) {!! session('message') !!} @endif alert-primary">
+                            <button id="cross" type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            {!! session('msg') !!}
+                        </div>
+                    @endif
+                </div>
                 <div class="col-12 col-md-10 col-lg-9">
                     <div class="contact-form">
                         <h5>Get in Touch</h5>
                         <!-- Contact Form -->
-                        <form action="#" method="post">
+                        <form action="{{route('contact.store')}}" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-12 col-md-6">
                                     <div class="group">
-                                        <input type="text" name="name" id="name" required>
+                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                         <span class="highlight"></span>
                                         <span class="bar"></span>
                                         <label>Name</label>
+                                        @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <div class="group">
-                                        <input type="email" name="email" id="email" required>
+                                        <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                         <span class="highlight"></span>
                                         <span class="bar"></span>
                                         <label>Email</label>
+                                        @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="group">
-                                        <input type="text" name="subject" id="subject" required>
+                                        <input id="subject" type="text" class="form-control @error('subject') is-invalid @enderror" name="subject" value="{{ old('subject') }}" required autocomplete="subject" autofocus>
                                         <span class="highlight"></span>
                                         <span class="bar"></span>
-                                        <label>Subject</label>
+                                        <label>subject</label>
+                                        @error('Subject')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
                                     <div class="group">
-                                        <textarea name="message" id="message" required></textarea>
+                                        <textarea name="message" id="message" rows="4" cols="80" class= "form-control @error('message') is-invalid @enderror" required autocomplete="message" autofocus>
+                                            {{ old('message') }}
+                                        </textarea>
                                         <span class="highlight"></span>
                                         <span class="bar"></span>
                                         <label>Message</label>
+                                        @error('message')
+                                        <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -57,45 +88,32 @@
                     </div>
                 </div>
 
-                <div class="col-12 col-md-10 col-lg-3">
-                    <div class="post-sidebar-area">
+{{--                <div class="col-12 col-md-10 col-lg-3">--}}
+{{--                    <div class="post-sidebar-area">--}}
 
-                        <!-- Widget Area -->
-                        <div class="sidebar-widget-area">
-                            <form action="#" class="search-form">
-                                <input type="search" name="search" id="searchForm" placeholder="Search">
-                                <input type="submit" value="submit">
-                            </form>
-                        </div>
+{{--                        <!-- Widget Area -->--}}
 
-                        <!-- Widget Area -->
-                        <div class="sidebar-widget-area">
-                            <h5 class="title subscribe-title">Subscribe to my newsletter</h5>
-                            <div class="widget-content">
-                                <form action="#" class="newsletterForm">
-                                    <input type="email" name="email" id="subscribesForm" placeholder="Your e-mail here">
-                                    <button type="submit" class="btn original-btn">Subscribe</button>
-                                </form>
-                            </div>
-                        </div>
 
-                        <!-- Widget Area -->
-                        <div class="sidebar-widget-area">
-                            <div class="widget-content social-widget d-flex justify-content-between">
-                                <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
-                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
     </section>
     <!-- ##### Contact Area End ##### -->
+    <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
 
+    <script>
+        // <!--alert Hide and Time Duration -->
+        $(document).ready(function () {
+            $("#cross").click(function () {
+                $(".alert-hide").hide();
+            });
+            setTimeout(function () {
+
+                $(".alert-hide").fadeOut("slow")
+
+            }, 6000);
+        });
+        // <!--alert Hide and Time Duration -->
+    </script>
     @endsection

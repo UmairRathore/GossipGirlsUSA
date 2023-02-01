@@ -19,32 +19,32 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('bloggerregistration') }}">
                             @csrf
+{{--                            <div class="row">--}}
+{{--                                <div class="col-md-12 pr-md-1">--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <label for="username" style="color: white">User Name</label>--}}
+{{--                                        <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>--}}
+{{--                                        @error('username')--}}
+{{--                                        <span class="invalid-feedback" role="alert">--}}
+{{--                                            <strong>{{ $message }}</strong>--}}
+{{--                                        </span>--}}
+{{--                                        @enderror--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="row">
-                                <div class="col-md-6 pr-md-1">
+                                <div class="col-md-4 pr-md-1">
                                     <div class="form-group">
-                                        <label for="first_name" style="color: white">First Name</label>
-                                        <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus>
-                                        @error('first_name')
+                                        <label for="username" style="color: white">User Name</label>
+                                        <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+                                        @error('username')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-6 pr-md-1">
-                                    <div class="form-group">
-                                        <label for="last_name" style="color: white">Last Name</label>
-                                        <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" autofocus>
-                                        @error('last_name')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 pr-md-1">
+                                <div class="col-md-4 pr-md-1">
                                     <div class="form-group">
                                         <label for="email" style="color: white"> Email</label>
                                         <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">

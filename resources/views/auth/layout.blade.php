@@ -26,6 +26,23 @@
 
     <link href="{{asset('admin/assets/toastr/css/toastr.min.css')}}" rel="stylesheet">
 </head>
+<style>
+    body, html {
+        height: 1000px;
+    }
+    .bg {
+        /* The image used */
+        background-image: url(admin/assets/img/authbanner.jpeg);
+
+        /* Full height */
+        height: 100%;
+
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
 
 
-<body>
+<body class="bg">

@@ -9,51 +9,51 @@
         <!-- Hero Slides Area -->
         <div class="hero-slides owl-carousel">
             @foreach($randomsinglepost as $posts)
-            <!-- Single Slide -->
-            <div class="single-hero-slide bg-img" style="background-image: url('{{ asset( $posts->post_image) }}');">
-                <div class="container h-100">
-                    <div class="row h-100 align-items-center">
-                        <div class="col-12">
-                            <div class="slide-content text-center">
-                                <div class="post-tag">
-                                    <a href="#" data-animation="fadeInUp">lifestyle</a>
+                <!-- Single Slide -->
+                <div class="single-hero-slide bg-img" style="background-image: url('{{ asset( $posts->post_image) }}');">
+                    <div class="container h-100">
+                        <div class="row h-100 align-items-center">
+                            <div class="col-12">
+                                <div class="slide-content text-center">
+                                    <div class="post-tag">
+                                        <a href="#" data-animation="fadeInUp">lifestyle</a>
+                                    </div>
+                                    <h2 data-animation="fadeInUp" data-delay="250ms"><a href="{{route('single.posts',[$posts->id])}}">{{$posts->title}}</a></h2>
                                 </div>
-                                <h2 data-animation="fadeInUp" data-delay="250ms"><a href="{{route('single.posts',[$posts->id])}}">{{$posts->title}}</a></h2>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-{{--            <!-- Single Slide -->--}}
-{{--            <div class="single-hero-slide bg-img" style="background-image: url(/assets/img/bg-img/b1.jpg);">--}}
-{{--                <div class="container h-100">--}}
-{{--                    <div class="row h-100 align-items-center">--}}
-{{--                        <div class="col-12">--}}
-{{--                            <div class="slide-content text-center">--}}
-{{--                                <div class="post-tag">--}}
-{{--                                    <a href="#" data-animation="fadeInUp">lifestyle</a>--}}
-{{--                                </div>--}}
-{{--                                <h2 data-animation="fadeInUp" data-delay="250ms"><a href="{{route('single.posts',,[$posts->id])}}">Take a look at last night’s party!</a></h2>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <!-- Single Slide -->--}}
-{{--            <div class="single-hero-slide bg-img" style="background-image: url(/assets/img/bg-img/b3.jpg);">--}}
-{{--                <div class="container h-100">--}}
-{{--                    <div class="row h-100 align-items-center">--}}
-{{--                        <div class="col-12">--}}
-{{--                            <div class="slide-content text-center">--}}
-{{--                                <div class="post-tag">--}}
-{{--                                    <a href="#" data-animation="fadeInUp">lifestyle</a>--}}
-{{--                                </div>--}}
-{{--                                <h2 data-animation="fadeInUp" data-delay="250ms"><a href="{{route('single.posts')}}">Take a look at last night’s party!</a></h2>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
+                {{--            <!-- Single Slide -->--}}
+                {{--            <div class="single-hero-slide bg-img" style="background-image: url(/assets/img/bg-img/b1.jpg);">--}}
+                {{--                <div class="container h-100">--}}
+                {{--                    <div class="row h-100 align-items-center">--}}
+                {{--                        <div class="col-12">--}}
+                {{--                            <div class="slide-content text-center">--}}
+                {{--                                <div class="post-tag">--}}
+                {{--                                    <a href="#" data-animation="fadeInUp">lifestyle</a>--}}
+                {{--                                </div>--}}
+                {{--                                <h2 data-animation="fadeInUp" data-delay="250ms"><a href="{{route('single.posts',,[$posts->id])}}">Take a look at last night’s party!</a></h2>--}}
+                {{--                            </div>--}}
+                {{--                        </div>--}}
+                {{--                    </div>--}}
+                {{--                </div>--}}
+                {{--            </div>--}}
+                {{--            <!-- Single Slide -->--}}
+                {{--            <div class="single-hero-slide bg-img" style="background-image: url(/assets/img/bg-img/b3.jpg);">--}}
+                {{--                <div class="container h-100">--}}
+                {{--                    <div class="row h-100 align-items-center">--}}
+                {{--                        <div class="col-12">--}}
+                {{--                            <div class="slide-content text-center">--}}
+                {{--                                <div class="post-tag">--}}
+                {{--                                    <a href="#" data-animation="fadeInUp">lifestyle</a>--}}
+                {{--                                </div>--}}
+                {{--                                <h2 data-animation="fadeInUp" data-delay="250ms"><a href="{{route('single.posts')}}">Take a look at last night’s party!</a></h2>--}}
+                {{--                            </div>--}}
+                {{--                        </div>--}}
+                {{--                    </div>--}}
+                {{--                </div>--}}
+                {{--            </div>--}}
             @endforeach
         </div>
     </div>
@@ -64,18 +64,18 @@
         <div class="container">
             <div class="row align-items-end">
                 <!-- Single Blog Area -->
-{{--                <div class="col-12 col-lg-4">--}}
-{{--                    <div class="single-blog-area clearfix mb-100">--}}
-{{--                        <!-- Blog Content -->--}}
-{{--                        <div class="single-blog-content">--}}
-{{--                            <div class="line"></div>--}}
-{{--                            <a href="#" class="post-tag">Lifestyle</a>--}}
-{{--                            <h4><a href="#" class="post-headline">Welcome to this Lifestyle blog</a></h4>--}}
-{{--                            <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt. Morbi sodales, dolor id ultricies dictum</p>--}}
-{{--                            <a href="#" class="btn original-btn">Read More</a>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
+                {{--                <div class="col-12 col-lg-4">--}}
+                {{--                    <div class="single-blog-area clearfix mb-100">--}}
+                {{--                        <!-- Blog Content -->--}}
+                {{--                        <div class="single-blog-content">--}}
+                {{--                            <div class="line"></div>--}}
+                {{--                            <a href="#" class="post-tag">Lifestyle</a>--}}
+                {{--                            <h4><a href="#" class="post-headline">Welcome to this Lifestyle blog</a></h4>--}}
+                {{--                            <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt. Morbi sodales, dolor id ultricies dictum</p>--}}
+                {{--                            <a href="#" class="btn original-btn">Read More</a>--}}
+                {{--                        </div>--}}
+                {{--                    </div>--}}
+                {{--                </div>--}}
                 @foreach($checkthispost as $posts)
                     <div class="col-12 col-lg-4">
                         <div class="single-blog-area clearfix mb-100">
@@ -83,29 +83,30 @@
                             <div class="single-blog-content">
                                 <div class="line"></div>
                                 <a href="#" class="post-tag">Lifestyle</a>
-                                <h4><a href="#" class="post-headline">{{$posts->title}}</a></h4>
+                                <h4><a href="{{route('single.posts',[$posts->id])}}" class="post-headline">{{$posts->title}}</a></h4>
+
                                 <p><?= $posts->description ?></p>
                                 <a href="{{route('single.posts',[$posts->id])}}" class="btn original-btn">Read More</a>
                             </div>
                         </div>
                     </div>
-                @endforeach
-                <!-- Single Blog Area -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="single-catagory-area clearfix mb-100">
-                        <img src="{{asset('assets/img/blog-img/1.jpg')}}" alt="">
-                        <!-- Catagory Title -->
-                        <div class="catagory-title">
-                            <a href="#">Lifestyle posts</a>
+                    <!-- Single Blog Area -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="single-catagory-area clearfix mb-100">
+                            <a href="{{route('single.posts',[$posts->id])}}" ><img src="{{$posts->post_image}}" alt=""></a>
+                            <!-- Catagory Title -->
+                            <div class="catagory-title">
+                                <a href="{{route('single.posts',[$latest->id])}}">Lifestyle posts</a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
 
 
                 <!-- Single Blog Area -->
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-catagory-area clearfix mb-100">
-                        <img src="{{$latest->post_image}}" alt="">
+                        <a href="{{route('single.posts',[$posts->id])}}" ><img src="{{$latest->post_image}}" alt=""></a>
                         <!-- Catagory Title -->
                         <div class="catagory-title">
                             <a href="{{route('single.posts',[$latest->id])}}">latest posts</a>
@@ -126,7 +127,7 @@
                             <div class="row align-items-center">
                                 <div class="col-12 col-md-6">
                                     <div class="single-blog-thumbnail">
-                                        <img src="{{$posts->post_image}}" alt="">
+                                        <a href="{{route('single.posts',[$posts->id])}}" ><img src="{{$posts->post_image}}" alt=""></a>
                                         <div class="post-date">
                                             <a href="#">{{ $posts->created_at->format('d') }}<span>{{ $posts->created_at->format('M') }}</span></a>
                                         </div>
@@ -137,10 +138,10 @@
                                     <div class="single-blog-content">
                                         <div class="line"></div>
                                         <a href="#" class="post-tag">Lifestyle</a>
-                                        <h4><a href="#" class="post-headline">{{$posts->title}}</a></h4>
+                                        <h4><a href="{{route('single.posts',[$latest->id])}}" class="post-headline">{{$posts->title}}</a></h4>
                                         <p><?= $posts->description ?></p>
                                         <div class="post-meta">
-                                            <p>By <a href="#">{{$posts->fname.''.$posts->lname}}</a></p>
+                                            <p>By <a href="#">{{$posts->username}}</a></p>
                                             <p>3 comments</p>
                                         </div>
                                     </div>

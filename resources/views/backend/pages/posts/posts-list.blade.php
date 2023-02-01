@@ -15,11 +15,11 @@
                     <div class="card-body">
                         <div class="table-responsive">
                             <table id="datatable" class="table tablesorter">
-                                @if(Session('info_deleted'))
-                                    <div class="alert alert-danger" role="alert">
-                                        {{Session('info_deleted')}}
+                                @if(Session::has('message'))
+                                    <div class="alert @if(Session::has('message')) {!! session('message') !!} @endif alert-primary">
+                                        <button id="cross" type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                        {!! session('msg') !!}
                                     </div>
-
                                 @endif
                                 <thead class=" text-primary">
                                 <tr>

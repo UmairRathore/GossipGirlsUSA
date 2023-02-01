@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin\User;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
@@ -43,8 +44,7 @@ class UserController extends Controller
     {
 //        dd($id);
         $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
+            'username' => 'required',
             'email' => 'required|email',
 //            'password' => '',
 //            'phone_number' => '',
@@ -57,13 +57,13 @@ class UserController extends Controller
         ]);
         $user = $this->_model::find($id);
 //        dd($user->id);
-        $user->first_name = $request->input('first_name');
-        $user->last_name = $request->input('last_name');
+        $user->username = $request->input('username');
         $user->email = $request->input('email');
         if ($request->password)
         {
             $user->password = bcrypt($request->password);
         }
+
         $user->phone_number = $request->input('phone_number');
         $user->address = $request->input('address');
         $user->city = $request->input('city');
@@ -71,9 +71,25 @@ class UserController extends Controller
         $user->state = $request->input('state');
         $user->time_in_community = $request->input('time_in_community');
         $user->description = $request->input('description');
-//        $user->password = hash::make($request->password);
+        if ($request->hasfile('user_image')) {
+            //code for remove old file
+            $destination = $user->user_image;
+//            dd($destination);
+            if (File::exists($destination)) {
+                File::delete($destination);
+            }
+            //upload new file
+            $file = $request->file('user_image');
+            $path = 'images/';
+//                $extension=$file->getClientOriginalExtension();
+            $filename = $path . time() . '-' . $file->getClientOriginalName();
+            $file->move($path, $filename);
+            $user->user_image = $filename;
+        }
+
 //        dd($user);
         $check = $user->update();
+
         if ($check) {
             $msg = " Profile Updated successfully";
             Session::flash('msg', $msg);
