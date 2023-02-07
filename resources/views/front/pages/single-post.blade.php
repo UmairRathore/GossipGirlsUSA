@@ -5,7 +5,6 @@
     <div class="single-blog-wrapper section-padding-0-100">
 
         <!-- Single Blog Area  -->
-        @foreach($singlepost as $posts)
         <div class="single-blog-area blog-style-2 mb-50">
             <div class="single-blog-thumbnail">
                 <img src="img/bg-img/b5.jpg" alt="">
@@ -14,7 +13,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="post-date">
-                                    {{$posts->created_at->diffForHumans()}}
+                                    <a href="#">12 <span>march</span></a>
                                 </div>
                             </div>
                         </div>
@@ -30,18 +29,30 @@
                     <!-- Single Blog Area  -->
                     <div class="single-blog-area blog-style-2 mb-50">
                         <!-- Blog Content -->
-
-
+{{--                        {{dd($singlepost)}}--}}
+                        @foreach($singlepost as $posts)
                         <div class="single-blog-content">
                             <div class="line"></div>
                             <a href="#" class="post-tag">Lifestyle</a>
                             <h4><a href="#" class="post-headline mb-0">{{$posts->title}}</a></h4>
                             <div class="post-meta mb-50">
                                 <p>By <a href="#">{{$posts->username}}</a></p>
-                                <p>{{$commentcount}} comments</p>
+                                <p>3 comments</p>
                             </div>
                             <p><?= $posts->description ?></p>
 
+{{--                            <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum --}}
+{{--                                convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt. --}}
+{{--                                Morbi sodales, dolor id ultricies dictum, diam odio tempor purus, at ultrices elit nulla ac nisl.--}}
+{{--                                Vestibulum enim sapien, blandit finibus elit vitae, venenatis tempor enim. Ut varius eros at fringilla aliquet. --}}
+{{--                                Sed sed sodales quam. Nam fermentum sed turpis sollicitudin lobortis.</p>--}}
+
+{{--                            <p>Proin a nibh dignissim, volutpat mauris vitae, pellentesque nisi. In euismod non ligula at gravida. --}}
+{{--                                Nunc blandit eget enim vel mattis. Sed semper, purus ac suscipit scelerisque, eros dui fermentum tortor,--}}
+{{--                                vitae facilisis lacus nulla sit amet diam. Nullam eget sagittis mi. Suspendisse vitae volutpat lorem. --}}
+{{--                                Cras porta velit id sagittis ultrices. Maecenas efficitur tellus ac aliquam molestie. Morbi vel ipsum gravida,--}}
+{{--                                ultricies nunc sed, posuere purus. Donec ipsum lectus, congue ut fermentum vitae, molestie hendrerit erat. --}}
+{{--                                Sed lacinia accumsan egestas. Cras ac ipsum a ante placerat pellentesque.</p>--}}
                         </div>
 
                     </div>
@@ -54,10 +65,9 @@
                         <div class="author-info">
                             <div class="line"></div>
                             <span class="author-role">Author</span>
-                            <h4><a href="{{route('blogger.posts',$posts->user_id)}}" class="author-name">{{$posts->username}}</a></h4>
-<p>
-    <?= $posts->description ?>
-</p>                        </div>
+                            <h4><a href="#" class="author-name">{{$posts->username}}</a></h4>
+                            <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero.</p>
+                        </div>
                     </div>
 
                     <!-- Comment Area Start -->
@@ -83,7 +93,7 @@
                             <h4>Please <a href="{{route('login')}}"> <h4>Login</h4></a> to comment</h4>
                             @endif
 
-
+{{--                        <div id="divdown"></div>--}}
                             @endforeach
                         @if(Session::has('message'))
                             <div id="divdown">
@@ -105,4 +115,26 @@
         </div>
     </div>
 
+    <!-- ##### Single Blog Area End ##### -->
+{{--<script>--}}
+{{--    $(document).ready(function () {--}}
+{{--        $("#submit").click(function (e) {--}}
+{{--            // $("#repliesdiv").toggleClass("d-none");--}}
+{{--            $('html, body').animate({--}}
+{{--                scrollTop: ($('#divdown').offset().top )--}}
+{{--            }, 200);--}}
+
+{{--        });--}}
+{{--        --}}
+{{--    // $(document).ready(function() {--}}
+{{--    //     $('#button[type="submit"]').click()--}}
+{{--    //     {--}}
+{{--    //         var div = $('div#results')--}}
+{{--    //         var o = div.offset().top; //gets the top position of the div--}}
+{{--    //         var h = div.outerHeight(); // gets the height of the div--}}
+{{--    //--}}
+{{--    //         div.scrollTop( o + h ); //scrolls page to the bottom of the div--}}
+{{--    //--}}
+{{--    //     }});--}}
+{{--</script>--}}
 @endsection
