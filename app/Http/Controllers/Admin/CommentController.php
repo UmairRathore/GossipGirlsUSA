@@ -21,20 +21,9 @@ class CommentController extends Controller
 
         $input = $request->all();
         $input['user_id'] = auth()->user()->id;
-//        if ($input['parent_id']==null)
-//        {
-//            $check = Comment::create($input);
-//            if ($check) {
-//                $msg = 'User deleted successfully';
-//                Session::flash('msg', $msg);
-//                Session::flash('replymessage');
-//            }
-//            return back();
-//        }
         $check = Comment::create($input);
         $replyid = $check->id;
-//        dd($replyid);
-//        dd($check->parent_id);
+
         if ($check->parent_id!=null) {
             return back()->with('replymessage',$replyid);
         }
@@ -44,26 +33,4 @@ class CommentController extends Controller
         }
     }
 
-//    public function store(Request $request)
-//    {
-//
-//        try {
-//            $request->validate
-//            ([
-//                'body' => 'required'
-//            ]);
-//            $input = $request->all();
-//            $input['user_id'] = auth()->user()->id;
-////
-//            $comment = Comment::create($input);
-//            if ($comment) {
-////                return response()->json(['status' => true, 'message' => "Comment Successfully"]);
-//                return response()->json(['status' => true, 'message' => 'Successful', 'comment' => $comment]);
-////                return back();
-//            }
-//
-//        } catch (Exception $e) {
-//            return response()->json(['status' => false, 'message' => $e->getMessage()]);
-//        }
-//    }
 }

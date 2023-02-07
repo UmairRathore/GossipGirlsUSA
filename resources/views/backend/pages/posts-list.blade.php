@@ -7,10 +7,7 @@
             <div class="col-md-12">
                 <div class="card ">
                     <div class="card-header">
-                        <h4 class="card-title"> Posts Table</h4>
-                        <div class="col-mb-11 d-flex align-items-center">
-                            <a href="{{route('posts.create')}}" class="btn btn-primary ms-text-primary">Add Post </a>
-                        </div>
+                        <h4 class="card-title"> Bloggers Posts Table</h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -23,6 +20,7 @@
                                 @endif
                                 <thead class=" text-primary">
                                 <tr>
+                                    <th>Blogger Name</th>
                                     <th>Post Image</th>
                                     <th>Title</th>
                                     <th>Description</th>
@@ -33,6 +31,7 @@
                                 {{--                                {{dd($user)}}--}}
                                 @foreach($posts as $data)
                                     <tr>
+                                        <td>{{$data->username}}</td>
                                         <td>
                                             @if($data->post_image)
                                                 <img src="{{ asset($data->post_image) }}" width="70px" height="70px"
@@ -46,10 +45,7 @@
                                         <td  class="myrow">
                                             <?= $data->description ?></td>
                                         <td>
-                                                <a href="{{route('posts.destroy',$data->id)}}" onclick="return confirm('Are you sure?')" data-toggle="tooltip" data-placement="top" title="delete" class="far fa-trash-alt ms-text-danger"></a>
-
-                                                <a href="{{route('posts.edit',$data->id)}}" data-toggle="tooltip" data-placement="top" title="edit" class="fas fa-pencil-alt ms-text-primary"></a>
-
+                                            <a href="{{route('bloggersposts.destroy',$data->id)}}" onclick="return confirm('Are you sure?')" data-toggle="tooltip" data-placement="top" title="delete" class="far fa-trash-alt ms-text-danger"></a>
                                         </td>
 
                                     </tr>

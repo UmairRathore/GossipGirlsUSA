@@ -19,19 +19,6 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('bloggerregistration') }}">
                             @csrf
-{{--                            <div class="row">--}}
-{{--                                <div class="col-md-12 pr-md-1">--}}
-{{--                                    <div class="form-group">--}}
-{{--                                        <label for="username" style="color: white">User Name</label>--}}
-{{--                                        <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>--}}
-{{--                                        @error('username')--}}
-{{--                                        <span class="invalid-feedback" role="alert">--}}
-{{--                                            <strong>{{ $message }}</strong>--}}
-{{--                                        </span>--}}
-{{--                                        @enderror--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
                             <div class="row">
                                 <div class="col-md-4 pr-md-1">
                                     <div class="form-group">
@@ -42,6 +29,7 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
+                                        <small>Do no enter your real name</small><br>
                                     </div>
                                 </div>
                                 <div class="col-md-4 pr-md-1">

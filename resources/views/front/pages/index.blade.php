@@ -8,53 +8,23 @@
     <div class="hero-area">
         <!-- Hero Slides Area -->
         <div class="hero-slides owl-carousel">
-            @foreach($randomsinglepost as $posts)
+{{--            @if(isset($posts))--}}
+            @foreach($randomslidesinglepost as $posts)
                 <!-- Single Slide -->
                 <div class="single-hero-slide bg-img" style="background-image: url('{{ asset( $posts->post_image) }}');">
                     <div class="container h-100">
                         <div class="row h-100 align-items-center">
                             <div class="col-12">
                                 <div class="slide-content text-center">
-                                    <div class="post-tag">
-                                        <a href="#" data-animation="fadeInUp">lifestyle</a>
-                                    </div>
+
                                     <h2 data-animation="fadeInUp" data-delay="250ms"><a href="{{route('single.posts',[$posts->id])}}">{{$posts->title}}</a></h2>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                {{--            <!-- Single Slide -->--}}
-                {{--            <div class="single-hero-slide bg-img" style="background-image: url(/assets/img/bg-img/b1.jpg);">--}}
-                {{--                <div class="container h-100">--}}
-                {{--                    <div class="row h-100 align-items-center">--}}
-                {{--                        <div class="col-12">--}}
-                {{--                            <div class="slide-content text-center">--}}
-                {{--                                <div class="post-tag">--}}
-                {{--                                    <a href="#" data-animation="fadeInUp">lifestyle</a>--}}
-                {{--                                </div>--}}
-                {{--                                <h2 data-animation="fadeInUp" data-delay="250ms"><a href="{{route('single.posts',,[$posts->id])}}">Take a look at last night’s party!</a></h2>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--            </div>--}}
-                {{--            <!-- Single Slide -->--}}
-                {{--            <div class="single-hero-slide bg-img" style="background-image: url(/assets/img/bg-img/b3.jpg);">--}}
-                {{--                <div class="container h-100">--}}
-                {{--                    <div class="row h-100 align-items-center">--}}
-                {{--                        <div class="col-12">--}}
-                {{--                            <div class="slide-content text-center">--}}
-                {{--                                <div class="post-tag">--}}
-                {{--                                    <a href="#" data-animation="fadeInUp">lifestyle</a>--}}
-                {{--                                </div>--}}
-                {{--                                <h2 data-animation="fadeInUp" data-delay="250ms"><a href="{{route('single.posts')}}">Take a look at last night’s party!</a></h2>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--            </div>--}}
             @endforeach
+{{--                @endif--}}
         </div>
     </div>
     <!-- ##### Hero Area End ##### -->
@@ -63,29 +33,14 @@
     <div class="blog-wrapper section-padding-100 clearfix">
         <div class="container">
             <div class="row align-items-end">
-                <!-- Single Blog Area -->
-                {{--                <div class="col-12 col-lg-4">--}}
-                {{--                    <div class="single-blog-area clearfix mb-100">--}}
-                {{--                        <!-- Blog Content -->--}}
-                {{--                        <div class="single-blog-content">--}}
-                {{--                            <div class="line"></div>--}}
-                {{--                            <a href="#" class="post-tag">Lifestyle</a>--}}
-                {{--                            <h4><a href="#" class="post-headline">Welcome to this Lifestyle blog</a></h4>--}}
-                {{--                            <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt. Morbi sodales, dolor id ultricies dictum</p>--}}
-                {{--                            <a href="#" class="btn original-btn">Read More</a>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
                 @foreach($checkthispost as $posts)
                     <div class="col-12 col-lg-4">
                         <div class="single-blog-area clearfix mb-100">
                             <!-- Blog Content -->
                             <div class="single-blog-content">
                                 <div class="line"></div>
-                                <a href="#" class="post-tag">Lifestyle</a>
                                 <h4><a href="{{route('single.posts',[$posts->id])}}" class="post-headline">{{$posts->title}}</a></h4>
-
-                                <p><?= $posts->description ?></p>
+                                    <p><?= \Illuminate\Support\Str::limit($posts->description, 300, $end='...') ?></p>
                                 <a href="{{route('single.posts',[$posts->id])}}" class="btn original-btn">Read More</a>
                             </div>
                         </div>
@@ -101,16 +56,16 @@
                         </div>
                     </div>
                 @endforeach
-
-
                 <!-- Single Blog Area -->
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-catagory-area clearfix mb-100">
+                    @if(isset($latest))
                         <a href="{{route('single.posts',[$posts->id])}}" ><img src="{{$latest->post_image}}" alt=""></a>
                         <!-- Catagory Title -->
                         <div class="catagory-title">
                             <a href="{{route('single.posts',[$latest->id])}}">latest posts</a>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -120,7 +75,7 @@
             <div class="row">
                 <div class="col-12 col-lg-9">
 
-                    <!-- Single Blog Area  -->
+                    @if(isset($randomposts))
                     <!-- Single Blog Area  -->
                     @foreach($randomposts as $posts)
                         <div class="single-blog-area blog-style-2 mb-50 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1000ms">
@@ -129,7 +84,8 @@
                                     <div class="single-blog-thumbnail">
                                         <a href="{{route('single.posts',[$posts->id])}}" ><img src="{{$posts->post_image}}" alt=""></a>
                                         <div class="post-date">
-                                            <a href="#">{{ $posts->created_at->format('d') }}<span>{{ $posts->created_at->format('M') }}</span></a>
+                                            {{$posts->created_at->diffForHumans()}}
+
                                         </div>
                                     </div>
                                 </div>
@@ -137,24 +93,18 @@
                                     <!-- Blog Content -->
                                     <div class="single-blog-content">
                                         <div class="line"></div>
-                                        <a href="#" class="post-tag">Lifestyle</a>
                                         <h4><a href="{{route('single.posts',[$latest->id])}}" class="post-headline">{{$posts->title}}</a></h4>
-                                        <p><?= $posts->description ?></p>
+                                        <p><?= \Illuminate\Support\Str::limit($posts->description, 500, $end='...') ?></p>
                                         <div class="post-meta">
                                             <p>By <a href="#">{{$posts->username}}</a></p>
-                                            <p>3 comments</p>
+                                            <p>{{$commentcount}} comments</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
-
-
-                    <!-- Load More -->
-                    <div class="load-more-btn mt-100 wow fadeInUp" data-wow-delay="0.7s" data-wow-duration="1000ms">
-                        <a href="#" class="btn original-btn">Read More</a>
-                    </div>
+                        @endif
                 </div>
 
                 @include('front.pages.sidebar')
