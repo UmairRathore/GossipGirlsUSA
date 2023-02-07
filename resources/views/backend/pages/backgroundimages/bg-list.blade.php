@@ -1,5 +1,5 @@
-@extends('backend.layouts.app',['pageSlug' => 'posts-list'])
-@section('title', 'Posts List')
+@extends('backend.layouts.app',['pageSlug' => 'background-list'])
+@section('title', 'background List')
 
 @section('content')
     <div class="content">
@@ -7,10 +7,7 @@
             <div class="col-md-12">
                 <div class="card ">
                     <div class="card-header">
-                        <h4 class="card-title"> Posts Table</h4>
-                        <div class="col-mb-11 d-flex align-items-center">
-                            <a href="{{route('posts.create')}}" class="btn btn-primary ms-text-primary">Add Post </a>
-                        </div>
+                        <h4 class="card-title"> Background Images Table</h4>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -23,33 +20,35 @@
                                 @endif
                                 <thead class=" text-primary">
                                 <tr>
-                                    <th>Post Image</th>
-                                    <th>Title</th>
-                                    <th>Description</th>
+                                    <th>Auth Image</th>
+                                    <th>About Us banner</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 {{--                                {{dd($user)}}--}}
-                                @foreach($posts as $data)
+                                @foreach($background as $data)
                                     <tr>
                                         <td>
-                                            @if($data->post_image)
-                                                <img src="{{ asset($data->post_image) }}" width="70px" height="70px"
+                                            @if($data->auth_bg)
+                                                <img src="{{ asset($data->auth_bg) }}" width="70px" height="70px"
                                                      class="img-thumbnail img-fluid blog-img" alt="Image">
                                             @else
                                                 <img src="{{asset('images/default.png')}}" width="70px" height="70px"
                                                      class="img-thumbnail img-fluid blog-img" alt="no image">
                                             @endif
                                         </td>
-                                        <td>{{$data->title}}</td>
-                                        <td  class="myrow">
-                                            <?= $data->description ?></td>
                                         <td>
-                                                <a href="{{route('posts.destroy',$data->id)}}" onclick="return confirm('Are you sure?')" data-toggle="tooltip" data-placement="top" title="delete" class="far fa-trash-alt ms-text-danger"></a>
-
-                                                <a href="{{route('posts.edit',$data->id)}}" data-toggle="tooltip" data-placement="top" title="edit" class="fas fa-pencil-alt ms-text-primary"></a>
-
+                                            @if($data->aboutus_bg)
+                                                <img src="{{ asset($data->aboutus_bg) }}" width="70px" height="70px"
+                                                     class="img-thumbnail img-fluid blog-img" alt="Image">
+                                            @else
+                                                <img src="{{asset('images/default.png')}}" width="70px" height="70px"
+                                                     class="img-thumbnail img-fluid blog-img" alt="no image">
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{route('bg.edit',$data->id)}}" data-toggle="tooltip" data-placement="top" title="edit" class="fas fa-pencil-alt ms-text-primary"></a>
                                         </td>
 
                                     </tr>
@@ -77,14 +76,6 @@
 
             }, 6000);
         });
-
-        $(function() {
-            $("td.myrow").mouseenter(function() {
-                $(this).attr("title", $(this).html());
-            });
-
-        });
-
 
     </script>
 @endsection

@@ -4,12 +4,15 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Mail\ApprovedStatusMail;
+use App\Models\BackgroundImages;
 use App\Models\ContactForm;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
@@ -38,6 +41,132 @@ class AdminController extends Controller
 //
 //        return view($this->_viewPath .'dashboard',compact( $postcount,$bloggercount,$usercount));
 //    }
+
+    public function PostsLists()
+    {
+        $this->data['posts'] = Post:: Select('posts.*', 'u.username')
+            ->join('users as u', 'u.id', '=', 'posts.user_id')->get();
+        return view($this->_viewPath . 'posts-list', $this->data);
+    }
+
+    public function Postsdestroy()
+    {
+        $this->data['posts'] = Post:: Select('posts.*', 'u.username')
+            ->join('users as u', 'u.id', '=', 'posts.user_id')->get();
+        return view($this->_viewPath . 'posts-list', $this->data);
+    }
+
+
+
+    public function Bg()
+    {
+        $this->data['background'] = BackgroundImages::all();
+        return view($this->_viewPath . 'backgroundimages.bg-list', $this->data);
+    }
+
+    public function createBg()
+    {
+        return view($this->_viewPath . 'backgroundimages.create-bg');
+    }
+
+
+    public function storeBg(Request $request)
+    {
+
+        $this->data['background'] = new BackgroundImages();
+        if ($request->hasfile('auth_bg')) {
+            //upload new file
+            $file = $request->file('auth_bg');
+            $path = 'images/';
+//                $extension=$file->getClientOriginalExtension();
+            $filename = $path . time() . '-' . $file->getClientOriginalName();
+            $file->move($path, $filename);
+            $this->data['background']->auth_bg = $filename;
+        } else {
+
+            $this->data['background']->auth_bg = 'images/default.png';
+        }
+        if ($request->hasfile('aboutus_bg')) {
+            //upload new file
+            $file = $request->file('aboutus_bg');
+            $path = 'images/';
+//                $extension=$file->getClientOriginalExtension();
+            $filename = $path . time() . '-' . $file->getClientOriginalName();
+            $file->move($path, $filename);
+            $this->data['background']->aboutus_bg = $filename;
+        } else {
+
+            $this->data['background']->aboutus_bg = 'images/default.png';
+        }
+
+
+        $check = $this->data['background']->save();
+        if ($check) {
+            $msg = 'Background created successfully';
+            Session::flash('msg', $msg);
+            Session::flash('message', 'alert-success');
+        } else {
+            $msg = 'Background not created successfully';
+            Session::flash('msg', $msg);
+            Session::flash('message', 'alert-danger');
+        }
+        return back();
+    }
+
+    public function editBg($id)
+    {
+        $this->data['background'] = BackgroundImages::find($id);
+        return view($this->_viewPath . 'backgroundimages.update-bg', $this->data);
+    }
+
+    public function updateBg(Request $request, $id)
+    {
+
+        $this->data['background'] = BackgroundImages::find($id);
+        if ($request->hasfile('auth_bg')) {
+            //code for remove old file
+            $destination = $this->data['background']->auth_bg;
+//            dd($destination);
+            if (File::exists($destination)) {
+                File::delete($destination);
+            }
+            //upload new file
+            $file = $request->file('auth_bg');
+            $path = 'images/';
+//                $extension=$file->getClientOriginalExtension();
+            $filename = $path . time() . '-' . $file->getClientOriginalName();
+            $file->move($path, $filename);
+            $this->data['background']->auth_bg = $filename;
+        }
+        if ($request->hasfile('aboutus_bg')) {
+            //code for remove old file
+            $destination = $this->data['background']->aboutus_bg;
+//            dd($destination);
+            if (File::exists($destination)) {
+                File::delete($destination);
+            }
+            //upload new file
+            $file = $request->file('aboutus_bg');
+            $path = 'images/';
+//                $extension=$file->getClientOriginalExtension();
+            $filename = $path . time() . '-' . $file->getClientOriginalName();
+            $file->move($path, $filename);
+            $this->data['background']->aboutus_bg = $filename;
+        }
+
+        $check = $this->data['background']->update();
+        if ($check) {
+            $msg = 'background updated successfully';
+            Session::flash('msg', $msg);
+            Session::flash('message', 'alert-success');
+        } else {
+            $msg = 'background not updated successfully';
+            Session::flash('msg', $msg);
+            Session::flash('message', 'alert-danger');
+        }
+        return back();
+    }
+
 
     public function show()
     {
@@ -72,20 +201,20 @@ class AdminController extends Controller
         $this->data['user']->status = $request->status;
         $this->data['user']->save();
         if ($this->data['user']->status == 1) {
-            $msg = "Blogger Approved successfully";
+            $msg = "Approved successfully";
 
             Mail::send('backend.email.approved', [
                 'name' => $this->data['user']->name,
                 'email' => $this->data['user']->email,
             ],
                 function ($displaymessage) {
-                    $displaymessage->to('smalljutt420@gmail.com', 'GossipGirls')
+                    $displaymessage->to($this->data['user']->email, 'GossipGirls')
                         ->subject('Account Approved');
                 });
 
             return response()->json(array('statusCode' => 200, 'message' => $msg));
         } elseif ($this->data['user']->status == 0) {
-            $msg = "Blogger Disapproved successfully";
+            $msg = "Disapproved successfully";
 
             return response()->json(array('statusCode' => 200, 'message' => $msg));
         } else {

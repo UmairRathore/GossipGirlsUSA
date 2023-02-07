@@ -40,7 +40,7 @@
                                             <td>{{$data->zipcode}}</td>
                                             <td>{{$data->state}}</td>
                                             <td>{{$data->time_in_community}}</td>
-                                            <td>{{$data->description}}</td>
+                                            <td><?= >$data->description?></td>
                                             <td>
 
 

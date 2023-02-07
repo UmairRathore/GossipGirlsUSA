@@ -34,7 +34,7 @@
 
     @if(auth()->user()->role_id===1)
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-lg-4">
                 <div class="card card-chart">
                     <div class="card-header">
                         <h5 class="card-category">Users</h5>
@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-4">
                 <div class="card card-chart">
                     <div class="card-header">
                         <h5 class="card-category">Bloggers</h5>
@@ -60,7 +60,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3">
+            <div class="col-lg-4">
                 <div class="card card-chart">
                     <div class="card-header">
                         <h5 class="card-category">Total Posts</h5>
@@ -69,18 +69,6 @@
                     <div class="card-body">
                         <div class="chart-area">
                             <canvas id="chartLineGreen"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="card card-chart">
-                    <div class="card-header">
-                        <h5 class="card-category">Dummy Card</h5>
-                        <h3 class="card-title"> 12,100K</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-area">
                         </div>
                     </div>
                 </div>

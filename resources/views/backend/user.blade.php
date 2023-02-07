@@ -21,7 +21,7 @@
                         <div class="row">
                             <div class="col-md-6 pr-md-1">
                                 <div class="form-group">
-                                    <label for="username" style="color: white">First Name</label>
+                                    <label for="username" style="color: white">User Name</label>
                                     <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{  $user->username ,old('username') }}" required autocomplete="username" autofocus>
                                     @error('username')
                                     <span class="invalid-feedback" role="alert">

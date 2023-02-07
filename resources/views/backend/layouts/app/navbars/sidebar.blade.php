@@ -51,6 +51,18 @@
                                 <p>{{ __('ContactForm') }}</p>
                             </a>
                         </li>
+                        <li @if ($pageSlug == 'background-list') class="active " @endif>
+                            <a href="{{ route('bg.show')  }}">
+                                <i class="tim-icons icon-bullet-list-67"></i>
+                                <p>{{ __('Background Image') }}</p>
+                            </a>
+                        </li>
+                        <li @if ($pageSlug == 'bloggersposts-list') class="active " @endif>
+                            <a href="{{ route('bloggersposts.show') }}">
+                                <i class="tim-icons icon-bullet-list-67"></i>
+                                <p>{{ __('Posts') }}</p>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>
@@ -64,6 +76,7 @@
                         <p>{{ __('Create Post') }}</p>
                     </a>
                 </li>
+
 
     @endif
 {{--                    <ul class="nav pl-4">--}}

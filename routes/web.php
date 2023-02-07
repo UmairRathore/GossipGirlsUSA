@@ -119,5 +119,22 @@ Route::put('/user-profile/{id}', [HomeController::class, 'update'])->name('user.
     Route::get('/posts/delete/{id}',[PostController::class,'destroy'])->name('posts.destroy');
 
 
+//BLogger Dashbaord Post CRUD
+    Route::get('/admin/posts/list',[AdminController::class,'PostsLists'])->name('bloggersposts.show');
+    Route::get('/admin/posts/delete/{id}',[AdminController::class,'Postsdestroy'])->name('bloggersposts.destroy');
+
+//Background Image
+
+    Route::get('/background/list',[AdminController::class,'Bg'])->name('bg.show');
+    Route::get('/background/create',[AdminController::class,'createBg'])->name('bg.create');
+    Route::post('/background/store',[AdminController::class,'storeBg'])->name('bg.store');
+    Route::get('/background/create/{id}',[AdminController::class,'editBg'])->name('bg.edit');
+    Route::put('/background/update/{id}',[AdminController::class,'updateBg'])->name('bg.update');
+
+
 //Search Page
   Route::get('/search',[HomeController::class,'search'])->name('search');
+
+
+//Bloggers Posts
+  Route::get('/{id}',[HomeController::class,'BloggerPosts'])->name('blogger.posts');

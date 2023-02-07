@@ -31,7 +31,9 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
+                                    <small>Do no enter your real name</small><br>
                                 </div>
+
                             </div>
 
 

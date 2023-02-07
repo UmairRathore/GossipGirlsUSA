@@ -49,18 +49,18 @@ class RegistrationController extends Controller
             'password' => 'required|confirmed|min:6',
         ]);
         $user = $this->_model;
-        $user->username = $request->input('username');
-        $user->email = $request->input('email');
-        $user->zipcode = $request->input('zipcode');
-//        $user->password = hash::make($request->password);
-        $user->password = bcrypt($request->password);
-        $user->user_image = 'images/default.png';
-        $user->role_id = '2';
+         $this->data['user']->username = $request->input('username');
+         $this->data['user']->email = $request->input('email');
+         $this->data['user']->zipcode = $request->input('zipcode');
+//         $this->data['user']->password = hash::make($request->password);
+         $this->data['user']->password = bcrypt($request->password);
+         $this->data['user']->user_image = 'images/default.png';
+         $this->data['user']->role_id = '2';
 //        dd($user);
-        $user->save();
-        $check = $user->save();
+         $this->data['user']->save();
+        $check =  $this->data['user']->save();
 
-        $name = $user->username;
+        $name =  $this->data['user']->username;
         if ($check) {
             $msg = $name.' Registered successfully, You can Comment and Reply';
             Session::flash('msg', $msg);
@@ -88,32 +88,33 @@ class RegistrationController extends Controller
             'time_in_community' => 'required',
             'description' => 'required',
         ]);
-        $user = $this->_model;
-        $user->username = $request->input('username');
-        $user->email = $request->input('email');
-        $user->password = bcrypt($request->password);
-        $user->address = $request->input('address');
-        $user->city = $request->input('city');
-        $user->zipcode = $request->input('zipcode');
-        $user->state = $request->input('state');
-        $user->time_in_community = $request->input('time_in_community');
-        $user->description = $request->input('description');
-        $user->user_image = 'images/default.png';
-        $user->role_id = '3';
+        $this->data['user'] = $this->_model;
+         $this->data['user']->username = $request->input('username');
+         $this->data['user']->email = $request->input('email');
+         $this->data['user']->password = bcrypt($request->password);
+         $this->data['user']->address = $request->input('address');
+         $this->data['user']->city = $request->input('city');
+         $this->data['user']->zipcode = $request->input('zipcode');
+         $this->data['user']->state = $request->input('state');
+         $this->data['user']->time_in_community = $request->input('time_in_community');
+         $this->data['user']->description = $request->input('description');
+         $this->data['user']->user_image = 'images/default.png';
+         $this->data['user']->role_id = '3';
         //        dd($user);
-//        $user->save();
-        $check = $user->save();
+//         $this->data['user']->save();
+        $check =  $this->data['user']->save();
 
-        $name = $user->username;
+        $name =  $this->data['user']->username;
+//        dd( $this->data['user']->email);
         if ($check) {
             $msg = $name." Registered successfully, Please wait 24 hours for verification mail";
             Mail::send('backend.email.approve_email',[
-                'name' =>$user->name,
-                'email' =>$user->email,
+                'name' => $this->data['user']->name,
+                'email' => $this->data['user']->email,
             ],
                 function ($displaymessage)
                 {
-                    $displaymessage->to('smalljutt420@gmail.com', 'GossipGirls')
+                    $displaymessage->to( $this->data['user']->email, 'GossipGirls')
                         ->subject('Waiting for Approved');
                 });
             Session::flash('msg', $msg);

@@ -28,11 +28,11 @@ class HomeController extends Controller
         $this->data['moduleName'] = 'posts';
     }
 
-    public function aboutus()
+    public function aboutus(Request $request)
     {
 
         if (auth()->check()) {
-            //        $me = $request->ip();   //get IP
+//                    $me = $request->ip();   //get IP
             $me = '206.217.224.86';  //get IP
             $ip = Location::get($me); //get zipcode from location
             $zipcode = $ip->zipCode;  //save zipcode
@@ -41,23 +41,41 @@ class HomeController extends Controller
             $this->data['randomPosts'] = $this->_model::
             Select('posts.*', 'u.username')
                 ->join('users as u', 'u.id', '=', 'posts.user_id')
-                ->where('u.role_id', '=', '3')
+//                ->where('u.role_id', '=', '3')
                 //to check logged in Users Zipcode
                 ->where('posts.zipcode', '=', $zipcode)
                 //
                 ->inRandomOrder()
                 ->limit(3)
                 ->get();
-//            dd( $this->data['randomPosts']);
+            foreach($this->data['randomPosts'] as $post)
+            {
+                $this->data['commentcount'] = $this->_model::
+                Select('posts.*', 'u.username')
+                    ->join('comments as c','c.post_id','=','posts.id')
+                    ->where('posts.id', $post->id)
+                    ->where('c.parent_id',null)
+                    ->count();
+
+            }
             return view($this->_viewPath . 'about-us', $this->data);
         }else{
             $this->data['randomPosts'] = $this->_model::
             Select('posts.*', 'u.username')
                 ->join('users as u', 'u.id', '=', 'posts.user_id')
-                ->where('u.role_id', '=', '3')
                 ->inRandomOrder()
                 ->limit(3)
                 ->get();
+            foreach($this->data['randomPosts'] as $post)
+            {
+                $this->data['commentcount'] = $this->_model::
+                Select('posts.*', 'u.username')
+                    ->join('comments as c','c.post_id','=','posts.id')
+                    ->where('posts.id', $post->id)
+                    ->where('c.parent_id',null)
+                    ->count();
+
+            }
 
             return view($this->_viewPath . 'about-us', $this->data);
         }
@@ -77,8 +95,6 @@ class HomeController extends Controller
             $ip = Location::get($me); //get zipcode from location
             $zipcode = $ip->zipCode;  //save zipcode
 
-//        dd($ip);
-
 
             $this->data['randomposts'] = $this->_model::
             Select('posts.*', 'u.username')
@@ -91,9 +107,18 @@ class HomeController extends Controller
                 ->limit(5)
                 ->get();
 
+            foreach($this->data['randomposts'] as $post)
+            {
+                $this->data['commentcount'] = $this->_model::
+                Select('posts.*', 'u.username')
+                    ->join('comments as c','c.post_id','=','posts.id')
+                    ->where('posts.id', $post->id)
+                    ->where('c.parent_id',null)
+                    ->count();
 
-//            $check =$this->data['randomposts']->first();
-//            dd($check);
+            }
+
+
 
             $this->data['checkthispost'] = $this->_model::
             Select('posts.*', 'u.username')
@@ -105,10 +130,10 @@ class HomeController extends Controller
                 ->inRandomOrder()
                 ->limit(1)
                 ->get();
-//        dd($this->data['posts']);
 
 
-            $this->data['randomsinglepost'] = $this->_model::
+
+            $this->data['randomslidesinglepost'] = $this->_model::
             Select('posts.*', 'u.username')
                 ->join('users as u', 'u.id', '=', 'posts.user_id')
                 ->inRandomOrder()
@@ -125,6 +150,10 @@ class HomeController extends Controller
                 ->latest()
                 ->first();
 
+            //either use get query (instead of first())
+//            if post > 0 and not empty conditions
+//            or use isset()
+
             return view($this->_viewPath . 'index', $this->data);
 
         }
@@ -138,6 +167,16 @@ class HomeController extends Controller
                 ->inRandomOrder()
                 ->limit(5)
                 ->get();
+            foreach($this->data['randomposts'] as $post)
+            {
+                $this->data['commentcount'] = $this->_model::
+                Select('posts.*', 'u.username')
+                    ->join('comments as c','c.post_id','=','posts.id')
+                    ->where('posts.id', $post->id)
+                    ->where('c.parent_id',null)
+                    ->count();
+
+            }
 
 
             $this->data['checkthispost'] = $this->_model::
@@ -148,7 +187,7 @@ class HomeController extends Controller
                 ->limit(1)
                 ->get();
 
-            $this->data['randomsinglepost'] = $this->_model::
+            $this->data['randomslidesinglepost'] = $this->_model::
             Select('posts.*', 'u.username')
                 ->join('users as u', 'u.id', '=', 'posts.user_id')
                 ->inRandomOrder()
@@ -174,9 +213,13 @@ class HomeController extends Controller
             ->join('users as u', 'u.id', '=', 'posts.user_id')
             ->where('posts.id', $id)
             ->get();
-//        dd($this->data['singlepost']->id);
 
-//        dd($this->data['randompost']);
+        $this->data['commentcount'] = $this->_model::
+        Select('posts.*', 'u.username')
+            ->join('comments as c','c.post_id','=','posts.id')
+            ->where('posts.id', $id)
+            ->where('c.parent_id',null)
+            ->count();
 
 
         return view($this->_viewPath . 'single-post', $this->data);
@@ -252,6 +295,18 @@ class HomeController extends Controller
         }
 //        dd($this->data['search']);
         return view($this->_viewPath . 'search', $this->data);
+    }
+
+
+    public function BloggerPosts($id)
+    {
+        $this->data['posts'] = Post:: Select('posts.*', 'u.username')
+            ->join('users as u', 'u.id', '=', 'posts.user_id')
+            ->where('posts.user_id', '=', $id)
+//            ->where('u.username', '=', $name)
+            ->get();
+//        dd($this->data['posts']);
+        return view($this->_viewPath . 'posts-list', $this->data);
     }
 
 }
