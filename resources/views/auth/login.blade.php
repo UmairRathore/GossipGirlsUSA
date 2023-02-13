@@ -11,6 +11,7 @@
                         {!! session('msg') !!}
                     </div>
                 @endif
+
             </div>
             <div class="card" style="margin-top: 10%;opacity: 0.8;">
                 <div class="card-header text-center" style="color: white">Login</div>
@@ -41,6 +42,7 @@
                             </div>
                         </div>
 
+
                         {{--<div class="row mb-0">--}}
                         {{--    <div class="col-md-6 offset-md-4">--}}
                         <button type="submit" class="btn btn-primary">
@@ -49,6 +51,11 @@
                         {{--    </div>--}}
                         {{--</div>--}}
                     </form>
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                        <a href="{{ route('forget.password') }}">Reset Password</a>
+                        </div>
+                        </div>
                 </div>
             </div>
         </div>

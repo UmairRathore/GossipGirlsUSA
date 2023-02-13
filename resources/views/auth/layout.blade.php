@@ -32,7 +32,7 @@
     }
     .bg {
         /* The image used */
-        background-image: url(admin/assets/img/authbanner.jpeg);
+        /*background-image: url(assets/img/authbanner.jpeg);*/
 
         /* Full height */
         height: 100%;
@@ -43,6 +43,12 @@
         background-size: cover;
     }
 </style>
+<?php
+    $attribute = \Illuminate\Support\Facades\DB::table('background_images')->pluck('auth_bg');
+//    dd($attribute[0])
+?>
+
+<body class="bg" style="background:url(<?php echo'/'.$attribute[0]; ?>); height: 100%;
+background-position: center; background-repeat: no-repeat; background-size: cover">
 
 
-<body class="bg">

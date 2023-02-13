@@ -49,11 +49,29 @@ class AdminController extends Controller
         return view($this->_viewPath . 'posts-list', $this->data);
     }
 
-    public function Postsdestroy()
+    public function Postsdestroy($id)
     {
-        $this->data['posts'] = Post:: Select('posts.*', 'u.username')
-            ->join('users as u', 'u.id', '=', 'posts.user_id')->get();
-        return view($this->_viewPath . 'posts-list', $this->data);
+        $this->data['posts'] = Post::find($id);
+        $destination = $this->data['posts']->p_image;
+        //code for remove old file
+//        dd($destination);
+        if (File::exists($destination)) {
+            File::delete($destination);
+        }
+
+
+        $check = $this->data['posts']->delete();
+        if ($check) {
+            $msg = 'Post deleted successfully';
+            Session::flash('msg', $msg);
+            Session::flash('message', 'alert-success');
+        } else {
+            $msg = 'Post not deleted successfully';
+            Session::flash('msg', $msg);
+            Session::flash('message', 'alert-danger');
+        }
+        return back();
+
     }
 
 
@@ -79,7 +97,7 @@ class AdminController extends Controller
             $file = $request->file('auth_bg');
             $path = 'images/';
 //                $extension=$file->getClientOriginalExtension();
-            $filename = $path . time() . '-' . $file->getClientOriginalName();
+            $filename = $path . time() . '.' . $file->getClientOriginalExtension();
             $file->move($path, $filename);
             $this->data['background']->auth_bg = $filename;
         } else {
@@ -91,7 +109,7 @@ class AdminController extends Controller
             $file = $request->file('aboutus_bg');
             $path = 'images/';
 //                $extension=$file->getClientOriginalExtension();
-            $filename = $path . time() . '-' . $file->getClientOriginalName();
+            $filename = $path . time() . '.' . $file->getClientOriginalExtension();
             $file->move($path, $filename);
             $this->data['background']->aboutus_bg = $filename;
         } else {
@@ -134,7 +152,7 @@ class AdminController extends Controller
             $file = $request->file('auth_bg');
             $path = 'images/';
 //                $extension=$file->getClientOriginalExtension();
-            $filename = $path . time() . '-' . $file->getClientOriginalName();
+            $filename = $path . time() . '.' . $file->getClientOriginalExtension();
             $file->move($path, $filename);
             $this->data['background']->auth_bg = $filename;
         }
@@ -149,7 +167,7 @@ class AdminController extends Controller
             $file = $request->file('aboutus_bg');
             $path = 'images/';
 //                $extension=$file->getClientOriginalExtension();
-            $filename = $path . time() . '-' . $file->getClientOriginalName();
+            $filename = $path . time() . '.' . $file->getClientOriginalExtension();
             $file->move($path, $filename);
             $this->data['background']->aboutus_bg = $filename;
         }
@@ -209,6 +227,7 @@ class AdminController extends Controller
             ],
                 function ($displaymessage) {
                     $displaymessage->to($this->data['user']->email, 'GossipGirls')
+//                        ->cc('knunez84@gmail.com')
                         ->subject('Account Approved');
                 });
 

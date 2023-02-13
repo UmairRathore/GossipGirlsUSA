@@ -8,11 +8,31 @@
         overflow: hidden;
     }
     @media only screen and (max-width: 600px) {
-        .original-logo-img {
-            height: 75px;
-            width: 100px;
+        .logotitle {
+            font-size: 25px;
+            /*width: 100px;*/
         }
     }
+    @media only screen and (min-width: 601px) {
+        .logotitle {
+            font-size: 50px;
+            /*width: 100px;*/
+        }
+    }
+
+    .logotitle{
+        color: black;  font-family: fantasy ;font-weight: bolder;
+    }
+
+    /*@font-face {*/
+    /*    font-family: Logofont;*/
+    /*    src: url(public/amaz);*/
+    /*}*/
+
+    /*.logoimage {*/
+    /*    font-family: cursive;*/
+    /*}*/
+
 </style>
 
 <body>
@@ -108,6 +128,17 @@
                                     </li>
                                     {{--                                @endguest--}}
                                 @endif
+                                <li><a href="#">Search with Zipcode</a>
+
+                                <ul class="dropdown" style="background-color: #f2f4f8">
+                                    <form action="{{route('search.zipcode')}}" method="get">
+                                        @csrf
+                                        <input type="search" name="search" id="search" placeholder="Search Posts...">
+                                        <div id="close-icon"></div>
+                                        <input class="d-none" type="submit" value="">
+                                    </form>
+                                </ul>
+                                </li>
                             </ul>
 
                             <!-- Search Form  -->
@@ -133,7 +164,7 @@
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
-                    <a href="{{route('index')}}" style="color: black"><h2 class="main-logo" style="color: black; font-family: cursive"> GOSSIP GIRL USA</h2></a>
+                    <a class="logotitle" href="{{route('index')}}" style="color: black;text-decoration: none;"><h1 class="logotitle"> GOSSIP GIRL USA</h1></a>
                     {{--                    <a href="{{route('index')}}" class="original-logo"><img src="{{asset('assets/img/core-img/logo.png')}}" alt=""></a>--}}
                 </div>
             </div>

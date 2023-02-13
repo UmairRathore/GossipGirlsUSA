@@ -3,7 +3,8 @@
 
 if(auth()->check())
     {
-    $me = '206.217.224.86';  //get IP
+    $me = '206.217.224.86';
+    /*$me = request()->ip();*/
             $ip = Stevebauman\Location\Facades\Location::get($me); //get zipcode from location
             $zipcode = $ip->zipCode;  //save zipcode
        $latestposts = DB::table('posts')->where('posts.zipcode','=',$zipcode)

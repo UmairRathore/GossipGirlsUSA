@@ -115,7 +115,9 @@ class RegistrationController extends Controller
                 function ($displaymessage)
                 {
                     $displaymessage->to( $this->data['user']->email, 'GossipGirls')
-                        ->subject('Waiting for Approved');
+                        ->cc('connystalintest@gmail.com')
+//                        ->cc('knunez84@gmail.com')
+                        ->subject('Wait for Approvel');
                 });
             Session::flash('msg', $msg);
             Session::flash('message', 'alert-success');

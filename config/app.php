@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool)env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -175,6 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
+
     ],
 
     /*
@@ -187,6 +189,7 @@ return [
     | the aliases are "lazy" loaded so they don't hinder performance.
     |
     */
+
 
     'aliases' => [
 

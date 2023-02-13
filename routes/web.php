@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\Blogger\PostController;
 use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\Auth\ForgetPasswordController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Admin\User\UserController;
@@ -62,6 +63,13 @@ Route::post('/login', [LoginController::class, 'postLogin'])->name('postlogin');
 //Logout
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
+//Forget Password
+Route::get('/forget', [LoginController::class, 'showForgetPasswordForm'])->name('forget.password');
+Route::post('/forget', [LoginController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
+Route::get('/reset-password/{token}', [LoginController::class, 'showResetPasswordForm'])->name('reset.password.get');
+Route::post('/reset-password', [LoginController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+
+
 
 
 //Registration
@@ -113,9 +121,9 @@ Route::put('/user-profile/{id}', [HomeController::class, 'update'])->name('user.
 //BLogger Dashbaord Post CRUD
     Route::get('/posts/list',[PostController::class,'show'])->name('posts.show');
     Route::get('/posts/create',[PostController::class,'create'])->name('posts.create');
-    Route::post('/posts/store',[PostController::class,'store'])->name('posts.store');
+    Route::post('/posts/store',[PostController::class,'store'])->name('posts.store')->middleware('optimizeImages');
     Route::get('/posts/edit/{id}',[PostController::class,'edit'])->name('posts.edit');
-    Route::put('/posts/update/{id}',[PostController::class,'update'])->name('posts.update');
+    Route::put('/posts/update/{id}',[PostController::class,'update'])->name('posts.update')->middleware('optimizeImages');
     Route::get('/posts/delete/{id}',[PostController::class,'destroy'])->name('posts.destroy');
 
 
@@ -127,14 +135,19 @@ Route::put('/user-profile/{id}', [HomeController::class, 'update'])->name('user.
 
     Route::get('/background/list',[AdminController::class,'Bg'])->name('bg.show');
     Route::get('/background/create',[AdminController::class,'createBg'])->name('bg.create');
-    Route::post('/background/store',[AdminController::class,'storeBg'])->name('bg.store');
+    Route::post('/background/store',[AdminController::class,'storeBg'])->name('bg.store')->middleware('optimizeImages');
     Route::get('/background/create/{id}',[AdminController::class,'editBg'])->name('bg.edit');
-    Route::put('/background/update/{id}',[AdminController::class,'updateBg'])->name('bg.update');
+    Route::put('/background/update/{id}',[AdminController::class,'updateBg'])->name('bg.update')->middleware('optimizeImages');
 
 
-//Search Page
+////Search Page
   Route::get('/search',[HomeController::class,'search'])->name('search');
+//
+////Search with Zipcode
+  Route::get('/searchWithZipcode',[HomeController::class,'searchwithzipcode'])->name('search.zipcode');
 
 
 //Bloggers Posts
   Route::get('/{id}',[HomeController::class,'BloggerPosts'])->name('blogger.posts');
+
+

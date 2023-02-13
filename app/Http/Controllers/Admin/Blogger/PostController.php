@@ -8,10 +8,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Spatie\LaravelImageOptimizer\Facades\ImageOptimizer;
 use Stevebauman\Location\Facades\Location;
 
 class PostController extends Controller
 {
+
     //
     protected $_viewPath;
     protected $data = array();
@@ -26,6 +28,7 @@ class PostController extends Controller
     {
         $this->_viewPath = 'backend.pages.posts.';
         $this->data['moduleName'] = 'posts';
+
     }
 
     public function show()
@@ -72,6 +75,9 @@ class PostController extends Controller
 //                $extension=$file->getClientOriginalExtension();
             $filename = $path . time() . '-' . $file->getClientOriginalName();
             $file->move($path, $filename);
+
+//            ImageOptimizer::optimize($filename);
+//            dd($file);
             $this->data['posts']->post_image = $filename;
         } else {
 

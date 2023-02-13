@@ -33,10 +33,10 @@
                         @foreach($singlepost as $posts)
                         <div class="single-blog-content">
                             <div class="line"></div>
-                            <a href="#" class="post-tag">Lifestyle</a>
+                            <a href="#" class="post-tag"></a>
                             <h4><a href="#" class="post-headline mb-0">{{$posts->title}}</a></h4>
                             <div class="post-meta mb-50">
-                                <p>By <a href="#">{{$posts->username}}</a></p>
+                                <p>By <a href="{{route('blogger.posts',[$posts->user_id])}}">{{$posts->username}}</a></p>
                                 <p>3 comments</p>
                             </div>
                             <p><?= $posts->description ?></p>
@@ -65,7 +65,7 @@
                         <div class="author-info">
                             <div class="line"></div>
                             <span class="author-role">Author</span>
-                            <h4><a href="#" class="author-name">{{$posts->username}}</a></h4>
+                            <h4><a href="{{route('blogger.posts',[$posts->user_id])}}" class="author-name">{{$posts->username}}</a></h4>
                             <p>Curabitur venenatis efficitur lorem sed tempor. Integer aliquet tempor cursus. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero luctus, vel volutpat quam tincidunt. Nullam vestibulum convallis risus vel condimentum. Nullam auctor lorem in libero.</p>
                         </div>
                     </div>

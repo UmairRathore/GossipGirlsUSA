@@ -2,7 +2,11 @@
 @section('title', 'GossipGirl - About us')
 @section('content')
     <!-- ##### Breadcumb Area Start ##### -->
-    <div class="breadcumb-area bg-img" style="background-image: url(assets/img/bg-img/aboutusbanner.jpeg);">
+    <?php
+    $attribute = \Illuminate\Support\Facades\DB::table('background_images')->pluck('aboutus_bg');
+//        dd($attribute[0])
+    ?>
+    <div class="breadcumb-area bg-img" style="background:url(<?php echo'/'.$attribute[0]; ?>);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
@@ -25,7 +29,7 @@
                         <!-- Blog Content -->
                         <div class="single-blog-content">
                             <div class="line"></div>
-                            <a href="#" class="post-tag">Lifestyle</a>
+                            <a href="#" class="post-tag"></a>
                             <h4><a href="#" class="post-headline">Welcome to Gossip Girl blog</a></h4>
                             <p class="mb-3">
                                 Welcome to Gossip Girl USA! We are an anonymous, community-based gossip and information website. Our goal is to provide an online space for the who, what,
@@ -80,7 +84,7 @@
                         <!-- Blog Content -->
                         <div class="single-blog-content">
                             <div class="line"></div>
-                            <a href="#" class="post-tag">Lifestyle</a>
+                            <a href="#" class="post-tag"></a>
                             <h4><a href="#" class="post-headline">Welcome to this Gossip Girl blog</a></h4>
                             <p>
                                 ***Please keep in mind Gossip Girl is strictly anonymous and prohibits the use of any names, descriptions,
@@ -144,7 +148,7 @@
                             <!-- Blog Content -->
                             <div class="single-blog-content mt-50">
                                 <div class="line"></div>
-                                <a href="#" class="post-tag">Lifestyle</a>
+                                <a href="#" class="post-tag"></a>
                                 <h4><a href="{{route('single.posts',[$posts->id])}}" class="post-headline">{{$posts->title}}</a></h4>
                                 <p>
                                 <p><?= \Illuminate\Support\Str::limit($posts->description, 300, $end='...') ?></p>

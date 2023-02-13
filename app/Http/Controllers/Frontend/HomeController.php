@@ -297,6 +297,17 @@ class HomeController extends Controller
         return view($this->_viewPath . 'search', $this->data);
     }
 
+    public function searchwithzipcode(Request $request)
+    {
+//
+            $search = $request->query('search');
+            $this->data['search'] = Post::where('zipcode', 'Like', "%{$search}%")
+                ->orderBy('id', 'DESC')
+                ->paginate(5);
+
+        return view($this->_viewPath . 'search', $this->data);
+    }
+
 
     public function BloggerPosts($id)
     {

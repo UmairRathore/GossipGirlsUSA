@@ -49,10 +49,7 @@
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="single-catagory-area clearfix mb-100">
                             <a href="{{route('single.posts',[$posts->id])}}" ><img src="{{$posts->post_image}}" alt=""></a>
-                            <!-- Catagory Title -->
-                            <div class="catagory-title">
-                                <a href="{{route('single.posts',[$latest->id])}}">Lifestyle posts</a>
-                            </div>
+
                         </div>
                     </div>
                 @endforeach
