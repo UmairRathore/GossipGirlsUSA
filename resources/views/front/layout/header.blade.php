@@ -7,18 +7,33 @@
         vertical-align: middle;
         overflow: hidden;
     }
-    @media only screen and (max-width: 600px) {
-        .logotitle {
-            font-size: 25px;
-            /*width: 100px;*/
+    @media only screen and (min-width: 600px) {
+        .logoimage {
+            height: 100px ; width: 650px;
         }
     }
-    @media only screen and (min-width: 601px) {
-        .logotitle {
-            font-size: 50px;
-            /*width: 100px;*/
+    @media only screen and (max-width: 601px) {
+        .logoimage {
+
+            height: 60px;
+         width: 260px
         }
     }
+
+    @media only screen and (max-width: 430px) {
+        .logoimage {
+
+            height: 50px;
+         width: 200px
+        }
+    }
+    /*@media only screen and (max-width: 601px) {*/
+    /*    .logoimage {*/
+    /*        !*font-size: 50px;*!*/
+    /*        height: 50px*/
+    /*    ; width: 200px*/
+    /*    }*/
+    /*}*/
 
     .logotitle{
         color: black;  font-family: fantasy ;font-weight: bolder;
@@ -164,8 +179,8 @@
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
-                    <a class="logotitle" href="{{route('index')}}" style="color: black;text-decoration: none;"><h1 class="logotitle"> GOSSIP GIRL USA</h1></a>
-                    {{--                    <a href="{{route('index')}}" class="original-logo"><img src="{{asset('assets/img/core-img/logo.png')}}" alt=""></a>--}}
+{{--                    <a class="logotitle" href="{{route('index')}}" style="color: black;text-decoration: none;"><h1 class="logotitle"> GOSSIP GIRL USA</h1></a>--}}
+                    <a  href="{{route('index')}}" ><img class="logoimage" src="{{asset('assets/img/core-img/logo3.png')}}" alt="" ></a>
                 </div>
             </div>
         </div>
