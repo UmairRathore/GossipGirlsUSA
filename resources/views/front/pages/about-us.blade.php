@@ -6,7 +6,7 @@
     $attribute = \Illuminate\Support\Facades\DB::table('background_images')->pluck('aboutus_bg');
 //        dd($attribute[0])
     ?>
-    <div class="breadcumb-area bg-img" style="background:url(<?php echo'/'.$attribute[0]; ?>);">
+    <div class="breadcumb-area bg-img" style=" background:url(<?php echo'/'.$attribute[0]; ?>);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
@@ -63,7 +63,7 @@
                 <!-- Single Blog Area -->
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-catagory-area clearfix mb-100">
-                        <img src="{{asset('assets/img/blog-img/reading-girl.jpg')}}" alt="">
+                        <img src="{{asset('assets/img/blog-img/aboutus-image.jpeg')}}" alt="">
                         {{--                        <!-- Catagory Title -->--}}
                         {{--                        <div class="catagory-title">--}}
                         {{--                            <a href="#">Lifestyle posts</a>--}}
@@ -140,7 +140,7 @@
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="single-blog-area blog-style-2 mb-100">
                             <div class="single-blog-thumbnail">
-                                <a href="{{route('single.posts',[$posts->id])}}"><img src="{{$posts->post_image}}" alt=""></a>
+                                <a href="{{route('single.posts',[$posts->id])}}"><img src="{{asset($posts->post_image)}}" alt=""></a>
                                 <div class="post-date">
                                    {{$posts->created_at->diffForHumans()}}
                                 </div>

@@ -48,7 +48,7 @@
                     <!-- Single Blog Area -->
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="single-catagory-area clearfix mb-100">
-                            <a href="{{route('single.posts',[$posts->id])}}" ><img src="{{$posts->post_image}}" alt=""></a>
+                            <a href="{{route('single.posts',[$posts->id])}}" ><img src="{{asset($posts->post_image)}}" alt=""></a>
 
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="single-catagory-area clearfix mb-100">
                     @if(isset($latest))
-                        <a href="{{route('single.posts',[$posts->id])}}" ><img src="{{$latest->post_image}}" alt=""></a>
+                        <a href="{{route('single.posts',[$posts->id])}}" ><img src="{{asset($latest->post_image)}}" alt=""></a>
                         <!-- Catagory Title -->
                         <div class="catagory-title">
                             <a href="{{route('single.posts',[$latest->id])}}">latest posts</a>
@@ -79,7 +79,7 @@
                             <div class="row align-items-center">
                                 <div class="col-12 col-md-6">
                                     <div class="single-blog-thumbnail">
-                                        <a href="{{route('single.posts',[$posts->id])}}" ><img src="{{$posts->post_image}}" alt=""></a>
+                                        <a href="{{route('single.posts',[$posts->id])}}" ><img src="{{asset($posts->post_image)}}" alt=""></a>
                                         <div class="post-date">
                                             {{$posts->created_at->diffForHumans()}}
 

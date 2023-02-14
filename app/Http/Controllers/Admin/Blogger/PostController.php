@@ -76,7 +76,7 @@ class PostController extends Controller
             $filename = $path . time() . '-' . $file->getClientOriginalName();
             $file->move($path, $filename);
 
-//            ImageOptimizer::optimize($filename);
+            ImageOptimizer::optimize($filename);
 //            dd($file);
             $this->data['posts']->post_image = $filename;
         } else {
