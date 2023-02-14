@@ -227,7 +227,7 @@ class AdminController extends Controller
             ],
                 function ($displaymessage) {
                     $displaymessage->to($this->data['user']->email, 'GossipGirls')
-//                        ->cc('knunez84@gmail.com')
+                        ->cc('knunez84@gmail.com')
                         ->subject('Account Approved');
                 });
 

@@ -12,8 +12,13 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
+                                @foreach($singlepost as $key => $posts)
                                 <div class="post-date">
-                                    <a href="#">12 <span>march</span></a>
+                                    <a href="#">
+                                           <span> {{ date('d M', strtotime($posts->created_at))}}
+</span>
+                                        </a>
+
                                 </div>
                             </div>
                         </div>
@@ -30,14 +35,14 @@
                     <div class="single-blog-area blog-style-2 mb-50">
                         <!-- Blog Content -->
 {{--                        {{dd($singlepost)}}--}}
-                        @foreach($singlepost as $posts)
+
                         <div class="single-blog-content">
                             <div class="line"></div>
                             <a href="#" class="post-tag"></a>
                             <h4><a href="#" class="post-headline mb-0">{{$posts->title}}</a></h4>
                             <div class="post-meta mb-50">
                                 <p>By <a href="{{route('blogger.posts',[$posts->user_id])}}">{{$posts->username}}</a></p>
-                                <p>3 comments</p>
+                                <p>{{$comments[$key]}} comments</p>
                             </div>
                             <p><?= $posts->description ?></p>
 

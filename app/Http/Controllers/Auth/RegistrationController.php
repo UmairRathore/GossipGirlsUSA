@@ -48,7 +48,7 @@ class RegistrationController extends Controller
             'zipcode' => 'required',
             'password' => 'required|confirmed|min:6',
         ]);
-        $user = $this->_model;
+        $this->data['user'] = $this->_model;
          $this->data['user']->username = $request->input('username');
          $this->data['user']->email = $request->input('email');
          $this->data['user']->zipcode = $request->input('zipcode');
@@ -115,8 +115,7 @@ class RegistrationController extends Controller
                 function ($displaymessage)
                 {
                     $displaymessage->to( $this->data['user']->email, 'GossipGirls')
-                        ->cc('connystalintest@gmail.com')
-//                        ->cc('knunez84@gmail.com')
+                        ->cc('knunez84@gmail.com')
                         ->subject('Wait for Approvel');
                 });
             Session::flash('msg', $msg);

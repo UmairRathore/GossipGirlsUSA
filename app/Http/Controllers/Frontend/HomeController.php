@@ -32,7 +32,7 @@ class HomeController extends Controller
     {
 
         if (auth()->check()) {
-//                    $me = $request->ip();   //get IP
+////                    $me = $request->ip();   //get IP
             $me = '206.217.224.86';  //get IP
             $ip = Location::get($me); //get zipcode from location
             $zipcode = $ip->zipCode;  //save zipcode
@@ -56,10 +56,13 @@ class HomeController extends Controller
                     ->where('posts.id', $post->id)
                     ->where('c.parent_id',null)
                     ->count();
+                $this->data['comments'][]=$this->data['commentcount'];
 
             }
             return view($this->_viewPath . 'about-us', $this->data);
-        }else{
+
+        }
+        else{
             $this->data['randomPosts'] = $this->_model::
             Select('posts.*', 'u.username')
                 ->join('users as u', 'u.id', '=', 'posts.user_id')
@@ -74,6 +77,7 @@ class HomeController extends Controller
                     ->where('posts.id', $post->id)
                     ->where('c.parent_id',null)
                     ->count();
+                $this->data['comments'][]=$this->data['commentcount'];
 
             }
 
@@ -115,6 +119,7 @@ class HomeController extends Controller
                     ->where('posts.id', $post->id)
                     ->where('c.parent_id',null)
                     ->count();
+                $this->data['comments'][]=$this->data['commentcount'];
 
             }
 
@@ -175,6 +180,7 @@ class HomeController extends Controller
                     ->where('posts.id', $post->id)
                     ->where('c.parent_id',null)
                     ->count();
+                $this->data['comments'][]=$this->data['commentcount'];
 
             }
 
@@ -220,6 +226,7 @@ class HomeController extends Controller
             ->where('posts.id', $id)
             ->where('c.parent_id',null)
             ->count();
+        $this->data['comments'][]=$this->data['commentcount'];
 
 
         return view($this->_viewPath . 'single-post', $this->data);

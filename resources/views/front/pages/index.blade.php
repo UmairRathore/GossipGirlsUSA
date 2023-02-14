@@ -74,7 +74,7 @@
 
                     @if(isset($randomposts))
                     <!-- Single Blog Area  -->
-                    @foreach($randomposts as $posts)
+                    @foreach($randomposts as $key => $posts)
                         <div class="single-blog-area blog-style-2 mb-50 wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1000ms">
                             <div class="row align-items-center">
                                 <div class="col-12 col-md-6">
@@ -93,8 +93,8 @@
                                         <h4><a href="{{route('single.posts',[$latest->id])}}" class="post-headline">{{$posts->title}}</a></h4>
                                         <p><?= \Illuminate\Support\Str::limit($posts->description, 500, $end='...') ?></p>
                                         <div class="post-meta">
-                                            <p>By <a href="#">{{$posts->username}}</a></p>
-                                            <p>{{$commentcount}} comments</p>
+                                            <p>By <a href="{{route('blogger.posts',[$posts->user_id])}}">{{$posts->username}}</a></p>
+                                            <p>{{$comments[$key]}} comments</p>
                                         </div>
                                     </div>
                                 </div>

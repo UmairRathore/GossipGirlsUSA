@@ -27,41 +27,10 @@
          width: 200px
         }
     }
-    /*@media only screen and (max-width: 601px) {*/
-    /*    .logoimage {*/
-    /*        !*font-size: 50px;*!*/
-    /*        height: 50px*/
-    /*    ; width: 200px*/
-    /*    }*/
-    /*}*/
-
-    .logotitle{
-        color: black;  font-family: fantasy ;font-weight: bolder;
-    }
-
-    /*@font-face {*/
-    /*    font-family: Logofont;*/
-    /*    src: url(public/amaz);*/
-    /*}*/
-
-    /*.logoimage {*/
-    /*    font-family: cursive;*/
-    /*}*/
 
 </style>
 
 <body>
-{{--<!-- Preloader -->--}}
-{{--<div id="preloader">--}}
-{{--    <div class="preload-content">--}}
-{{--        <div id="original-load"></div>--}}
-{{--    </div>--}}
-{{--</div>--}}
-
-
-<!-- Subscribe Modal -->
-
-
 <!-- ##### Header Area Start ##### -->
 <header class="header-area">
 

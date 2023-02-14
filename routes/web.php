@@ -148,6 +148,6 @@ Route::put('/user-profile/{id}', [HomeController::class, 'update'])->name('user.
 
 
 //Bloggers Posts
-  Route::get('/{id}',[HomeController::class,'BloggerPosts'])->name('blogger.posts');
+  Route::get('BloggerPosts/{id}',[HomeController::class,'BloggerPosts'])->name('blogger.posts');
 
 

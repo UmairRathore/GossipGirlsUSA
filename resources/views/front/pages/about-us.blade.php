@@ -135,7 +135,8 @@
         <div class="container">
             <div class="row">
 
-                @foreach($randomPosts as $posts)
+                @foreach($randomPosts as $key => $posts)
+{{--                    {{dd($key)}}--}}
                     <!-- Single Blog Area  -->
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="single-blog-area blog-style-2 mb-100">
@@ -154,7 +155,9 @@
                                 <p><?= \Illuminate\Support\Str::limit($posts->description, 300, $end='...') ?></p>
                                 <div class="post-meta">
                                     <p>By <a href="#">{{$posts->username}}</a></p>
-                                    <p>{{$commentcount}} comments</p>
+                                <?php
+                                ?>
+                                    <p>{{$comments[$key]}} comments</p>
                                 </div>
                             </div>
                         </div>
