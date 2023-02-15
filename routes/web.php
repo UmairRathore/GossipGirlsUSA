@@ -41,6 +41,13 @@ Route::get('termsandpolicy', function () {
     return view('front.pages.termsandpolicy');
 })->name('termsandpolicy');
 
+Route::get('userchat', function () {
+    return view('front.pages.chat.chat-user');
+})->name('userchat');
+
+Route::get('bloggerchat', function () {
+    return view('backend.pages.chat.chat-blogger');
+})->name('bloggerchat');
 
 
 Route::get('/comingsoon', function () {

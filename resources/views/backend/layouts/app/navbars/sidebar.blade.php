@@ -78,6 +78,12 @@
                         <p>{{ __('Posts List') }}</p>
                     </a>
                 </li>
+                <li @if ($pageSlug == 'Blogger Chat') class="active " @endif>
+                    <a href="{{ route('bloggerchat')  }}">
+                        <i class="tim-icons icon-bullet-list-67"></i>
+                        <p>{{ __('messenger') }}</p>
+                    </a>
+                </li>
 
 
         @endif
