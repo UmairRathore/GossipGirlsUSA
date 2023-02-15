@@ -41,7 +41,6 @@
                         </div>
                         <!-- posts Content -->
                         <div class="post-content">
-                            <a href="#" class="post-tag">Lifestyle</a>
                             <h4><a href="{{route('single.posts',[$posts->id])}}" class="post-headline">{{$posts->title}}</a></h4>
                             <div class="post-meta">
                                 <p><a href="#">
