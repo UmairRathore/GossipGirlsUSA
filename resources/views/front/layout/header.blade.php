@@ -112,7 +112,7 @@
                                     </li>
                                     {{--                                @endguest--}}
                                 @endif
-                                <li><a href="#">Search with Zipcode</a>
+                                <li><a href="#">Search by Zipcode</a>
 
                                 <ul class="dropdown" style="background-color: #f2f4f8">
                                     <form action="{{route('search.zipcode')}}" method="get">

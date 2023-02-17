@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\Blogger\PostController;
 use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\Admin\MessagingController;
 use App\Http\Controllers\Auth\ForgetPasswordController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -41,13 +42,12 @@ Route::get('termsandpolicy', function () {
     return view('front.pages.termsandpolicy');
 })->name('termsandpolicy');
 
-Route::get('userchat', function () {
-    return view('front.pages.chat.chat-user');
-})->name('userchat');
 
-Route::get('bloggerchat', function () {
-    return view('backend.pages.chat.chat-blogger');
-})->name('bloggerchat');
+
+Route::get('chatmodal', function () {
+    return view('front.pages.chat.chat-modal');
+})->name('chatmodal');
+
 
 
 Route::get('/comingsoon', function () {
@@ -158,3 +158,6 @@ Route::put('/user-profile/{id}', [HomeController::class, 'update'])->name('user.
   Route::get('BloggerPosts/{id}',[HomeController::class,'BloggerPosts'])->name('blogger.posts');
 
 
+//Messaging
+        Route::get('chat',[MessagingController::class,'show'])->name('chat');
+        Route::post('storechat',[MessagingController::class,'store'])->name('store.chat');

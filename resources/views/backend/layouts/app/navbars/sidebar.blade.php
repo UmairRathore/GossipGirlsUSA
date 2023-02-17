@@ -79,7 +79,7 @@
                     </a>
                 </li>
                 <li @if ($pageSlug == 'Blogger Chat') class="active " @endif>
-                    <a href="{{ route('bloggerchat')  }}">
+                    <a href="{{ route('chat')  }}">
                         <i class="tim-icons icon-bullet-list-67"></i>
                         <p>{{ __('messenger') }}</p>
                     </a>

@@ -1,5 +1,5 @@
 @extends('backend.layouts.app',['pageSlug'=>'Blogger Chat'])
-@section('title', 'Create Background')
+@section('title', 'Blogger Chat')
 @section('content')
 
     @include('backend.pages.chat.chat-css')
@@ -22,76 +22,79 @@
                         </div>
                     </div>
                     <div class="inbox_chat">
-                        <div class="chat_list active_chat">
-                            <div class="chat_people">
-                                <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"></div>
-                                <div class="chat_ib">
-                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                    <p>Test, which is a new approach to have all solutions
-                                        astrology under one roof.</p>
+{{--                        <div class="chat_list active_chat">--}}
+                            @foreach($messages as $data)
+                                <div class="chat_list active_chat">
+                                    <div class="chat_people">
+                                        <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"></div>
+                                        <div class="chat_ib">
+                                            <h5>{{$data->username}} <span class="chat_date">Dec 25</span></h5>
+                                            <p>Test, which is a new approach to have all solutions
+                                                astrology under one roof.</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="chat_list">
-                            <div class="chat_people">
-                                <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"></div>
-                                <div class="chat_ib">
-                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                    <p>Test, which is a new approach to have all solutions
-                                        astrology under one roof.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chat_list">
-                            <div class="chat_people">
-                                <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"></div>
-                                <div class="chat_ib">
-                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                    <p>Test, which is a new approach to have all solutions
-                                        astrology under one roof.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chat_list">
-                            <div class="chat_people">
-                                <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"></div>
-                                <div class="chat_ib">
-                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                    <p>Test, which is a new approach to have all solutions
-                                        astrology under one roof.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chat_list">
-                            <div class="chat_people">
-                                <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"></div>
-                                <div class="chat_ib">
-                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                    <p>Test, which is a new approach to have all solutions
-                                        astrology under one roof.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chat_list">
-                            <div class="chat_people">
-                                <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"></div>
-                                <div class="chat_ib">
-                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                    <p>Test, which is a new approach to have all solutions
-                                        astrology under one roof.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chat_list">
-                            <div class="chat_people">
-                                <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"></div>
-                                <div class="chat_ib">
-                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>
-                                    <p>Test, which is a new approach to have all solutions
-                                        astrology under one roof.</p>
-                                </div>
-                            </div>
-                        </div>
+                            @endforeach
+{{--                        <div class="chat_list">--}}
+{{--                            <div class="chat_people">--}}
+{{--                                <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"></div>--}}
+{{--                                <div class="chat_ib">--}}
+{{--                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>--}}
+{{--                                    <p>Test, which is a new approach to have all solutions--}}
+{{--                                        astrology under one roof.</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="chat_list">--}}
+{{--                            <div class="chat_people">--}}
+{{--                                <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"></div>--}}
+{{--                                <div class="chat_ib">--}}
+{{--                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>--}}
+{{--                                    <p>Test, which is a new approach to have all solutions--}}
+{{--                                        astrology under one roof.</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="chat_list">--}}
+{{--                            <div class="chat_people">--}}
+{{--                                <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"></div>--}}
+{{--                                <div class="chat_ib">--}}
+{{--                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>--}}
+{{--                                    <p>Test, which is a new approach to have all solutions--}}
+{{--                                        astrology under one roof.</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="chat_list">--}}
+{{--                            <div class="chat_people">--}}
+{{--                                <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"></div>--}}
+{{--                                <div class="chat_ib">--}}
+{{--                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>--}}
+{{--                                    <p>Test, which is a new approach to have all solutions--}}
+{{--                                        astrology under one roof.</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="chat_list">--}}
+{{--                            <div class="chat_people">--}}
+{{--                                <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"></div>--}}
+{{--                                <div class="chat_ib">--}}
+{{--                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>--}}
+{{--                                    <p>Test, which is a new approach to have all solutions--}}
+{{--                                        astrology under one roof.</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="chat_list">--}}
+{{--                            <div class="chat_people">--}}
+{{--                                <div class="chat_img"><img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"></div>--}}
+{{--                                <div class="chat_ib">--}}
+{{--                                    <h5>Sunil Rajput <span class="chat_date">Dec 25</span></h5>--}}
+{{--                                    <p>Test, which is a new approach to have all solutions--}}
+{{--                                        astrology under one roof.</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
                 </div>
                 <div class="mesgs">

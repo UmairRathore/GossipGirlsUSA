@@ -76,7 +76,7 @@
     <!-- ##### Blog Wrapper End ##### -->
 
     <!-- ##### Cool Facts Area Start ##### -->
-    <div class="cool-facts-area section-padding-100-0 bg-img background-overlay" style="background-image: url(assets/img/bg-img/b4.jpg);">
+    <div class="cool-facts-area section-padding-100-0 bg-img background-overlay" style="background-image: url(assets/img/bg-img/b4.jpeg);">
         <div class="container">
             <div class="row">
                 <div class="col-12">
